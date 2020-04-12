@@ -19,7 +19,7 @@
      	background-size: cover;
       height: 100vh;
      }
-	
+    
     .text_accueil{   
       position: absolute !important;
       /*
