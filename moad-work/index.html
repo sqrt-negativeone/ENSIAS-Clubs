@@ -8,31 +8,35 @@
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <a href="#">
-            <img src="img/Logo.svg" alt="logo" class='logo'>
-        </a>  
+        <div class="container">
+            <div class="logo-container">
+                <a href="#">
+                <img src="img/Logo.svg" alt="logo" class='logo'>
+            </a> 
+            </div>
+            
+            <nav class="show-desktop hide-mobile">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <div>HOME</div>
+                            <div class="selected"></div>
+                        </a>
+                    </li>
+                    <li><a href="#about">À propos</a></li>
+                    <li>
+                        <a href="#clubs">CLUBS</a>
+                    </li>
+                    <li>
+                        <a href="#events">EVENTS</a>
+                    </li>
+                    <li>
+                        <div id="login"><a href="#">LOGIN</a></div>
+                    </li>
+                </ul>
+            </nav>
         </div>
         
-        <nav class="show-desktop hide-mobile">
-            <ul>
-                <li>
-                    <a href="#">
-                        <div>HOME</div>
-                        <div class="selected"></div>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">CLUBS</a>
-                </li>
-                <li>
-                    <a href="#">EVENTS</a>
-                </li>
-                <li>
-                    <div id="login"><a href="#">LOGIN</a></div>
-                </li>
-            </ul>
-        </nav>
     </header>
 
     <article class="container">
@@ -49,74 +53,65 @@
                     sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
 
-                <div class="zone-events">
-                    <h1><i>UPCOMING EVENTS</i></h1>
-                    <div>
-                        <!--TODO: this part is to be filled with AJAX-->
-                        <p>Loading</p>
-                        <div class='see-more'><a href="#">SEE MORE</a></div>
-                    </div>
-                </div>
+                
             </div>
-            <div class="scroll"><img src="img/scroll.svg" alt="scroll" width="60px"></div>
         </section>
 
-        <div class="white-box"></div>
 
-        <section class="container2">
-            <section class="about">
-                <div>
-                    <h1>À propos</h1>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-                </div>
-            </section>
-
-            <section id="clubs">
-                <!-- TODO: this part is to be filled with AJAX-->
-            </section>
-
-            <section id="events">
-                <!-- TODO: this part is to be filled with AJAX-->
-            </section>
+        <section id="about" class="about">
+            <div>
+                <h1>À propos</h1>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+            </div>
         </section>
+
+        <section id="clubs">
+            <!-- TODO: this part is to be filled with AJAX-->
+        </section>
+
+        <section id="events">
+            <!-- TODO: this part is to be filled with AJAX-->
+        </section>
+
         <div class="signe-in">
             <a href="#">
                 <div>signe in !</div>
             </a>
         </div>
 
+        <footer>
+            <div class="logo-footer">
+                <a href="#"> 
+                    <img src="/img/Logo.svg" alt="logo" width="110px">
+                </a>
+            </div>
+    
+            <div class="nav-footer">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">CLUBS</a></li>
+                    <li><a href="#">EVENTS</a></li>
+                </ul>
+            </div>
+    
+            <div class="contact-us">
+                <span>contact us</span>
+                <ul>
+                    <li>
+                        <a href=""><img src="/img/facebook.png" alt="facebook" width="50px"></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="/img/instagram.png" alt="instagram" width="50px"></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="/img/twitter.png" alt="twitter" width="50px"></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
     </article>
 
-    <footer>
-        <div class="logo-footer">
-            <a href="#"> 
-                <img src="/img/Logo.svg" alt="logo" width="110px">
-            </a>
-        </div>
-
-        <div class="nav-footer">
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">CLUBS</a></li>
-                <li><a href="#">EVENTS</a></li>
-            </ul>
-        </div>
-
-        <div class="contact-us">
-            <span>contact us</span>
-            <ul>
-                <li>
-                    <a href=""><img src="/img/facebook.png" alt="facebook" width="50px"></a>
-                </li>
-                <li>
-                    <a href=""><img src="/img/instagram.png" alt="instagram" width="50px"></a>
-                </li>
-                <li>
-                    <a href=""><img src="/img/twitter.png" alt="twitter" width="50px"></a>
-                </li>
-            </ul>
-        </div>
-    </footer>
+    
     
 
 </body>
