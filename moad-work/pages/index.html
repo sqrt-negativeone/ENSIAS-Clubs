@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <!--The sidebar nav-->
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+            style="background-repeat: no-repeat;">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <img src="assets/img/Logo.svg" alt="" width="85px">
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html"><i
+                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="suggestions.html"><i
+                                class="material-icons">rate_review</i><span>Suggestions</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="profile.html"><i
+                                class="fas fa-user"></i><span>Profile</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <!--end of the sidebar nav-->
+
+        <div class="d-flex flex-column" id="content-wrapper">
+
+            <div id="content">
+                <!--signed in user nav menu-->
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid">
+                        <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <form
+                            class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
+                                    placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i
+                                            class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow">
+                                <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"
+                                    href="#">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small"
+                                                type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0"
+                                                    type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"
+                                        href="#">
+                                        <span class="badge badge-danger badge-counter">3+</span>
+                                        <i class="fas fa-bell fa-fw"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3"><img class="border rounded-circle"
+                                                    src="assets/img/avatars/avatar4.jpeg" style="width: 40px;"></div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>you got a new suggestion from username.</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3"><img class="border rounded-circle"
+                                                    src="assets/img/avatars/avatar3.jpeg" style="width: 40px;"></div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>username asked to join clubname club.</p>
+                                            </div>
+                                        </a>
+                                        <a class="text-center dropdown-item small text-gray-500" href="#">Show More</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false"
+                                        href="#">
+                                        <span class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span>
+                                        <img class="border rounded-circle img-profile"
+                                            src="assets/img/avatars/avatar1.jpeg">
+                                    </a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            &nbsp;Profile
+                                        </a>
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            &nbsp;Settings
+                                        </a>
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            &nbsp;Activity log
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" role="presentation" href="#">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            &nbsp;Logout
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <div>
+                        <h3 class="text-dark mb-1" style="font-size: 250%;">Dashboard</h3>
+                    </div>
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col">
+                            <div class="card" data-aos="zoom-in-up">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">MY CLUBS</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!--here the clubs will be inserted as the following element-->
+                                        <div class="card" data-aos="zoom-in-up"
+                                            style="width: 300px;margin-right: auto;margin-left: auto;">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-9 offset-xl-2">
+                                                        <figure class="figure">
+                                                            <!--club name-->
+                                                            <img class="img-fluid figure-img" style="width: 100%;">
+                                                            <!--club name-->
+                                                            <figcaption class="figure-caption" style="font-size: 150%;">
+                                                                club name</figcaption>
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-9 offset-xl-2">
+                                                        <a class="btn btn-primary" role="button"
+                                                            style="margin-left: 20%;" href="clubs.html">enter</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col">
+                            <div class="card" data-aos="zoom-in-up">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">OTHER CLUBS
+                                    </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!--same here except the clubs that are not joined to will be listed here as follow-->
+                                        <div class="card" data-aos="zoom-in-up"
+                                            style="width: 300px;margin-right: auto;margin-left: auto;">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-xl-9 offset-xl-2">
+                                                        <figure class="figure">
+                                                            <img class="img-fluid figure-img" style="width: 100%;">
+                                                            <figcaption class="figure-caption" style="font-size: 150%;">
+                                                                club name</figcaption>
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-9 offset-xl-2">
+                                                        <button class="btn btn-primary" type="button"
+                                                            style="margin-left: 20%;">join</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="text-primary m-0 font-weight-bold" style="font-size: 150%;">EVENTS</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <!--Here the upcoming events will be inserted as follow-->
+                                    <div class="card mb-4" data-aos="zoom-in-up">
+                                        <div class="card-body d-flex">
+                                            <div class="col-xl-12">
+                                                <div class="row">
+                                                    <div class="col-xl-12"
+                                                        style="background-image: url(&quot;assets/img/dogs/image1.jpeg&quot;);background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;height: 600px;">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h2 class="text-center">EVENT TITLE</h2>
+                                                        <h3 class="text-center">from : club_name</h3>
+                                                        <h3 class="text-center">date: dd/mm/yy</h3>
+                                                        <p class="text-left m-0"><br>Lorem ipsum dolor sit amet,
+                                                            consectetur adipiscing elit, sed do eiusmod tempor
+                                                            incididunt ut labore et dolore magna aliqua. Tempus urna et
+                                                            pharetra pharetra massa massa ultricies mi quis. Id velit
+                                                            ut tortor pretium viverra suspendisse potenti. Urna
+                                                            condimentum mattis pellentesque id nibh tortor. Ut tristique
+                                                            et egestas quis ipsum suspendisse ultrices. Malesuada
+                                                            bibendum arcu vitae elementum
+                                                            curabitur vitae nunc. Nisl tincidunt eget nullam non nisi
+                                                            est sit amet. Vulputate sapien nec sagittis aliquam
+                                                            malesuada bibendum arcu vitae. Neque egestas congue quisque
+                                                            egestas diam in arcu cursus.
+                                                            Massa tincidunt dui ut ornare lectus sit amet.Aliquam nulla
+                                                            facilisi cras fermentum odio. Natoque penatibus et magnis
+                                                            dis parturient montes. Orci eu lobortis elementum nibh
+                                                            tellus molestie nunc non.
+                                                            Non tellus orci ac auctor augue. Cras semper auctor neque
+                                                            vitae tempus quam pellentesque nec nam. Quam adipiscing
+                                                            vitae proin sagittis nisl rhoncus. Sed tempus urna et
+                                                            pharetra pharetra massa. Lectus
+                                                            arcu bibendum at varius vel pharetra vel turpis. Diam
+                                                            vulputate ut pharetra sit amet aliquam id. Eget gravida cum
+                                                            sociis natoque penatibus. At erat pellentesque adipiscing
+                                                            commodo elit.<br><br></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
+                </div>
+            </footer>
+        </div>
+        <a class="border rounded d-inline scroll-to-top" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

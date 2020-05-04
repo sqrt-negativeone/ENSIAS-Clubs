@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Cellules</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+            style="background-repeat: no-repeat;">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <img src="assets/img/Logo.svg" alt="" width="85px">
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html"><i
+                                class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="suggestions.html"><i
+                                class="material-icons">rate_review</i><span>Suggestions</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="profile.html"><i
+                                class="fas fa-user"></i><span>Profile</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
+                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form
+                            class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
+                                    placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i
+                                            class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
+                                    data-toggle="dropdown" aria-expanded="false" href="#"><i
+                                        class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small"
+                                                type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0"
+                                                    type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        data-toggle="dropdown" aria-expanded="false" href="#"><span
+                                            class="badge badge-danger badge-counter">3+</span><i
+                                            class="fas fa-bell fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">NoTIFICATIONS</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i
+                                                        class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-success icon-circle"><i
+                                                        class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-warning icon-circle"><i
+                                                        class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your
+                                                    account.</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All
+                                            Norifications</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        data-toggle="dropdown" aria-expanded="false" href="#"><span
+                                            class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img
+                                            class="border rounded-circle img-profile"
+                                            src="assets/img/avatars/avatar1.jpeg"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <a class="dropdown-item" role="presentation" href="#"><i
+                                                class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a
+                                            class="dropdown-item" role="presentation" href="#"><i
+                                                class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation"
+                                            href="#"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!--container-->
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-1">Cellule : CELLULE_NAME</h3>
+                    <!--this section will be visible for the club's president to change the cellule's responsable-->
+                    <div class="row">
+                        <div class="col">
+                            <div class="row" style="margin-bottom: 40px;margin-top: 10px;">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4>Current responsable:</h4>
+                                            <div class="row">
+                                                <div class="col-4 offset-xl-1">
+                                                    <div class="card">
+                                                        <div class="card-body"
+                                                            style="width: 300px;margin-right: auto;margin-left: auto;">
+                                                            <div class="row align-items-center no-gutters">
+                                                                <div class="col-auto"><img
+                                                                        class="border rounded-circle img-profile"
+                                                                        src="assets/img/avatars/avatar1.jpeg"></div>
+                                                                <div class="col mr-2" style="margin-left: 10px;"><span
+                                                                        style="font-size: 120%;">user_name</span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto align-self-center"><button class="btn btn-danger"
+                                                        type="button" data-toggle="modal"
+                                                        data-target="#responsableSelection">Change</button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--visible for cellule members-->
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <!--this row is for creating a new tache -->
+                            <div class="row">
+                                <div class="col">
+                                    <!--this card will be visible only for cellule responsable so he can give taches to other cellule's members-->
+                                    <div class="card shadow mb-4" data-aos="zoom-in-up">
+                                        <div class="card-header py-3">
+                                            <h6 class="text-primary m-0 font-weight-bold">DONNER UNE&nbsp;TACHE</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <form class="text-left">
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-xl-3 offset-xl-1"><label
+                                                                class="col-form-label">Title&nbsp;</label></div>
+                                                        <div class="col-xl-6 offset-xl-0"><input class="form-control"
+                                                                type="text"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-xl-3 offset-xl-1"><label
+                                                                class="col-form-label">To&nbsp;</label></div>
+                                                        <div class="col-xl-6 offset-xl-0"><input class="form-control"
+                                                                type="search"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-xl-3 offset-xl-1"><label
+                                                                class="col-form-label">Deadline&nbsp;</label></div>
+                                                        <div class="col-xl-6 offset-xl-0"><input class="form-control"
+                                                                type="datetime-local"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-xl-3 offset-xl-1"><label
+                                                                class="col-form-label">Discreption&nbsp;</label></div>
+                                                        <div class="col-xl-6 offset-xl-0"><textarea
+                                                                class="form-control"></textarea></div>
+                                                    </div>
+                                                </div><button class="btn btn-primary" type="submit"
+                                                    style="margin-left: 40%;">submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!--here where one can add new tache-->
+                                    <div class="card shadow mb-4" data-aos="zoom-in-up">
+                                        <div class="card-header py-3">
+                                            <h6 class="text-primary m-0 font-weight-bold">CREATE TACHE</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <form class="text-left">
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-xl-3 offset-xl-1"><label
+                                                                class="col-form-label">Title :</label></div>
+                                                        <div class="col-xl-6 offset-xl-0"><input class="form-control"
+                                                                type="text"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-xl-3 offset-xl-1"><label
+                                                                class="col-form-label">Deadline :</label></div>
+                                                        <div class="col-xl-6 offset-xl-0"><input class="form-control"
+                                                                type="datetime-local"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-xl-3 offset-xl-1"><label
+                                                                class="col-form-label">Discreption :</label></div>
+                                                        <div class="col-xl-6 offset-xl-0"><textarea
+                                                                class="form-control"></textarea></div>
+                                                    </div>
+                                                </div><button class="btn btn-primary" type="submit"
+                                                    style="margin-left: 40%;">submit</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--the taches where passed deadline are listed here-->
+                            <div class="row" data-aos="fade">
+                                <div class="col">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-header d-flex justify-content-between align-items-center">
+                                            <h6 class="text-primary font-weight-bold m-0">COMPLETED TACHES</h6>
+                                            <div class="dropdown no-arrow"><button
+                                                    class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false" type="button"><i
+                                                        class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                                <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                                    role="menu">
+                                                    <p class="text-center dropdown-header">FILTER</p><button
+                                                        class="btn btn-light" type="button"
+                                                        style="width: 100%;">All</button><button class="btn btn-light"
+                                                        type="button" style="width: 100%;">Completed</button><button
+                                                        class="btn btn-light" type="button"
+                                                        style="width: 100%;">Missed</button><button
+                                                        class="btn btn-light" type="button" style="width: 100%;">Mes
+                                                        taches</button><button class="btn btn-light" type="button"
+                                                        style="width: 100%;">Par responsable</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <!--exemple of completed tache-->
+                                                <li class="list-group-item" data-aos="zoom-in-up">
+                                                    <div class="row align-items-center no-gutters">
+                                                        <div class="col mr-2">
+                                                            <div>
+                                                                <h5 class="mb-0"><strong>Lunch meeting</strong></h5>
+                                                                <h6>status:&nbsp;<span
+                                                                        style="color: rgb(20,140,25);">completed</span>
+                                                                </h6>
+                                                                <p style="margin-top: -5px;margin-bottom: -5px;">from:
+                                                                    Me</p>
+                                                                <p style="margin-bottom: 0;margin-top: 10px;">Lorem
+                                                                    ipsum dolor sit amet, consectetur adipiscing elit,
+                                                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                                                    magna aliqua.<br></p><span class="text-xs">10:30
+                                                                    AM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!--exemple of missed tache-->
+                                                <li class="list-group-item" data-aos="zoom-in-up">
+                                                    <div class="row align-items-center no-gutters">
+                                                        <div class="col mr-2">
+                                                            <div>
+                                                                <h5 class="mb-0"><strong>Lunch meeting</strong></h5>
+                                                                <h6>status:&nbsp;<span
+                                                                        style="color: rgb(140,20,20);">missed</span>
+                                                                </h6>
+                                                                <p style="margin-top: -5px;margin-bottom: -5px;">from:
+                                                                    Reseponsable</p>
+                                                                <p style="margin-bottom: 0;margin-top: 10px;">Lorem
+                                                                    ipsum dolor sit amet, consectetur adipiscing elit,
+                                                                    sed do eiusmod tempor incididunt ut labore et dolore
+                                                                    magna aliqua.<br></p><span class="text-xs">10:30
+                                                                    AM</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <!--user's taches will be listed here-->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">MES TACHES</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <!--data about taches are as follow-->
+                                    <li class="list-group-item" data-aos="zoom-in-up">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h5 class="mb-0"><strong>Lunch meeting</strong></h5>
+                                                        <p style="margin-bottom: 0;margin-top: 10px;">Lorem ipsum dolor
+                                                            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                            incididunt ut labore et dolore magna aliqua.<br></p><span
+                                                            class="text-xs">10:30 AM</span><span
+                                                            class="float-right text-xs"
+                                                            style="margin-right: 1rem;">deadline: dd/mm 00:00</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col"><a class="btn btn-success btn-icon-split"
+                                                            role="button" style="width: 100px;margin-left: 30%;"><span
+                                                                class="text-white-50 icon"><i
+                                                                    class="fas fa-check"></i></span><span
+                                                                class="text-white text">Done</span></a></div>
+                                                    <div class="col"><a
+                                                            class="btn btn-danger float-right btn-icon-split"
+                                                            role="button" style="width: 100px;margin-right: 30%;"><span
+                                                                class="text-white-50 icon"><i
+                                                                    class="fas fa-trash"></i></span><span
+                                                                class="text-white text">Delete</span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--same as previous, except it shows taches given by responsable, will be visible for users except the responsable-->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0">TACHES PAR&nbsp;RESPONSABLE</h6>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item" data-aos="zoom-in-up">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col mr-2">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <h6 class="mb-0"><strong>Lunch meeting</strong></h6>
+                                                        <p style="margin-bottom: 0;margin-top: 10px;">Lorem ipsum dolor
+                                                            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                            incididunt ut labore et dolore magna aliqua.<br></p><span
+                                                            class="text-xs">10:30 AM</span><span
+                                                            class="float-right text-xs"
+                                                            style="margin-right: 1rem;">deadline: dd/mm 00:00</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xl-12 offset-xl-0"><a
+                                                            class="btn btn-success btn-icon-split" role="button"
+                                                            style="width: 100px;margin-left: 40%;"><span
+                                                                class="text-white-50 icon"><i
+                                                                    class="fas fa-check"></i></span><span
+                                                                class="text-white text">Done</span></a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--visible for cellule responsabe, club president, and adei president, it shows member passed taches-->
+                            <div class="shadow card" data-aos="zoom-in-up">
+                                <a
+                                    class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse"
+                                    aria-expanded="true" aria-controls="collapse-4" href="#collapse-4"
+                                    role="button">MEMBERS</a>
+                                <div class="collapse show" id="collapse-4">
+                                    <div class="card-body">
+                                        <div class="col-xl-12" style="margin-right: auto;margin-left: auto;">
+                                            <div class="row" style="margin-bottom: -10px;">
+                                                <div class="col">
+                                                    <div class="card" style="margin-bottom: 30px;">
+                                                        <div class="card-body" style="padding-bottom: 0;">
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <div class="form-row">
+                                                                        <div class="col"><input class="form-control"
+                                                                                type="search" placeholder="Search">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <!--users are listed as follow-->
+                                                    <div class="card shadow border-left-primary py-2"
+                                                        data-aos="zoom-in-up" data-toggle="modal" data-target="#modal1"
+                                                        type="button"
+                                                        style="margin-bottom: 25px;width: 250px;margin-right: auto;margin-left: auto;">
+                                                        <div class="card-body"
+                                                            style="padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 5px;">
+                                                            <div class="row align-items-center no-gutters">
+                                                                <div class="col-auto">
+                                                                    <img class="border rounded-circle img-profile"
+                                                                        src="assets/img/avatars/avatar1.jpeg"></div>
+                                                                <div class="col mr-2">
+                                                                    <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"
+                                                                        style="margin-left: 5px;">
+                                                                        <span style="font-size: 120%;margin-left: 5px;">user_name</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--this modal will be poped up when clicking on a user, it shows his passed taches -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="modal1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="row align-items-center no-gutters">
+                                <div class="col-auto"><img class="border rounded-circle img-profile"
+                                        src="assets/img/avatars/avatar1.jpeg"></div>
+                                <div class="col mr-2">
+                                    <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"
+                                        style="margin-left: 5px;"><span
+                                            style="font-size: 120%;margin-left: 5px;">user_name</span></div>
+                                </div>
+                            </div><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <!--taches data-->
+                                        <li class="list-group-item" data-aos="zoom-in-up">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col mr-2">
+                                                    <div>
+                                                        <h5 class="mb-0"><strong>Lunch meeting</strong></h5>
+                                                        <h6>status:&nbsp;<span
+                                                                style="color: rgb(20,140,25);">completed</span></h6>
+                                                        <p style="margin-bottom: 0;margin-top: 10px;">Lorem ipsum dolor
+                                                            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                            incididunt ut labore et dolore magna aliqua.<br></p><span
+                                                            class="text-xs">10:30 AM</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!--tache data-->
+                                        <li class="list-group-item" data-aos="zoom-in-up">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col mr-2">
+                                                    <div>
+                                                        <h5 class="mb-0"><strong>Lunch meeting</strong></h5>
+                                                        <h6>status:&nbsp;<span
+                                                                style="color: rgb(140,20,20);">missed</span></h6>
+                                                        <p style="margin-bottom: 0;margin-top: 10px;">Lorem ipsum dolor
+                                                            sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                                            incididunt ut labore et dolore magna aliqua.<br></p><span
+                                                            class="text-xs">10:30 AM</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--this modal will popup when clicking on change the current responsable -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="responsableSelection">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Choose new responsable</h4><button type="button" class="close"
+                                data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card" style="margin-bottom: 30px;">
+                                <div class="card-body" style="padding-bottom: 0;">
+                                    <form>
+                                        <div class="form-group">
+                                            <div class="form-row">
+                                                <div class="col-2"><label class="col-form-label">Search</label></div>
+                                                <div class="col"><input class="form-control" type="search"></div>
+                                                <div class="col-3" style="width: 15%;"><button
+                                                        class="btn btn-primary btn-sm" type="submit">search</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <ul class="list-group">
+                                <!--condidate data-->
+                                <li class="list-group-item">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col-auto"><img class="border rounded-circle img-profile"
+                                                        src="assets/img/avatars/avatar1.jpeg"></div>
+                                                <div class="col mr-2" style="margin-left: 10px;"><span
+                                                        style="font-size: 120%;">user_name</span></div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="custom-control custom-checkbox"><input
+                                                            class="custom-control-input" type="checkbox"
+                                                            id="responsableCheck-1" checked="" name="responsable"><label
+                                                            class="custom-control-label"
+                                                            for="responsableCheck-1"></label></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!--condidate data-->
+                                <li class="list-group-item">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col-auto"><img class="border rounded-circle img-profile"
+                                                        src="assets/img/avatars/avatar2.jpeg"></div>
+                                                <div class="col mr-2" style="margin-left: 10px;"><span
+                                                        style="font-size: 120%;">user_name</span></div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="custom-control custom-checkbox"><input
+                                                            class="custom-control-input" type="checkbox"
+                                                            id="responsableCheck-2" name="responsable"><label
+                                                            class="custom-control-label"
+                                                            for="responsableCheck-2"></label></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!--condidate data-->
+                                <li class="list-group-item">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col-auto"><img class="border rounded-circle img-profile"
+                                                        src="assets/img/avatars/avatar3.jpeg"></div>
+                                                <div class="col mr-2" style="margin-left: 10px;"><span
+                                                        style="font-size: 120%;">user_name</span></div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="custom-control custom-checkbox"><input
+                                                            class="custom-control-input" type="checkbox"
+                                                            id="responsableCheck-3" name="responsable"><label
+                                                            class="custom-control-label"
+                                                            for="responsableCheck-3"></label></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer"><button class="btn btn-light" type="button"
+                                data-dismiss="modal">Close</button><button class="btn btn-primary"
+                                type="button">Save</button></div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright � ENSIASClub 2020</span></div>
+                </div>
+            </footer>
+        </div>
+        
+        <a class="border rounded d-inline scroll-to-top" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
