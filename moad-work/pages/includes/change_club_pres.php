@@ -11,7 +11,7 @@
                 <h4>Current club president:</h4>
                 <div class="row">
                     <div class="col">
-                        <div class="card">
+                        <div class="card" id="current_president">
                             <div class="card-body" style="width: 300px;margin-right: auto;margin-left: auto;">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-auto">
