@@ -13,3 +13,15 @@ function changeResp() {
         }
     )
 }
+function search() {
+    var search_in = $("#search-in");
+    var search_output = $("#search-out");
+    var data = search_in.val();
+    $.post('../functions/search_pres.php', {
+        data: data,
+    },
+        function (data) {
+            search_output.empty().html(data);
+        }
+    )
+}
