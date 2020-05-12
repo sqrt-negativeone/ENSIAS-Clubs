@@ -12,7 +12,7 @@
                         <h4>Current responsable:</h4>
                         <div class="row">
                             <div class="col-4 offset-xl-1">
-                                <div class="card">
+                                <div class="card" id="current_responsable">
                                     <div class="card-body" style="width: 300px;margin-right: auto;margin-left: auto;">
                                         <div class="row align-items-center no-gutters">
                                             <div class="col-auto"><img class="border rounded-circle img-profile" src=<?php echo htmlspecialchars($avatar) ?>></div>

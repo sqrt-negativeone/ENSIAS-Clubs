@@ -133,6 +133,7 @@ include 'functions/get_cell_status.php'
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/cel_utils.js"></script>
 </body>
 
 </html>
