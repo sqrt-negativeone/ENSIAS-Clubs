@@ -1,6 +1,9 @@
 <?php 
 session_start(); 
-$statut=$_SESSION['statut'];
+if (isset($_SESSION['statut'])) {
+    $statut=$_SESSION['statut'];
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +55,7 @@ $statut=$_SESSION['statut'];
                         </div>
                     </div>
                     <?php 
-                     if ($statut!=='PA') {                       
+                     if (isset($statut) and $statut!=='PA') {                       
                      ?>
                     <div class="row" style="margin-bottom: 30px;">
                         <div class="col">
@@ -87,7 +90,7 @@ $statut=$_SESSION['statut'];
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
+                    <div class="text-center my-auto copyright"><span>Copyright Â© ENSIASClub 2020</span></div>
                 </div>
             </footer>
         </div>
