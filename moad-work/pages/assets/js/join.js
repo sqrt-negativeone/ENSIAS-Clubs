@@ -36,7 +36,6 @@ function new_event(){
     form.submit(function(e){
         e.preventDefault();
         var f=$(this);
-        console.log(f.serialize());
         
         var url="../functions/create_event.php";
         $.post(url,f.serialize(),function(){

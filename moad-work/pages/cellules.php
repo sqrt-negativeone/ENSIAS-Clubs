@@ -44,7 +44,7 @@ include 'functions/get_cell_status.php'
                             <div class="row">
                                 <div class="col">
                                     <?php
-                                    if (strcmp($cellule_status, 'RC') == 0) {
+                                    if (strcmp($cellule_status, 'RC') !== 0) {
                                         include 'includes/give_tache.php';
                                     }
                                     ?>
