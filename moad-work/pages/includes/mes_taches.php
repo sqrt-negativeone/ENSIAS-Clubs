@@ -24,9 +24,9 @@ for ($i = 0; $i < $nb_taches; $i++) {
                 </div>
             </div>
             <div class="row">
-                <!--TODO: implement the logic for done/delete buttons-->
-                <div class="col"><a class="btn btn-success btn-icon-split" role="button" style="width: 100px;margin-left: 30%;"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">Done</span></a></div>
-                <div class="col"><a class="btn btn-danger float-right btn-icon-split" role="button" style="width: 100px;margin-right: 30%;"><span class="text-white-50 icon"><i class="fas fa-trash"></i></span><span class="text-white text">Delete</span></a></div>
+                <!--data-target: the id of the tache-->
+                <div class="col"><a class="btn btn-success btn-icon-split done-btn" data-target="<?php echo $i?>" role="button" style="width: 100px;margin-left: 30%;"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">Done</span></a></div>
+                <div class="col"><a class="btn btn-danger float-right btn-icon-split cancel-btn" data-target="<?php echo $i?>" role="button" style="width: 100px;margin-right: 30%;"><span class="text-white-50 icon"><i class="fas fa-trash"></i></span><span class="text-white text">Delete</span></a></div>
             </div>
         </div>
     </div>
