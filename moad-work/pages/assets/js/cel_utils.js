@@ -89,7 +89,8 @@ function show_prog(id){
 function search_mem(){
     var s=$("#srch_mem");
     var data = s.val();
-    $.post("../functions/search_mem.php",{key:data},function (data){
+    var t=s.attr("data-t");
+    $.post("../functions/search_mem.php",{key:data,id:t},function (data){
         $("#srch_out").html(data);
     })
 }
