@@ -19,10 +19,8 @@ if (isset($_POST['submit_pres']) and isset($_POST['new_president'])) {
         while ($row=$s_search->fetch()) {
             $data[$i]['cne']=$row['cne'];
             $data[$i]['code_apoge']=$row['code_apoge'];
-            $data[$i]['mpass']=$row['mpass'];
             $data[$i]['nom']=$row['nom'];
             $data[$i]['prenom']=$row['prenom'];
-            $data[$i]['email']=$row['email'];
             $data[$i]['photo']=base64_encode($row['photo']);
             $i++;
         }
