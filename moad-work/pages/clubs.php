@@ -19,6 +19,8 @@ $GLOBALS['is_connected'] = true;
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="assets/css/Swiper-Slider-Card-1.css">
+    <link rel="stylesheet" href="assets/css/Swiper-Slider-Card.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
@@ -148,7 +150,11 @@ $GLOBALS['is_connected'] = true;
 
             <!--this modal will popup when the adei president click on change club president button -->
             <?php
-            if ($user_status === "PA") include 'includes/choose_pres_menu.php'
+            include 'includes/events_modal.php';
+            if ($user_status === "PA") {
+                include 'includes/choose_pres_menu.php';
+                include 'includes/modifyevent.php';
+            }
             ?>
 
             <footer class="bg-white sticky-footer">
@@ -170,7 +176,28 @@ $GLOBALS['is_connected'] = true;
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/join.js"></script>
     <script src="assets/js/club_utils.js"></script>
-    
+    <script src="assets/js/Swiper-Slider-Card.js"></script>
+    <script>
+        /* $(document).ready(() => {
+            $(".blog-slider__content a").click(function() {
+                var id_event = $(this).attr("data-event-id");
+                $.post('../functions/get_event_data.php', {
+                    id: id_event
+                }, function(data) {
+                    $("#eventsModal").html(data);
+                })
+            })
+        })
+
+        function mod_event_d(id_event) {
+            $.post('../functions/modify_event.php', {
+                id: id_event
+            }, function(data) {
+                $("#modifyEvent").html(data);
+            })
+        } */
+    </script>
+
 </body>
 
 </html>

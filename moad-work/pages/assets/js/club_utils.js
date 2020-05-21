@@ -24,3 +24,28 @@ function changePresient() {
         }
     )
 }
+
+$(document).ready(() => {
+    $(".blog-slider__content a").click(function () {
+        var id_event = $(this).attr("data-event-id");
+        $.post('../functions/get_event_data.php', {
+            id: id_event
+        }, function (data) {
+            data = JSON.parse(data);
+            $("#eventsModal h4").text(data.title);
+            $('#eventsModal img').attr("src", data.cover);
+            $('#eventsModal source').attr("src", data.video);
+            $('#eventsModal p').text(data.description);
+            try {
+                $('#modifyEvent input[name="title"]').attr("value",data.title);
+                $('#modifyEvent textarea').text(data.description);
+                $('#modifyEvent input[name="date"]').attr("value",data.date_fin);
+                $('#up-btn').attr("data-event-id",id_event);
+            }catch (err){}
+        })
+    });
+    $("#up-btn").click(()=>{
+        var form=$("#mod_event_form").serialize();
+        form.submit();
+    })
+})

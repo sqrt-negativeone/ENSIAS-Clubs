@@ -1,40 +1,38 @@
-<?php
-//get club events from db
-$nb_evnts = 1;
-for ($i = 0; $i < $nb_evnts; $i++) {
-    $event_title = "EVENT TITLE";
-    $discr = "Lorem ipsum dolor sit amet, consectetur
-    adipiscing elit. Duis maximus nisl ac diam feugiat, non
-    vestibulum libero posuere. Vivamus pharetra leo non
-    nulla egestas, nec malesuada orci finibus.";
-    $author = "cellule_name";
-    $date = "dd-mm-yyyy";
-    $pic = "assets/img/dogs/image1.jpeg";
+<?php 
+    session_start();
 ?>
-    <div class="card mb-4" data-aos="zoom-in-up">
-        <div class="card-body d-flex">
-            <div class="col-xl-12">
-                <div class="row">
-                    <div class="col-xl-12" style="background-image: url(<?php echo $pic ?>);background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;height: 500px;">
-                    </div>
+
+<div class="blog-slider">
+    <div class="blog-slider__wrp swiper-wrapper">
+        <?php
+        //get club events from db
+        $sql="select * from evenement join organisation using(id_event) where id_club=? and date_fin>date_deb ordered by date_fin ASC";
+        $sql = $pdo->prepare($sql);
+        $sql = $pdo->execute([$_GET['i']]);
+        $resault=$sql->fetchAll();
+
+        foreach ($resault as $event) {
+            $id_event=$event['id_event'];
+            $event_title = $event['titre'];
+            $discr = $event['descreption'];
+            $date = $event['date_fin'];
+            $pic = $event['photo'];
+        ?>
+            <div class="blog-slider__item swiper-slide">
+                <div></div>
+                <div class="blog-slider__img">
+                    <img src=<?php echo $pic ?> />
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <h2 class="text-center"><?php echo $event_title ?></h2>
-                        <h3 class="text-center">from : <?php echo $author ?></h3>
-                        <h3 class="text-center">date: <?php echo $date ?></h3>
-                        <p class="text-left m-0"><br>
-                            <?php echo $discr ?>
-                            <br><br></p>
+                <div class="blog-slider__content">
+                    <span class="blog-slider__code"><?php echo $date ?></span>
+                    <div class="blog-slider__title"><?php echo $title ?></div>
+                    <div class="blog-slider__text">
+                        <?php echo htmlspecialchars($discr) ?>
                     </div>
+                    <a data-event-id=<?php echo $id_event?> href="javascript:void(0)" type="button" data-toggle="modal" data-target="#eventsModal">READ MORE</a>
                 </div>
-                <?php if (strcmp($user_status, "PA")==0) { ?>
-                    <div class="row" style="margin-top: 20px;margin-bottom: 10px;">
-                        <div class="col"><button class="btn btn-primary" type="button" style="margin-left: 50%;">modify</button></div>
-                        <div class="col"><button class="btn btn-primary float-right" type="button" style="margin-right: 50%;">delete</button></div>
-                    </div>
-                <?php } ?>
             </div>
-        </div>
+        <?php } ?>
+        <div class="blog-slider__pagination"></div>
     </div>
-<?php } ?>
+</div>
