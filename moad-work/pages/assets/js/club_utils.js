@@ -59,13 +59,21 @@ function new_event(){
     var form=$("#event_form");
     form.submit(function(e){
         e.preventDefault();
-        var f=$(this);
+        var data_form=new FormData(this);
         
         var url="../functions/create_event.php";
-        $.post(url,f.serialize(),function(){
-            if (!alert('cellule created successfully')){
-                window.location.reload();
-            }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data_form,
+            success: function (data) {
+                alert(data);
+                if (!alert('cellule created successfully')){
+                    window.location.reload();
+                }
+            },
+            contentType: false,
+            processData: false
         });
     })
 }
