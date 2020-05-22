@@ -53,8 +53,6 @@ $GLOBALS['is_connected'] = true;
                     <?php include 'includes/club_cover.php' ?>
                     <h1 class="text-dark mb-1" data-aos="zoom-in-up">Welcome to CLUB NAME</h1>
 
-                    <!--this section will be added only to adei president so he can add or replace the current president of the selected club,
-                        add new cellule, or add new event -->
                     <?php
                     if ($user_status === "PA") {
                         include 'includes/change_club_pres.php';
@@ -177,26 +175,6 @@ $GLOBALS['is_connected'] = true;
     <script src="assets/js/join.js"></script>
     <script src="assets/js/club_utils.js"></script>
     <script src="assets/js/Swiper-Slider-Card.js"></script>
-    <script>
-        /* $(document).ready(() => {
-            $(".blog-slider__content a").click(function() {
-                var id_event = $(this).attr("data-event-id");
-                $.post('../functions/get_event_data.php', {
-                    id: id_event
-                }, function(data) {
-                    $("#eventsModal").html(data);
-                })
-            })
-        })
-
-        function mod_event_d(id_event) {
-            $.post('../functions/modify_event.php', {
-                id: id_event
-            }, function(data) {
-                $("#modifyEvent").html(data);
-            })
-        } */
-    </script>
 
 </body>
 

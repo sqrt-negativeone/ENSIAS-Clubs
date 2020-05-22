@@ -3,7 +3,8 @@
         <div class="shadow card">
             <a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button" style="margin-bottom: 10px;">CREATE NEW CELLULE</a>
             <div class="collapse show" id="collapse-1">
-                <form id="cel_form">
+                <form id="cel_form" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="club" value=<?php echo htmlspecialchars($_GET['i']) ?>>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-3" style="width: auto;">
@@ -12,18 +13,6 @@
                             <div class="col-auto">
                                 <input class="form-control" type="text" required="" name="name">
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-3" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Picture&nbsp;</label></div>
-                            <div class="col-auto col-sm-2"><input type="file" style="margin-top: 1%;" name="picture"></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Discreption&nbsp;</label></div>
-                            <div class="col" style="margin-right: 10px;"><textarea class="form-control form-control-lg" spellcheck="true" required="" name="discreption"></textarea></div>
                         </div>
                     </div>
                     <div class="form-group">

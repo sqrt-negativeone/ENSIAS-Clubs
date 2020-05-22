@@ -45,7 +45,27 @@ $(document).ready(() => {
         })
     });
     $("#up-btn").click(()=>{
-        var form=$("#mod_event_form").serialize();
+        var form=$("#mod_event_form");
         form.submit();
     })
 })
+
+function new_cellule(){
+    var form=$("#cel_form");
+    form.submit();
+}
+
+function new_event(){
+    var form=$("#event_form");
+    form.submit(function(e){
+        e.preventDefault();
+        var f=$(this);
+        
+        var url="../functions/create_event.php";
+        $.post(url,f.serialize(),function(){
+            if (!alert('cellule created successfully')){
+                window.location.reload();
+            }
+        });
+    })
+}
