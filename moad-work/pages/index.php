@@ -33,6 +33,16 @@
                     <div>
                         <h3 class="text-dark mb-1" style="font-size: 250%;">Dashboard</h3>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary m-0 font-weight-bold">Create Club</h6>
+                                </div>
+                                <?php include 'includes/create_club.php'?>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row" style="margin-bottom: 30px;">
                         <div class="col">
                             <div class="card" data-aos="zoom-in-up">
@@ -47,7 +57,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row" style="margin-bottom: 30px;">
                         <div class="col">
                             <div class="card" data-aos="zoom-in-up">
