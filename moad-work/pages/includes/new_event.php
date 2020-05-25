@@ -1,5 +1,5 @@
-<div class="row" data-aos="zoom-in-up" style="margin-bottom: 20px;">
-    <div class="col" style="margin-top: 10px;">
+<div class="row"  style="margin-bottom: 20px;">
+    <div class="col" data-aos="zoom-in-up" style="margin-top: 10px;">
         <div class="shadow card"><a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-2" href="#collapse-2" role="button" style="margin-bottom: 10px;">CREATE EVENT</a>
             <div class="collapse show" id="collapse-2">
                 <form id="event_form" method="POST" enctype="multipart/form-data" action="functions/create_event.php">

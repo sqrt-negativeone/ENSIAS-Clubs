@@ -24,7 +24,7 @@ $GLOBALS['is_connected'] = true;
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-color: #F8F9FC;">
     <div id="wrapper">
         <!--will be visible for logged in users-->
         <?php
@@ -34,95 +34,98 @@ $GLOBALS['is_connected'] = true;
         if ($GLOBALS['is_connected']) {
             $select = "none";
             include 'includes/nav.php';
+        } else {
+            include 'includes/general_nav.php';
         }
         ?>
+        <?php
+        if ($GLOBALS['is_connected']) echo '<div class="d-flex flex-column" id="content-wrapper">';
+        else echo '<div class="d-flex flex-column" id="content-wrapper" style="margin-top: 100px;width: 900px;margin-right: auto;margin-left: auto;">'
+        ?>
+        <div id="content">
+            <!--will be visible for logged in users-->
+            <?php
+            if ($GLOBALS['is_connected']) include 'includes/user_nav.php';
+            ?>
 
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div id="content">
-                <!--will be visible for logged in users-->
+            <div class="container-fluid">
+                <!--will be visible for the none logged in users-->
                 <?php
-                if ($GLOBALS['is_connected']) include 'includes/user_nav.php';
+                if (!$GLOBALS['is_connected']) include 'includes/notconnected.php';
+                ?>
+                <!--the cover picture of the club-->
+                <?php include 'includes/club_cover.php' ?>
+
+                <?php
+                if ($user_status === "PA") {
+                    include 'includes/change_club_pres.php';
+                    include 'includes/new_cellule.php';
+                    include 'includes/new_event.php';
+                }
                 ?>
 
-                <div class="container-fluid">
-                    <!--will be visible for the none logged in users-->
-                    <?php
-                    if (!$GLOBALS['is_connected']) include 'includes/notconnected.php';
-                    ?>
-                    <!--the cover picture of the club-->
-                    <?php include 'includes/club_cover.php' ?>
-                    <h1 class="text-dark mb-1" data-aos="zoom-in-up">Welcome to CLUB NAME</h1>
+                <!--this section will be added only to the club's president so he can accept membership requests-->
+                <?php
+                if ($user_status === "PC") {
+                    include 'includes/club_requests.php';
+                }
+                ?>
+                <?php
+                // for the none logged users, a list of all the cellules of the club will be listed
+                if (false) include 'includes/club_cellules.php';
+                else {
 
-                    <?php
-                    if ($user_status === "PA") {
-                        include 'includes/change_club_pres.php';
-                        include 'includes/new_cellule.php';
-                        include 'includes/new_event.php';
-                    }
-                    ?>
-
-                    <!--this section will be added only to the club's president so he can accept membership requests-->
-                    <?php
-                    if ($user_status === "PC") {
-                        include 'includes/club_requests.php';
-                    }
-                    ?>
-                    <?php
-                    // for the none logged users, a list of all the cellules of the club will be listed
-                    if (!$GLOBALS['is_connected']) include 'includes/club_cellules.php';
-                    else {
-
-                    ?>
-                        <!--here the user's cellules will listed-->
-                        <div class="row" data-aos="zoom-in-up" style="margin-bottom: 20px;margin-top: 20px;">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-header py-3">
-                                        <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">MES CELLULES
-                                        </h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <!--the cellules data will be here-->
-                                            <?php include 'includes/mes_cellules.php' ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--other celluls will be listed in this section-->
-                        <div class="row" data-aos="zoom-in-up" style="margin-bottom: 20px;">
-                            <div class="col">
-                                <div class="card">
-                                    <div class="card-header py-3">
-                                        <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">OTHER
-                                            CELLULES</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <!--the cellules data will be filled here-->
-                                            <?php include 'includes/other_cellules.php' ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                    <!--here the upcoming events section-->
-                    <div class="row" data-aos="zoom-in-up">
-                        <div class="col">
-                            <div class="card shadow mb-4">
+                ?>
+                    <!--here the user's cellules will listed-->
+                    <div class="row" style="margin-bottom: 20px;margin-top: 20px;">
+                        <div class="col" data-aos="zoom-in-up">
+                            <div class="card">
                                 <div class="card-header py-3">
-                                    <h4 class="text-primary m-0 font-weight-bold">UPCOMING EVETS</h4>
+                                    <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">MES CELLULES
+                                    </h6>
                                 </div>
-                                <div class="card-body border rounded-0">
-                                    <div class="row" data-aos="zoom-in-up">
-                                        <div class="col">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <!--this is where the event's data will be listed-->
-                                                    <?php include 'includes/club_events.php' ?>
-                                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!--the cellules data will be here-->
+                                        <?php include 'includes/mes_cellules.php' ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--other celluls will be listed in this section-->
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col" data-aos="zoom-in-up">
+                            <div class="card">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">OTHER
+                                        CELLULES</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <!--the cellules data will be filled here-->
+                                        <?php include 'includes/other_cellules.php' ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+                <!--here the upcoming events section-->
+                <div class="row">
+                    <div class="col" data-aos="zoom-in-up">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h4 class="text-primary m-0 font-weight-bold">UPCOMING EVETS</h4>
+                            </div>
+                            <div class="card-body border rounded-0">
+                                <div class="row" data-aos="zoom-in-up">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <!--this is where the event's data will be listed-->
+                                                <?php include 'includes/club_events.php' 
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -130,41 +133,44 @@ $GLOBALS['is_connected'] = true;
                             </div>
                         </div>
                     </div>
-                    <!--this section will list the club members-->
-                    <div class="row" data-aos="zoom-in-up">
-                        <div class="col-xl-12">
-                            <div>
-                                <h1>Members :</h1>
+                </div>
+                <!--this section will list the club members-->
+                <div class="row" >
+                    <div class="col-xl-12" >
+                        <div class="row">
+                            <div class="col" data-aos="zoom-in-up">
+                                <div>
+                                    <h1>Members :</h1>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-4 mb-4" data-aos="zoom-in-up">
-                            <div class="card shadow border-left-primary py-2">
-                                <?php include 'includes/club_members.php' ?>
-                            </div>
+                        <div class="row">
+                            <?php include 'includes/club_members.php' ?>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--this modal will popup when the adei president click on change club president button -->
-            <?php
-            include 'includes/events_modal.php';
-            if ($user_status === "PA") {
-                include 'includes/choose_pres_menu.php';
-                include 'includes/modifyevent.php';
-            }
-            ?>
-
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
-                </div>
-            </footer>
         </div>
 
-        <a class="border rounded d-inline scroll-to-top" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
+        
+        <?php
+        include 'includes/events_modal.php';
+        if ($user_status === "PA") {
+            include 'includes/choose_pres_menu.php';
+            include 'includes/modifyevent.php';
+        }
+        ?>
+
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
+            </div>
+        </footer>
+    </div>
+
+    <a class="border rounded d-inline scroll-to-top" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>

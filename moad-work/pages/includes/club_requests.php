@@ -3,8 +3,8 @@
     $nb_req=1;
 ?>
 
-<div class="row" data-aos="zoom-in-up">
-    <div class="col">
+<div class="row" >
+    <div class="col" data-aos="zoom-in-up">
         <div class="shadow card">
             <a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-4" href="#collapse-4" role="button">MEMBERSHIP REQUESTS</a>
             <div class="collapse show" id="collapse-4" style="padding-top: 20px;padding-left: 10px;">

@@ -4,8 +4,8 @@
     $avatar='../assets/img/avatars/avatar1.jpeg'; 
 ?>
 
-<div class="row" data-aos="zoom-in-up" style="margin-bottom: 40px;margin-top: 10px;">
-    <div class="col">
+<div class="row"  style="margin-bottom: 40px;margin-top: 10px;">
+    <div class="col" data-aos="zoom-in-up">
         <div class="card">
             <div class="card-body">
                 <h4>Current club president:</h4>

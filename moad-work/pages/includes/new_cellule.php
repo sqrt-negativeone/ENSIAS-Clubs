@@ -1,5 +1,5 @@
-<div class="row" data-aos="zoom-in-up">
-    <div class="col" style="margin-top: 10px;">
+<div class="row" >
+    <div class="col" data-aos="zoom-in-up" style="margin-top: 10px;">
         <div class="shadow card">
             <a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1" role="button" style="margin-bottom: 10px;">CREATE NEW CELLULE</a>
             <div class="collapse show" id="collapse-1">
