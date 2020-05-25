@@ -24,7 +24,69 @@
                 <?php include 'includes/user_nav.php'; ?>
                 <div class="container-fluid">
                     <h3 class="text-dark mb-4">Profile</h3>
-                    <div class="row justify-content-center"></div>
+
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-body text-center shadow">
+                                    <div class="border rounded-circle" style="height: 160px;background-image: url(&quot;assets/img/dogs/image2.jpeg&quot;);background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;width: 160px;margin: 1rem auto;">
+                                    </div>
+                                    <form action="functions/update_pic.php" method="POST" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <input type="file" accept="image/*" name="pic" style="width: 100%;">
+                                            <button class="btn btn-primary btn-sm" type="submit">Change Photo</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 font-weight-bold">User Settings</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="functions/change_usr_settings.php">
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="first_name"><strong>First Name</strong></label>
+                                                            <input class="form-control" type="text" placeholder="John" name="first_name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="last_name"><strong>Last Name</strong></label>
+                                                            <input class="form-control" type="text" placeholder="Doe" name="last_name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="email"><strong>Email Address</strong></label>
+                                                            <input class="form-control" type="email" placeholder="user@example.com" name="email">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="email"><strong>Old Password</strong></label>
+                                                            <input class="form-control" type="password" name="old_pass">
+                                                            <label for="email"><strong>New Password</strong></label>
+                                                            <input class="form-control" type="password" name="new_pass">
+                                                            <label for="email"><strong>Repeat Password</strong></label>
+                                                            <input class="form-control" type="password" name="rep_pass">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button class="btn btn-primary btn-sm" type="submit">Save Settings</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">
