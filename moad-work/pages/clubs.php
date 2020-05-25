@@ -59,6 +59,7 @@ $GLOBALS['is_connected'] = true;
                 <?php
                 if ($user_status === "PA") {
                     include 'includes/change_club_pres.php';
+                    include 'includes/modify_club_settings.php';
                     include 'includes/new_cellule.php';
                     include 'includes/new_event.php';
                 }
