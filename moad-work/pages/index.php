@@ -72,20 +72,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="text-primary m-0 font-weight-bold" style="font-size: 150%;">EVENTS</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <!--Here the upcoming events will be inserted as follow-->
-                                    <?php include 'includes/generalEvents.php'?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">

@@ -1,5 +1,6 @@
-<nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background-repeat: no-repeat;">
+<nav id="nav_bar" class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background-repeat: no-repeat;">
     <div class="container-fluid d-flex flex-column p-0">
+        <button id="close_nav" class="btn btn-primary float-right" type="button">X</button>
         <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
             <img src="assets/img/Logo.svg" alt="" width="85px">
         </a>

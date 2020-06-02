@@ -17,7 +17,9 @@ $GLOBALS['is_connected'] = true;
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
     <link rel="stylesheet" href="assets/css/Swiper-Slider-Card-1.css">
     <link rel="stylesheet" href="assets/css/Swiper-Slider-Card.css">
@@ -26,7 +28,6 @@ $GLOBALS['is_connected'] = true;
 
 <body id="page-top" style="background-color: #F8F9FC;">
     <div id="wrapper">
-        <!--will be visible for logged in users-->
         <?php
         if (!isset($GLOBALS['is_connected'])) {
             $GLOBALS['is_connected'] = false;
@@ -145,7 +146,7 @@ $GLOBALS['is_connected'] = true;
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <?php include 'includes/club_members.php' ?>
                         </div>
                     </div>

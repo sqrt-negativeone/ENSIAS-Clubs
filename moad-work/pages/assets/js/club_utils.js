@@ -26,6 +26,12 @@ function changePresient() {
 }
 
 $(document).ready(() => {
+    //adjacing the cover height
+    var cover = $("#cover");
+    cover.height(2*cover.width()/3);
+    window.onresize=()=>{
+        cover.height(2*cover.width()/3);
+    }
     $(".blog-slider__content a").click(function () {
         var id_event = $(this).attr("data-event-id");
         $.post('../functions/get_event_data.php', {

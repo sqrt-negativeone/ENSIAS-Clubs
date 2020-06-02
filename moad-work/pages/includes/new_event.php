@@ -7,13 +7,13 @@
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-3" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Title:</label></div>
-                            <div class="col-auto"><input class="form-control" type="text" required="" name="title"></div>
+                            <div class="col-8"><input class="form-control" type="text" required="" name="title"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-3" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Picture&nbsp;</label></div>
-                            <div class="col-auto col-sm-2"><input type="file" style="margin-top: 1%;" name="pic" accept="image/png, image/jpeg"></div>
+                            <div class="col-8"><input type="file" style="margin-top: 1%;" name="pic" accept="image/png, image/jpeg"></div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -21,19 +21,19 @@
                             <div class="col-3" style="width: auto;">
                                 <label class="col-form-label" style="margin-left: 10%;">Video</label>
                             </div>
-                            <div class="col-auto col-sm-2"><input type="file" style="margin-top: 1%;" name="vid" accept="video/mp4"></div>
+                            <div class="col-8"><input type="file" style="margin-top: 1%;" name="vid" accept="video/mp4"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-3" style="width: auto;"><label class="col-form-label" required="" style="margin-left: 10%;">Date</label></div>
-                            <div class="col-4"><input class="form-control" type="date" name="date"></div>
+                            <div class="col-8"><input class="form-control" type="date" name="date"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Description&nbsp;</label></div>
-                            <div class="col" style="padding-right: 10px;"><textarea name="description" class="form-control form-control-lg" spellcheck="true" required="" style="margin-right: 10px;"></textarea></div>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Description&nbsp;</label></div>
+                            <div class="col-7"><textarea name="description" class="form-control form-control-lg" spellcheck="true" required="" style="margin-right: 10px;"></textarea></div>
                         </div>
                     </div>
                     <div class="form-group">

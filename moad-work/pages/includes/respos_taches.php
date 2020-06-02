@@ -23,8 +23,8 @@ for ($i = 0; $i < $nb_taches; $i++) {
                     <span class="float-right text-xs" style="margin-right: 1rem;">deadline: <?php echo $deadline?></span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-12 offset-xl-0"><a class="btn btn-success btn-icon-split done-btn" data-target="<?php echo $i?>" role="button" style="width: 100px;margin-left: 40%;"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">Done</span></a></div>
+            <div class="row justify-content-center">
+                <div class="col-auto"><a class="btn btn-success btn-icon-split done-btn" data-target="<?php echo $i?>" role="button" style="width: 100%;"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">Done</span></a></div>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
                             <div class="col-3" style="width: auto;">
                                 <label class="col-form-label" style="margin-left: 10%;">Name</label>
                             </div>
-                            <div class="col-auto">
+                            <div class="col-8">
                                 <input class="form-control" type="text" required="" name="name">
                             </div>
                         </div>

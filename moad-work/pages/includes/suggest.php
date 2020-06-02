@@ -8,27 +8,27 @@
                 <form action="functions/suggest.php" id="sug_form">
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-2"><label class="col-form-label">title</label></div>
-                            <div class="col-auto"><input class="form-control" type="text" name="title" required></div>
+                            <div class="col-4"><label class="col-form-label">title</label></div>
+                            <div class="col-8"><input class="form-control" type="text" name="title" required></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-2"><label class="col-form-label">To&nbsp;</label></div>
-                            <div class="col-auto"><input class="form-control" type="search" name="to" required></div>
+                            <div class="col-4"><label class="col-form-label">To&nbsp;</label></div>
+                            <div class="col-8"><input class="form-control" type="search" name="to" required></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-2"><label class="col-form-label">subject</label></div>
-                            <div class="col-auto"><input class="form-control" type="text" name="subject" required></div>
+                            <div class="col-4"><label class="col-form-label">subject</label></div>
+                            <div class="col-8"><input class="form-control" type="text" name="subject" required></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label">suggestion</label>
+                            <div class="col-4"><label class="col-form-label">suggestion</label>
                             </div>
-                            <div class="col-9"><textarea class="form-control" name="suggestion" required></textarea></div>
+                            <div class="col-8"><textarea class="form-control" name="suggestion" required></textarea></div>
                         </div>
                     </div><button class="btn btn-primary" type="button" style="margin-left: 40%;" onclick="send()">Send</button>
                 </form>
