@@ -1,10 +1,10 @@
-<?php session_start() ?>
 <?php 
-include "functions/get_cell_status.php";
-$statut=$_SESSION['statut'];
+session_start(); 
 ?>
-
-
+    <?php 
+        include_once "functions/get_cell_status.php";
+        $statut=$_SESSION['statut'];
+     ?>
 <!DOCTYPE html>
 <html>
 
@@ -13,8 +13,6 @@ $statut=$_SESSION['statut'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Clubs</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
@@ -164,6 +162,8 @@ $statut=$_SESSION['statut'];
             <i class="fas fa-angle-up"></i>
         </a>
     </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
@@ -171,6 +171,9 @@ $statut=$_SESSION['statut'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/join.js"></script>
+    <script src="assets/js/choose_pres.js"></script>
+    
 </body>
 
 </html>
+ 
