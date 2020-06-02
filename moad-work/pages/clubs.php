@@ -4,7 +4,7 @@
 //get user infos to control what to display
 include 'functions/set_user_club_infos.php';
 //for debug
-$GLOBALS['is_connected'] = true;
+$GLOBALS['is_connected'] = false;
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ $GLOBALS['is_connected'] = true;
             $select = "none";
             include 'includes/nav.php';
         } else {
-            include 'includes/general_nav.php';
+            include '../includes/nav.php';
         }
         ?>
         <?php
