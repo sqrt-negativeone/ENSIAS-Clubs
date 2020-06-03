@@ -82,6 +82,7 @@ function show_prog(id){
     
     $.post("../includes/passed_taches.php",{username:username}, function (data){
         $('#usr_rslt_out').find("img").attr('src',img_src);
+        $('#pdp-container').find('img').attr('src',img_src);
         $('#usr_rslt_out').find('span').text(username);
         $('#mdl_out').html(data);
     })

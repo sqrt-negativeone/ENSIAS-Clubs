@@ -113,12 +113,19 @@ include 'functions/get_cell_status.php'
             ?>
             <?php if (strcmp($cellule_status, 'PC') == 0) {
                 include 'includes/choose_cell_resp_menu.php';
+                echo 
+                    '<div class="modal fade" role="dialog" tabindex="-1" id="pdp-container">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div><img width="100%"><i class="fa fa-close" data-dismiss="modal"></i></div>
+                            </div>
+                        </div>
+                    </div>';
             } ?>
-            <!--this modal will popup when clicking on change the current responsable -->
             
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright Â© ENSIASClub 2020</span></div>
+                    <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
                 </div>
             </footer>
         </div>

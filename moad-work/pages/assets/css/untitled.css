@@ -53,3 +53,10 @@ h1{
     font-size: 120%;
   }
 }
+#pdp-container div i {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 25px;
+  cursor: pointer;
+}

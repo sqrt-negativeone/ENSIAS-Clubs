@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <div class="row align-items-center no-gutters" id="usr_rslt_out">
-                    <div class="col-auto">
+                    <div class="col-auto" data-toggle="modal" data-target="#pdp-container">
                         <img class="border rounded-circle img-profile" src="">
                     </div>
                     <div class="col mr-2">
