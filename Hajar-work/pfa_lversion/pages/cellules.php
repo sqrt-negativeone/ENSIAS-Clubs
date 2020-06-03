@@ -1,10 +1,12 @@
-
 <?php
 session_start();
 //TODO: redirect to login if not logged in
 //TODO: redircte to dashboard if not member
+if (!isset($_SESSION['cne'])) {
+   header("Location:login.php");
+}
  include 'functions/cell_tasks_respo.php';
- if (isset($_SESSION['statut'])) {
+ if ($_SESSION['statut'] != '') {
       $cellule_status=$_SESSION['statut'];
  }else{
      $cellule_status=$cell['statut'];
@@ -29,6 +31,7 @@ session_start();
 <body id="page-top">
     <div id="wrapper">
         <?php
+        include "includes/display_alerts.php";
         $select = "none";
         include 'includes/nav.php';
         ?>
@@ -40,9 +43,9 @@ session_start();
                 <div class="container-fluid">
                     <h3 class="text-dark mb-1">Cellule : <?php echo htmlspecialchars($_GET['target']);?></h3>
                     <!--this section will be visible for the club's president to change the cellule's responsable-->
-                    <?php if (strcmp($cellule_status, 'PC') == 0) {
+                    <?php 
                         include 'includes/change_cell_resp.php';
-                    } ?>
+                     ?>
                     <!--visible for cellule members-->
                     <div class="row">
                         <div class="col-xl-6">
@@ -62,7 +65,7 @@ session_start();
                                 <div class="col">
                                     <div class="card shadow mb-4">
                                         <div class="card-header d-flex justify-content-between align-items-center">
-                                            <h6 class="text-primary font-weight-bold m-0">COMPLETED TACHES</h6>
+                                            <h6 class="text-primary font-weight-bold m-0">HISTORIQUE DE MES TACHES</h6>
                                             <!--TODO: implemetnt the filter -->
                                             <div class="dropdown no-arrow">
                                                 <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
@@ -95,7 +98,7 @@ session_start();
                             </div>
                             <div class="card shadow mb-4" data-aos="zoom-in-up">
                                 <div class="card-header py-3">
-                                    <h6 class="text-primary font-weight-bold m-0">TACHES PAR&nbsp;RESPONSABLE</h6>
+                                    <h6 class="text-primary font-weight-bold m-0">SOUMISSIONS DES TACHES</h6>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <?php include 'includes/respos_taches.php' ?>
@@ -103,7 +106,7 @@ session_start();
                             </div>
                             <!--visible for cellule responsabe, club president, and adei president, it shows member passed taches-->
                             <?php
-                            if (strcmp($cellule_status, 'RC') == 0 || strcmp($cellule_status, 'PC') == 0 || strcmp($cellule_status, 'PA') == 0) {
+                            if (strcmp($cellule_status, 'R') == 0 || strcmp($cellule_status, 'PC') == 0 || strcmp($cellule_status, 'PA') == 0) {
                                 include 'includes/see_taches.php';
                             }
                             ?>
@@ -117,8 +120,10 @@ session_start();
                 include 'includes/user_tache_menu.php';
             }
             ?>
-            <?php if (strcmp($cellule_status, 'PC') == 0) {
+            <?php 
+            if (strcmp($cellule_status, 'PC') == 0 or strcmp($cellule_status, 'PA') == 0) {
                 include 'includes/choose_cell_resp_menu.php';
+                include 'includes/delete_cell_resp_menu.php';
             } ?>
             <!--this modal will popup when clicking on change the current responsable -->
             
@@ -139,6 +144,22 @@ session_start();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
-</body>
+    <script src="assets/js/choose_resp.js"></script>
+    <script type="text/javascript">
+        $(window).on('load',function() {
+            // body...
+            var msg = <?php echo json_encode($_SESSION['msg']); ?>;
+            var context = <?php echo json_encode($_SESSION['context']); ?>;
+            if (msg != '' && context != '') {
+                $('#alertModal').modal('show');
+            }
 
+        });
+    </script>
+</body>
+<?php 
+unset($_SESSION['msg']);
+unset($_SESSION['context']);
+ ?>
 </html>
+ 

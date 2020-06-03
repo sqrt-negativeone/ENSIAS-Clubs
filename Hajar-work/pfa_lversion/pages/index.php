@@ -1,9 +1,12 @@
 <?php 
 session_start(); 
-if (isset($_SESSION['statut'])) {
-    $statut=$_SESSION['statut'];
+include "functions/index-page.php";
+//PREVENT RETURN BUTTON AFTER LOGOUT
+if (!isset($_SESSION['cne'])) {
+   header("Location:login.php");
 }
 
+$statut=$_SESSION['statut'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,6 +27,7 @@ if (isset($_SESSION['statut'])) {
 
 <body id="page-top">
     <div id="wrapper">
+        <?php include "includes/display_alerts.php"; ?>
         <!--The sidebar nav-->
         <?php 
             $select="dashboard";
@@ -54,9 +58,7 @@ if (isset($_SESSION['statut'])) {
                             </div>
                         </div>
                     </div>
-                    <?php 
-                     if (isset($statut) and $statut!=='PA') {                       
-                     ?>
+
                     <div class="row" style="margin-bottom: 30px;">
                         <div class="col">
                             <div class="card" data-aos="zoom-in-up">
@@ -66,31 +68,22 @@ if (isset($_SESSION['statut'])) {
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                     <?php include 'includes/other_clubs.php'; ?>
+                                     <?php 
+                                     include 'includes/other_clubs.php'; 
+                                     ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
-<!--                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="text-primary m-0 font-weight-bold" style="font-size: 150%;">EVENTS</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <!--Here the upcoming events will be inserted as follow-->
-                                    <?php //include 'includes/generalEvents.php';?>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+
                 </div>
             </div>
+
+            <?php include 'includes/join_club_modal.php'; ?>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright Â© ENSIASClub 2020</span></div>
+                    <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
                 </div>
             </footer>
         </div>
@@ -105,6 +98,18 @@ if (isset($_SESSION['statut'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/join.js"></script>
+    <script type="text/javascript">
+        $(window).on('load', function(){
+            var context = <?php echo json_encode($_SESSION['context']) ?>;
+            var msg = <?php echo json_encode($_SESSION['msg']) ?>;
+            if (msg != '' && context != '') {
+              $('#alertModal').modal('show');           
+            }  
+        });
+    </script>
 </body>
-
+<?php 
+unset($_SESSION['msg']);
+unset($_SESSION['context']);
+ ?>
 </html>

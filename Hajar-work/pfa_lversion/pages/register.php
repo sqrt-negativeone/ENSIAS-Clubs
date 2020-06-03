@@ -20,25 +20,9 @@
 
 <body class="bg-gradient-primary">
     <div class="container">
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content text-white" style="background-color: black;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Création de compte</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true" style="color: white;">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <?php 
-                    if (isset($_SESSION['msg'])) {
-                        echo $_SESSION['msg'];
-                    }
-                 ?>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php 
+            include "includes/display_alerts.php";
+         ?>
         <div class="card shadow-lg o-hidden border-0 my-5">
             <div class="card-body p-0">
                 <div class="row">
@@ -96,9 +80,9 @@
                                 </div>
                                 <button class="btn btn-primary btn-block text-white btn-user" type="submit" name="register">Register</button>
                             </form>
-                            <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a>
+                            <div class="text-center"><a class="small" href="forgot-password.php">Forgot Password?</a>
                             </div>
-                            <div class="text-center"><a class="small" href="login.html">Already have an account?
+                            <div class="text-center"><a class="small" href="login.php">Already have an account?
                                     Login!</a></div>
                         </div>
                     </div>
@@ -116,15 +100,17 @@
     <script src="assets/js/theme.js"></script>
     <script type="text/javascript">
         $(window).on('load', function(){   
+            var context = <?php echo json_encode($_SESSION['context']) ?>;
             var msg = <?php echo json_encode($_SESSION['msg']) ?>;
-            if (msg != '') {
-              $('#exampleModal').modal('show');           
+            if (msg != '' && context != '') {
+              $('#alertModal').modal('show');           
             }     
         }); 
     </script>
 
 </body>
 <?php 
-session_destroy();
+unset($_SESSION['msg']);
+unset($_SESSION['context']);
  ?>
 </html>

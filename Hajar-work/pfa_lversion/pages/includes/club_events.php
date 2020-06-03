@@ -1,43 +1,55 @@
-<?php
-//get club events from db
-if (count($events)==0) {
-    echo '<div class="container">
-    <h2 class="text-center text-capitalize">No Upcoming Events</h2>
-</div>';
-}
-for ($i = 0; $i < count($events); $i++) {
-    // $event_title = "EVENT TITLE";
-    // $discr = "Lorem ipsum dolor sit amet, consectetur
-    // adipiscing elit. Duis maximus nisl ac diam feugiat, non
-    // vestibulum libero posuere. Vivamus pharetra leo non
-    // nulla egestas, nec malesuada orci finibus.";
-    // $author = "cellule_name";
-    // $date = "dd-mm-yyyy";
-    // $pic = "assets/img/dogs/image1.jpeg";
-?>
-    <div class="card mb-4" data-aos="zoom-in-up">
-        <div class="card-body d-flex">
-            <div class="col-xl-12">
-                <div class="row">
+<div class="blog-slider">
+    <div class="blog-slider__wrp swiper-wrapper">
+        <?php
+        $events = array();
+        $events = $events_pub;
+        $j = count($events);
+        if (isset($events_prv)) {
+            for ($k=0; $k < count($events_prv); $k++) { 
+                $events[$j] = $events_prv[$k];
+                $j++;
+            }
+        }
+        if (count($events) == 0) {
+        ?>
+        <span style="font-style: italic; font-size: 100%; text-align: center;">Pas d'évènements pour le moment.</span>
+        <?php
+        }else{
+        for ($i = 0; $i < count($events); $i++) {
+            $id_event=$events[$i]['id_event'];
+            $event_title = $events[$i]['titre'];
+            $descr=$events[$i]['descr_event'];
+            $date_fin = $events[$i]['date_fin'];
+            $date_deb = $events[$i]['date_deb'];
+            $pic = "data:image/*;base64,".base64_encode($events[$i]['photo']);
+        ?>
+            <div class="blog-slider__item swiper-slide">
+                <div></div>
+                <div class="blog-slider__img">
+                    <img src=<?php echo $pic ?> />
+                </div>
+                <div class="blog-slider__content">
                     <?php 
-                    echo '<div class="col-xl-12" style="background-image: url(data:image/jpeg;base64,'.base64_encode($events[$i]['photo']).');background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;height: 500px;">
-                    </div>';
+                        if ($date_deb != $date_fin) {
+                     ?>     
+                     <span class="blog-slider__code"><?php echo "Du : ".$date_deb ?></span>
+                     <span class="blog-slider__code"><?php echo "Jusqu'à : ".$date_fin ?></span>
+                    <?php 
+                        }else{
                      ?>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <h2 class="text-center"><?php echo $events[$i]['titre'] ?></h2>
-                        <h3 class="text-center">Date : <?php echo $events[$i]['date_deb'] ?></h3>
+                    
+                    <span class="blog-slider__code"><?php echo $date_deb ?></span>
+                    <?php        
+                        }
+                     ?>
+                    <div class="blog-slider__title"><?php echo $event_title ?></div>
+                    <div class="blog-slider__text">
+                        <?php echo htmlspecialchars($descr) ?>
                     </div>
+                   <!--  <a data-event-id=<?php echo $id_event?> href="javascript:void(0)" type="button" data-toggle="modal" data-target="#eventsModal">READ MORE</a> -->
                 </div>
-                <?php if ($statut=="PA" or $statut=="PAC" or $statut=="PC") { ?>
-                    <div class="row" style="margin-top: 20px;margin-bottom: 10px;">
-                        <div class="col"><button class="btn btn-primary" type="button" style="margin-left: 50%;">modify</button></div>
-                        <div class="col"><button class="btn btn-primary float-right" type="button" style="margin-right: 50%;">delete</button></div>
-                    </div>
-                <?php } ?>
             </div>
-        </div>
+        <?php }    } ?>
+        <div class="blog-slider__pagination"></div>
     </div>
-<?php } ?>
-
+</div>

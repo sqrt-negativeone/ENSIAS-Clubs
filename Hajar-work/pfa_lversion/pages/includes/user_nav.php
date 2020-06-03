@@ -1,3 +1,4 @@
+<?php include "functions/get_notifications.php"; ?>
 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
     <div class="container-fluid">
         <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button">
@@ -29,35 +30,66 @@
 
             <?php 
                 //TODO: connect to server and get the data about notifications
-                $nb_notifs=1;
+                $members=$notifs['membership'];
+                $sug=$notifs['suggests'];
+                // $mes_sugs=$notifs['mes_suggests'];
+                $count = count($members)+count($sug);
             ?>
             <li class="nav-item dropdown no-arrow mx-1" role="presentation">
                 <div class="nav-item dropdown no-arrow">
                     <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
-                        <span class="badge badge-danger badge-counter"><?php echo $nb_notifs?></span>
+                        <span class="badge badge-danger badge-counter"><?php echo $count?></span>
                         <i class="fas fa-bell fa-fw"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in" role="menu">
-                        <h6 class="dropdown-header">notifications</h6>
+                        <h6 class="dropdown-header">NOTIFICATIONS</h6>
                         <?php 
-                            for ($i=0;$i<$nb_notifs;$i++){
-                                $date="December 12, 2019";
-                                $avatar="assets/img/avatars/avatar4.jpeg";
-                                $disc="you got a new suggestion from username.";
+                            for ($i=0;$i<count($members);$i++){
+                                $date=$members[$i]['date_i_deb'];
+                                $avatar="data:image/*;base64,".base64_encode($members[$i]['photo']);
+                                if ($members[$i]['photo'] == '') {
+                                   $avatar = "../img/profile.png";
+                                }
+                                $desc="Nouvelle demande d'inscription à la cellule ".$members[$i]['intitule']." de ".$members[$i]['acro_club']." par ".strtoupper($members[$i]['nom'])." ".ucfirst($members[$i]['prenom']);
                                 echo '<a class="d-flex align-items-center dropdown-item" href="#">';
                                 echo '<div class="mr-3"><img class="border rounded-circle" src="'.$avatar.'" style="width: 40px;"></div>';
                                 echo '<div><span class="small text-gray-500">'.$date.'</span>';
-                                echo '<p>'.$disc.'</p></div>';
+                                echo '<p>'.$desc.'</p></div>';
                             }
                         ?>
+
+                        <?php 
+                            for ($i=0;$i<count($sug);$i++){
+                                $date=$sug[$i]['date_avis'];
+                                
+                                if ($sug[$i]['photo'] == '') {
+                                   $avatar = "../img/profile.png";
+                                }else{
+                                    $avatar="data:image/*;base64,".base64_encode($sug[$i]['photo']);
+                                }
+                                if ($sug[$i]['etat'] == 'PL') {
+                                    $desc="Une plainte ajoutée par ";
+                                }else{
+                                    $desc="Une suggestion ajoutée par ";
+                                }
+                                $desc.= strtoupper($sug[$i]['nom'])." ".ucfirst($sug[$i]['prenom']);
+
+                                echo '<a class="d-flex align-items-center dropdown-item" href="#">';
+                                echo '<div class="mr-3"><img class="border rounded-circle" src="'.$avatar.'" style="width: 40px;"></div>';
+                                echo '<div><span class="small text-gray-500">'.$date.'</span>';
+                                echo '<p>'.$desc.'</p></div>';
+                            }
+                        ?>
+
+                        
                         <a class="text-center dropdown-item small text-gray-500" href="#">Show More</a>
                     </div>
                 </div>
             </li>
+        
+            
             <?php 
-                //get user name and user avatar 
-                $username='Valerie Luna';
-                $useravatar='"assets/img/avatars/avatar1.jpeg"';
+                //GET USER INFO
             ?>
             <li class="nav-item dropdown no-arrow" role="presentation">
                 <div class="nav-item dropdown no-arrow">
@@ -68,7 +100,7 @@
                                         </span>
                                         <?php
                                                             if ($_SESSION['photo']=="") {
-                                                                echo '<img src="../../images/profile.png" class="border rounded-circle img-profile" />';
+                                                                echo '<img src="../img/profile.png" class="border rounded-circle img-profile" />';
                                                              }else {
                                                                 echo '<img class="border rounded-circle img-profile" src="data:image/jpeg;base64,'.base64_encode($_SESSION['photo']).'">';
                                                              }  
@@ -77,7 +109,7 @@
                                         
                                     </a>
                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
-                        <a class="dropdown-item" role="presentation" href="#">
+                        <a class="dropdown-item" role="presentation" href="profile.php">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             &nbsp;Profile
                         </a>
@@ -86,7 +118,7 @@
                             &nbsp;Settings
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" role="presentation" href="javascript:void(0)">
+                        <a class="dropdown-item" role="presentation" href="functions/logout.php">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             &nbsp;Logout
                         </a>

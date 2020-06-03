@@ -1,6 +1,11 @@
 <?php
 //TODO: get the data about other clubs from db
-$not_my_cells=$_SESSION['not_my_cells'];
+//JOIN A CELL
+// if (!isset($_SESSION['other_cells']) and $_SESSION['statut'] == 'PA') {
+//     //ADEI PRESIDENT IS NOT A MEMBER OF THE CLUB -> POSSIBILITY TO JOIN ALL CELLS  
+//     $not_my_cells=$_SESSION['my_cells'];
+// }
+$not_my_cells=$_SESSION['other_cells'];
 for ($i = 0; $i < count($not_my_cells); $i++) {
 
 ?>

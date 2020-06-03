@@ -1,7 +1,12 @@
 <?php 
-    //TODO: redirect if not connected
-    session_start();
+session_start();
+
+$statut = $_SESSION['statut'];
+if (!isset($_SESSION['cne'])) {
+   header("Location:login.php");
+}
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -22,6 +27,7 @@
 <body id="page-top">
     <div id="wrapper">
         <?php 
+        include "includes/display_alerts.php";
             $select="suggestions";
             include 'includes/nav.php'; 
         ?>
@@ -55,6 +61,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
-</body>
+    <script type="text/javascript">
+        $(window).on('load',function() {
+            var msg = <?php echo isset($_SESSION['msg'])?json_encode($_SESSION['msg']):''?>;
+            var context = <?php echo isset($_SESSION['context'])?json_encode($_SESSION['context']):''?>;
+            if (msg != '' && context != '') {
+                $('#alertModal').modal('show');
+            }
 
+        });
+    </script>
+</body>
+<?php 
+unset($_SESSION['msg']);
+unset($_SESSION['context']);
+ ?>
 </html>
+ 

@@ -1,4 +1,10 @@
-<?php session_start() ?>
+<?php 
+session_start();
+
+if (!isset($_SESSION['cne'])) {
+   header("Location:login.php");
+}
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -17,6 +23,7 @@
 <body id="page-top">
     <div id="wrapper">
         <?php
+        include "includes/display_alerts.php";
         $select = "profile";
         include 'includes/nav.php';
         ?>
@@ -25,7 +32,81 @@
                 <?php include 'includes/user_nav.php'; ?>
                 <div class="container-fluid">
                     <h3 class="text-dark mb-4">Profile</h3>
-                    <div class="row justify-content-center"></div>
+
+                    <div class="row mb-3">
+                        <div class="col-lg-4">
+                            <div class="card mb-3">
+                                <div class="card-body text-center shadow">
+                                    <?php 
+                                    //GET PICTURE OR REPLACE IT
+                                    if ($_SESSION['photo'] != '') {
+                                        $photo = "data:image/*;base64,".base64_encode($_SESSION['photo']);
+                                    }else{
+                                        $photo = "../img/profile.png";
+                                    }
+                                      ?>                                   
+                                    <div class="border rounded-circle" style="height: 160px;background-image: url(<?php echo htmlspecialchars($photo); ?>);background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;width: 160px;margin: 1rem auto;">
+                                    </div>
+                                    <form action="functions/edit_profile.php" method="POST" enctype="multipart/form-data">
+                                        <div class="mb-3">
+                                            <input type="file" accept="image/*" name="pic" required="" style="width: 100%;">
+                                            <button class="btn btn-primary btn-sm" type="submit" name="submit_pic">Changer Photo</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card shadow mb-3">
+                                        <div class="card-header py-3">
+                                            <p class="text-primary m-0 font-weight-bold">Paramètres</p>
+                                        </div>
+                                        <div class="card-body">
+                                            <form method="POST" action="functions/edit_profile.php">
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                       <div class="form-group">
+                                                            <label for="cne"><strong>CNE</strong></label>
+                                                            <input id="cne" disabled="" class="form-control" value="<?php echo htmlspecialchars($_SESSION['cne']); ?>" >
+                                                        </div>
+                                                        <div class="form-group">    
+                                                            <label for="code"><strong>Code apogé</strong></label>
+                                                            <input id="code" disabled="" class="form-control" placeholder="<?php echo htmlspecialchars($_SESSION['code_apoge']); ?>">
+                                                        </div> 
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="first_name"><strong>Prénom</strong></label>
+                                                            <input class="form-control" type="text" value="<?php echo htmlspecialchars($_SESSION['prenom']); ?>" name="first_name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="last_name"><strong>Nom</strong></label>
+                                                            <input class="form-control" type="text" value="<?php echo htmlspecialchars($_SESSION['nom']); ?>" name="last_name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="col">
+                                                        <div class="form-group">
+                                                            <label for="email"><strong>Addresse Email</strong></label>
+                                                            <input class="form-control" type="email" value="<?php echo htmlspecialchars($_SESSION['email']); ?>" name="email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input class="btn btn-primary btn-sm" type="submit" name="submit_pro" value="Sauvegarder paramètres"></input>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <footer class="bg-white sticky-footer">
@@ -42,6 +123,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
+    <script type="text/javascript">
+        $(window).on('load',function() {
+            var msg = <?php echo isset($_SESSION['msg'])?json_encode($_SESSION['msg']):''?>;
+            var context = <?php echo isset($_SESSION['context'])?json_encode($_SESSION['context']):''?>;
+            if (msg != '' && context != '') {
+                $('#alertModal').modal('show');
+            }
+
+        });
+    </script>
 </body>
 
+<?php 
+unset($_SESSION['msg']);
+unset($_SESSION['context']);
+ ?>
 </html>
+ 

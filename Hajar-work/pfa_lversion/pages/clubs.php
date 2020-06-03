@@ -1,10 +1,14 @@
 <?php 
-session_start(); 
+    session_start(); 
+
+    include_once "functions/get_cell_status.php";
+    $statut=$_SESSION['statut'];
+    
+    $is_connected = false;
+    if (isset($_SESSION['cne'])) {
+        $is_connected = true;
+    }
 ?>
-    <?php 
-        include_once "functions/get_cell_status.php";
-        $statut=$_SESSION['statut'];
-     ?>
 <!DOCTYPE html>
 <html>
 
@@ -13,10 +17,13 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Clubs</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="assets/css/Swiper-Slider-Card-1.css">
+    <link rel="stylesheet" href="assets/css/Swiper-Slider-Card.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
@@ -25,6 +32,7 @@ session_start();
         <!--will be visible for logged in users-->
         <?php 
             //TO-DO:MAINTAIN A NAVBAR FOR NOT LOGGED IN USERS AND RESTRICT THEIR NAVIGATION
+            include "includes/display_alerts.php";
             if ($is_connected){
                 $select="none";
                 include 'includes/nav.php';
@@ -40,6 +48,7 @@ session_start();
                 
                 <div class="container-fluid">
                     <!--will be visible for the none logged in users-->
+
                     <?php 
                         if (!$is_connected) include 'includes/notconnected.php';
                     ?>
@@ -49,13 +58,13 @@ session_start();
                     include 'includes/club_cover.php';
                     ?>
                     <br>
-                    <h1 class="text-dark mb-1" data-aos="zoom-in-up" style="font-family: Comic Sans MS, sans Serif;">Welcome to  
+                    <h1 class="text-dark mb-1" data-aos="zoom-in-up" style="font-family: Comic Sans MS, sans Serif;">  
                     <?php echo $n_club['nom_club']; ?> </h1>
 
                     <!--this section will be added only to adei president so he can add or replace the current president of the selected club -->
                     <?php 
+                     include 'includes/change_club_pres.php';
                         if ($statut==="PA"){
-                            include 'includes/change_club_pres.php';
                             include 'includes/new_cellule.php';
                             include 'includes/new_event.php';
                         }
@@ -65,12 +74,16 @@ session_start();
                     <?php 
                         if ($statut==="PC"){
                             include 'includes/club_requests.php';
+                            include 'includes/modify_club_settings.php';
                             include 'includes/new_cellule.php';
                             include 'includes/new_event.php';
                         } 
                     ?>
                     
                     <!--here the user's cellules will listed-->
+                    <?php 
+                    if (count($_SESSION['my_cells']) != 0) {
+                     ?>
                     <div class="row" data-aos="zoom-in-up" style="margin-bottom: 20px;margin-top: 20px;">
                         <div class="col">
                             <div class="card">
@@ -88,25 +101,28 @@ session_start();
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                     <!--other celluls will be listed in this section-->
                     <?php 
-                    if ($statut!=='PC' and $statut!=='PA') {
-                        echo '<div class="row" data-aos="zoom-in-up" style="margin-bottom: 20px;">
+                    if (count($_SESSION['other_cells']) != 0) {
+                    ?> 
+                        <div class="row" data-aos="zoom-in-up" style="margin-bottom: 20px;">
                         <div class="col">
                             <div class="card">
                                 <div class="card-header py-3">
-                                    <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">OTHER
+                                    <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">AUTRES
                                         CELLULES</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <!--the cellules data will be filled here-->'.include 'includes/other_cellules.php'.'                            </div>
+                                        <?php include 'includes/other_cellules.php';
+                                         ?>
+                                    </div>                                
                                 </div>
                             </div>
                         </div>
-                    </div>';
-                    }
-                     ?>
+                    </div>
+                    <?php } ?>
 
                     <!--here the upcoming events section-->
                     <div class="row" data-aos="zoom-in-up">
@@ -134,13 +150,11 @@ session_start();
                     <div class="row" data-aos="zoom-in-up">
                         <div class="col-xl-12">
                             <div>
-                                <h1>Members :</h1>
+                                <h1>RESPONSABLES DES CELLULES</h1>
                             </div>
                         </div>
-                        <div class="col-4 mb-4" data-aos="zoom-in-up">
-                            <div class="card shadow border-left-primary py-2">
-                                <?php include 'includes/club_members.php' ?>
-                            </div>
+                        <div class="col-12 col-sm-4 mb-4" data-aos="zoom-in-up">
+                            <?php include 'includes/club_members.php' ?>
                         </div>
                     </div>
                 </div>
@@ -148,7 +162,8 @@ session_start();
 
             <!--this modal will popup when the adei president click on change club president button -->
             <?php 
-                if ($statut==="PA") include 'includes/choose_pres_menu.php'
+                if ($statut==="PA") include 'includes/choose_pres_menu.php';
+            
             ?>
             
             <footer class="bg-white sticky-footer">
@@ -172,8 +187,22 @@ session_start();
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/join.js"></script>
     <script src="assets/js/choose_pres.js"></script>
-    
-</body>
+<!--     <script src="assets/js/club_utils.js"></script>
+ --><script src="assets/js/Swiper-Slider-Card.js"></script>
+    <script type="text/javascript">
+        $(window).on('load',function() {
+            var msg = <?php echo isset($_SESSION['msg'])?json_encode($_SESSION['msg']):''?>;
+            var context = <?php echo isset($_SESSION['context'])?json_encode($_SESSION['context']):''?>;
+            if (msg != '' && context != '') {
+                $('#alertModal').modal('show');
+            }
 
+        });
+    </script>
+</body>
+<?php 
+unset($_SESSION['msg']);
+unset($_SESSION['context']);
+ ?>
 </html>
  

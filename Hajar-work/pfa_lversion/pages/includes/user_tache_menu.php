@@ -15,7 +15,7 @@
                         <ul class="list-group list-group-flush">
                             <!--taches data-->
                             <!--TODO : get data with AJAX-->
-                            <!--exemple-->
+                            exemple
                             <li class="list-group-item" data-aos="zoom-in-up">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">

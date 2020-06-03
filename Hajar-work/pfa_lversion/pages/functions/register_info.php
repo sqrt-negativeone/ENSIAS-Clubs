@@ -1,12 +1,14 @@
 <?php 
 	session_start();
 	require_once '../../../../../pfa_db_connection/connexion.php'; 
+	//$pdo->quote => empêcher les injections SQL
 	//REGISTER 
 	if (isset($_POST['register'])) {
-		//CHECK IF ENSIAS STUDENT (SUPPOSE THE ADMINISTRATION PROVIDED US WITH THE NECESSARY INFO ABOUT STUDENTS AND THEY ARE ALREADY STORED IN DATABASE -> email not provided)
-		$check_ensias="select * from etudiant natural join choix_filiere where (cne=? or code_apoge=?) and nom=? and prenom=? and id_filiere=? and annee_etude=? order by date_f desc limit 1";
+		$_SESSION['context']='Création de compte';
+		//CHECK IF ENSIAS STUDENT (SUPPOSE THE ADMINISTRATION PROVIDED US WITH THE NECESSARY INFO ABOUT STUDENTS AND THEY ARE ALREADY STORED IN DATABASE -> emaail not provided)
+		$check_ensias="select * from etudiant natural join choix_filiere where (cne=? or code_apoge=?) and upper(nom)=? and upper(prenom)=? and id_filiere=? and annee_etude=? order by date_f desc limit 1";
 		$stmt_check=$pdo->prepare($check_ensias);
-		$stmt_check->execute([$_POST['code'], $_POST['code'], $_POST['last_name'], $_POST['first_name'], $_POST['fil'], $_POST['annee']]);
+		$stmt_check->execute([$_POST['code'], $_POST['code'], strtoupper($_POST['last_name']), strtoupper($_POST['first_name']), $_POST['fil'], $_POST['annee']]);
 
 		$stmt_check->setFetchMode(PDO::FETCH_ASSOC);
 		if ($row=$stmt_check->fetch()) {
@@ -36,7 +38,7 @@
 					//SEND A CONFIRMATION EMAIL 
 
 					//ACCOUNT CREATED
-					$_SESSION['msg']="Votre compte a été créé avec succès."
+					$_SESSION['msg']="Votre compte a été créé avec succès.";
 					header("Location:../register.php");
 				}
 				
