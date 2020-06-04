@@ -29,7 +29,7 @@
                             $username="username";
                             $avatar="assets/img/avatars/avatar1.jpeg";
                         ?>
-                            <div class="card shadow border-left-primary py-2" data-aos="zoom-in-up" data-toggle="modal" data-target="#modal1" type="button" style="margin-bottom: 25px;width: 250px;margin-right: auto;margin-left: auto;">
+                            <div class="card shadow border-left-primary py-2" data-aos="zoom-in-up" data-toggle="modal" data-target="#modal1" type="button" style="margin-bottom: 25px;width: 100%;margin-right: auto;margin-left: auto;">
                                 <div class="card-body" style="padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 5px;">
                                     <div class="row align-items-center no-gutters">
                                         <div class="col-auto">

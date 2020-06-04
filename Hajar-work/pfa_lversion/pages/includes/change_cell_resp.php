@@ -5,7 +5,7 @@
             <div class="col" data-aos="zoom-in-up">
                 <div class="card">
                     <div class="card-body">
-                        <h4>Responsable(s) de la cellule : </h4>
+                        <h4 style="font-size: 1.3rem;">Responsable(s) de la cellule : </h4>
                         <div class="row justify-content-center" >
 
                         <?php 
@@ -43,7 +43,7 @@
                         ?> 
                         <div class="row"> 
                             <!-- ADD A RESPO FOR THE CELL -->
-                            <div class="col-auto m-auto"><button class="btn btn-danger  btn-block" type="button" data-toggle="modal" data-target="#responsableSelection">Ajouter</button></div>
+                            <div class="col-auto m-auto" ><button style="margin: 0.5rem 0;" class="btn btn-danger  btn-block" type="button" data-toggle="modal" data-target="#responsableSelection">Ajouter</button></div>
                             <!-- REMOVE A RESPO FROM THE CELL -->
                             <?php 
                                 if (count($respo_cell) != 0) {

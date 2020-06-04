@@ -23,12 +23,12 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="form-row">
-                    <div class="col-auto offset-xl-1">
-                        <button class="btn btn-dark" type="submit" name="submit_dif" style="margin-left: 40%;">Diffusion à tous les membres</button>
+                <div class="form-row justify-content-center">
+                    <div class="col-auto">
+                        <button class="btn btn-dark" style="margin: 0.5rem 0; width:150px;" type="submit" name="submit_dif">Diffusion à tous les membres</button>
                     </div>
-                    <div class="col-auto offset-xl-0">
-                        <button class="btn btn-dark" type="submit" name="submit_sel" style="margin-left: 40%;">Séléctionner des membres</button>
+                    <div class="col-auto">
+                        <button class="btn btn-dark" style="margin: 0.5rem 0; width:150px;" type="submit" name="submit_sel">Séléctionner des membres</button>
                     </div>
                 </div>
             </div>
