@@ -4,15 +4,15 @@
     $avatar="data:image/*;base64,".base64_encode($_SESSION['presidentC']['photo']); 
 ?>
 
-<div class="row" data-aos="zoom-in-up" style="margin-bottom: 40px;margin-top: 10px;">
-    <div class="col">
+<div class="row"  style="margin-bottom: 40px;margin-top: 10px;">
+    <div class="col" data-aos="zoom-in-up">
         <div class="card">
             <div class="card-body">
-                <h4>PRÉSIDENT COURANT DU CLUB</h4>
-                <div class="row">
-                    <div class="col-auto">
+                <h4 style="font-size: 1.3rem;">PRÉSIDENT COURANT DU CLUB</h4>
+                <div class="row justify-content-center">
+                    <div class="col-auto" style="margin-bottom: 0.5rem;">
                         <div class="card">
-                            <div class="card-body" style="width: 300px;margin-right: auto;margin-left: auto;">
+                            <div class="card-body" style="width: 100%;margin-right: auto;margin-left: auto;">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col-auto">
                                         <?php 
@@ -32,7 +32,7 @@
                     <?php 
                     if ($statut === 'PA') {
                      ?>
-                    <div class="col m-auto"><button class="btn btn-danger" type="button" data-toggle="modal" data-target="#presidentSelection" style="width: 82px;margin-right: auto;margin-left: auto;">Change</button>
+                    <div class="col m-auto"><button class="btn btn-danger" type="button" data-toggle="modal" data-target="#presidentSelection" >Change</button>
                     </div>
                     <?php  } ?>
                 </div>

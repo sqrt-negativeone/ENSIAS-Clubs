@@ -13,33 +13,33 @@ $clb_acro=$n_club['acro_club'];
                 <form action="functions/chg_clb_settings.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Nom du club</label></div>
-                            <div class="col-5"><input class="form-control" type="text" required="" value="<?php echo htmlspecialchars($clb_name) ?>" name="nom_club"></div>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Nom du club</label></div>
+                            <div class="col-8"><input class="form-control" type="text" required="" value="<?php echo htmlspecialchars($clb_name) ?>" name="nom_club"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Acronyme du club</label></div>
-                            <div class="col-5"><input class="form-control" type="text" required="" value="<?php echo htmlspecialchars($clb_acro) ?>" name="acro_club"></div>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Acronyme du club</label></div>
+                            <div class="col-8"><input class="form-control" type="text" required="" value="<?php echo htmlspecialchars($clb_acro) ?>" name="acro_club"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Photo du club</label></div>
-                            <div class="col-5"><input type="file" accept="image/*" name="photo"></div>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Photo du club</label></div>
+                            <div class="col-8"><input type="file" accept="image/*" name="photo"></div>
                         </div>
                     </div>
                      <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Logo du club</label></div>
-                            <div class="col-5"><input type="file" accept="image/*" name="logo"></div>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Logo du club</label></div>
+                            <div class="col-8"><input type="file" accept="image/*" name="logo"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Description</label>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Description</label>
                             </div>
-                            <div class="col-5"><textarea class="form-control" name="texte_desc"><?php echo htmlspecialchars($clb_descr) ?></textarea></div>
+                            <div class="col-8"><textarea class="form-control" name="texte_desc"><?php echo htmlspecialchars($clb_descr) ?></textarea></div>
                         </div>
                     </div>
                     <div class="form-row">

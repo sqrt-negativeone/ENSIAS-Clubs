@@ -37,16 +37,16 @@ $notifs['mes_suggests'] = $stmt_ -> fetchAll();
 
             ?>
                 <div class="border rounded-0" data-aos="zoom-in-up" style="margin-bottom: 3rem;padding-bottom: 0.5rem;">
-                    <div class="row" style="margin-top: 1rem;">
-                        <div class="col-xl-2 offset-xl-1"><img class="rounded-circle" style="max-width: 100%; max-height: 100%;" src=<?php echo htmlspecialchars($avatar) ?>></div>
-                        <div class="col">
+                    <div class="row justify-content-center" style="margin-top: 1rem;">
+                        <div class="col-auto m-auto"><img class="rounded-circle" style="max-width: 100%; max-height: 100%;" src=<?php echo htmlspecialchars($avatar) ?>></div>
+                        <div class="col-auto m-auto">
                             <h3><?php echo htmlspecialchars($acro) ?></h3>
                             <h5>Sujet:&nbsp;<?php echo htmlspecialchars($subject) ?></h5>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-11 offset-xl-1" style="margin-top: 1rem;">
-                            <p style="margin-bottom: -5px;margin-right: 1rem;"><?php echo htmlspecialchars($suggestion) ?><br><br></p>
+                    <div class="row justify-content-center">
+                        <div class="col-auto m-auto" style="margin-top: 1rem;">
+                            <p class="text-center" style="margin-bottom: -5px;margin-right: 1rem;"><?php echo htmlspecialchars($suggestion) ?><br><br></p>
                             <span style="font-style: italic;">Nature : 
                                 <?php echo htmlspecialchars($nature) ?>
                             </span><br>

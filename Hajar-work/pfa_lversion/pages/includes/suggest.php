@@ -8,8 +8,8 @@
                 <form method="post" action="functions/treat_suggest.php">
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Nature&nbsp;</label></div>
-                            <div class="col-auto"><select class="form-control" name="nature" required="">
+                            <div class="col-4" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Nature&nbsp;</label></div>
+                            <div class="col-8"><select class="form-control" name="nature" required="">
                                     <optgroup label="Nature de l'intervention">
                                         <option class="form-control" value="PL">Plainte</option>
                                         <option class="form-control" value="SUG">Suggestion</option>
@@ -18,14 +18,14 @@
                         </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Sujet</label></div>
-                            <div class="col-auto"><input class="form-control" type="text" name="sujet" required=""></div>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Sujet</label></div>
+                            <div class="col-8"><input class="form-control" type="text" name="sujet" required=""></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Destination</label></div>
-                            <div class="col-auto">
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Destination</label></div>
+                            <div class="col-8">
                                 <select class="form-control" name="dest" required="">
                                     <optgroup label="Club destinataire">
                                 <?php 
@@ -38,9 +38,9 @@
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Description</label>
+                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Description</label>
                             </div>
-                            <div class="col-9"><textarea class="form-control" name="descr" required=""></textarea></div>
+                            <div class="col-8"><textarea class="form-control" name="descr" required=""></textarea></div>
                         </div>
                     </div><input class="btn btn-primary" type="submit" name="submit_suggest" value="Envoyer" style="margin-left: 40%;"></input>
                 </form>

@@ -47,7 +47,7 @@ for ($i = 0; $i < count($taches); $i++) {
        <div class="form-group">
             <div class="form-row">
                 <div class="col-3"><label class="col-form-label" style="margin-left: 10%;">Votre travail</label></div>
-                <div class="col-5">
+                <div class="col-8">
                     <input type="file" accept="image/*" name="tache" required="">
                     <input type="hidden" name="id_tache" value=<?php echo $taches[$i]['id_tache']; ?>>
                 </div>

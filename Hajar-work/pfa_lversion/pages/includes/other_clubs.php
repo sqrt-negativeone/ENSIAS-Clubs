@@ -1,12 +1,12 @@
 <?php
-//TODO: get the data about other clubs from db
+
 for ($i = 0; $i < count($_SESSION['other_clubs']); $i++) {
    
 ?>
-    <div class="card" data-aos="zoom-in-up" style="width: 300px;margin-right: auto;margin-left: auto;">
+    <div class="card" data-aos="zoom-in-up" style="width: 300px;margin-right: auto;margin-left: auto; margin-bottom:1rem">
         <div class="card-body">
             <div class="row">
-                <div class="col-xl-9 offset-xl-2">
+                <div class="col-auto mx-auto">
                     <figure class="figure">
                         <?php 
 
@@ -28,8 +28,8 @@ for ($i = 0; $i < count($_SESSION['other_clubs']); $i++) {
             </div>
           
             <div class="row">
-                <div class="col-xl-9 offset-xl-2">
-                    <button class="btn btn-primary btn-join" type="button" style="margin-left: 20%;" data-dist='<?php echo htmlspecialchars($_SESSION['other_clubs'][$i]['id_club'])?>'>
+                <div class="col-auto mx-auto">
+                    <button class="btn btn-primary btn-join" type="button" data-dist='<?php echo htmlspecialchars($_SESSION['other_clubs'][$i]['id_club'])?>'>
                     Rejoindre
                     </button>
                 </div>
