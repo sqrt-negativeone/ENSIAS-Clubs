@@ -3,7 +3,10 @@ session_start();
 include "functions/index-page.php";
 //PREVENT RETURN BUTTON AFTER LOGOUT
 if (!isset($_SESSION['cne'])) {
-   header("Location:login.php");
+    if (!isset($_COOKIE["remember_me"])) header("Location:login.php");
+    else {
+        include 'functions/sign_in_cookie.php';
+    }
 }
 
 $statut=$_SESSION['statut'];

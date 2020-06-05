@@ -38,11 +38,9 @@
                                                 name="password" required=""></div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <div class="form-check"><input
-                                                        class="form-check-input custom-control-input" type="checkbox"
-                                                        id="formCheck-1"><label
-                                                        class="form-check-label custom-control-label"
-                                                        for="formCheck-1">Remember Me</label></div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input custom-control-input" name="remember" type="checkbox" id="remember">
+                                                    <label class="form-check-label custom-control-label" for="remember">Remember Me</label></div>
                                             </div>
                                         </div><button class="btn btn-primary btn-block text-white btn-user" name="submit" type="submit">Login</button>
                                         <hr><!-- <a class="btn btn-primary btn-block text-white btn-google btn-user"

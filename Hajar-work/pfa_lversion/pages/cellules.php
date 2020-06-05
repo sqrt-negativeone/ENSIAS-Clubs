@@ -3,7 +3,10 @@ session_start();
 //TODO: redirect to login if not logged in
 //TODO: redircte to dashboard if not member
 if (!isset($_SESSION['cne'])) {
-   header("Location:login.php");
+    if (!isset($_COOKIE["remember_me"])) header("Location:login.php");
+    else {
+        include 'functions/sign_in_cookie.php';
+    }
 }
  include 'functions/cell_tasks_respo.php';
  if ($_SESSION['statut'] != '') {

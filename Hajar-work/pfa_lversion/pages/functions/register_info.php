@@ -39,7 +39,7 @@
 
 					//ACCOUNT CREATED
 					$_SESSION['msg']="Votre compte a été créé avec succès.";
-					header("Location:../register.php");
+					header("Location:../login.php");
 				}
 				
 			}

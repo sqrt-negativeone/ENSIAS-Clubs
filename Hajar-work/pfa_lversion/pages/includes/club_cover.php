@@ -4,7 +4,7 @@
             <div class="col">
                 <?php
                 if ($cover != '') {
-                    echo ' style="width:80%;margin-left:auto;margin-right:auto;background-image: url(data:image/jpeg;base64,' . base64_encode($cover) . ');;background-size: cover;background-repeat: no-repeat;padding: 96px 0 0;background-position: center center;">
+                    echo '<div id="cover" style="width:80%;margin-left:auto;margin-right:auto;background-image: url(data:image/jpeg;base64,' . base64_encode($cover) . ');;background-size: cover;background-repeat: no-repeat;padding: 96px 0 0;background-position: center center;">
                         </div>';
                 } else {
                     echo '<div class="col-xl-12" style="height:200px; text-align:center; font-size:20px;">Image du club non disponible.</div>';

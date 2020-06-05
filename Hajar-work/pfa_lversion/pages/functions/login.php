@@ -19,6 +19,20 @@
                 $_SESSION['photo']=$row['photo'];
                 $_SESSION['cne']=$row['cne'];
                 $_SESSION['code_apoge']=$row['code_apoge'];
+                //STORE A COOKIE IN USER'S BROWSER IF HE CHOOSE REMEMBER ME OPTION
+                if (isset($_POST['remember'])){
+                    //CREATE COOKIE VALUE
+                    $rand_val=md5(time().$row["mpass"]);
+                    $cookie_val=$row["cne"].':'.$rand_val;
+                    //REMEMBER FOR A MONTH
+                    $expire=30*86400;
+                    //SET THE COOKIE
+                    setcookie("remember_me",$cookie_val,$expire,"/");
+                    //UPDATE THE COOKIE IN THE DB
+                    $sql="update etudiant set cookie_val=? where (cne=? or code_apoge=?)";
+                    $stmt=$pdo->prepare($sql);
+                    $stmt->execute([$cookie_val,$row["cne"],$row["code_apoge"]]);
+                }
                 header("Location: ../index.php");
             }else{
                 //ONE OR BOTH THE CREDENTIALS IS FALSE
