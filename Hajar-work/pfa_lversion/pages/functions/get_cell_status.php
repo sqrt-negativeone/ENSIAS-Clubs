@@ -1,6 +1,5 @@
 <?php 
-    //TODO: get user status in the cellule from db
-	require_once '../../../../pfa_db_connection/connexion.php'; 
+
 
 	$_SESSION['id_club_for_event'] = $_GET['i'];
 	$_SESSION['statut'] = '';

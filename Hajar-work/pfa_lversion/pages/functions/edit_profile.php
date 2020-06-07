@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include '../../../../../pfa_db_connection/connexion.php';
+include '../../connect.php';
 
 if (isset($_POST['submit_pic'])) {
 	$photo = file_get_contents($_FILES['pic']['tmp_name']);

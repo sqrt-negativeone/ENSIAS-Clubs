@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-include_once "functions/get_cell_status.php";
-$statut = $_SESSION['statut'];
-
+require_once '../connect.php';
 $is_connected = false;
 if (isset($_SESSION['cne'])) {
     $is_connected = true;
@@ -18,7 +16,7 @@ if (isset($_SESSION['cne'])) {
     if ($stmt->rowCount() == 1) {
         $row = $stmt->fetch();
         //CHECK IF VALIDE COOKIE
-        if ($row["cookie_val"] === $hash) {
+        if ($row["val_cookie"] == $_COOKIE["remember_me"]) {
             //SET USER DATA
             $_SESSION['nom'] = $row['nom'];
             $_SESSION['prenom'] = $row['prenom'];
@@ -26,19 +24,21 @@ if (isset($_SESSION['cne'])) {
             $_SESSION['photo'] = $row['photo'];
             $_SESSION['cne'] = $row['cne'];
             $_SESSION['code_apoge'] = $row['code_apoge'];
+            include 'functions/index-page.php';
             //CHANGE THE HASH VALUE
             $rand_val = md5(time() . $row["mpass"]);
-            $cookie_val = $row["cne"] . ':' . $rand_val;
+            $val_cookie = $row["cne"] . ':' . $rand_val;
             $expire = 30 * 86400;
-            setcookie("remember_me", $cookie_val, $expire, "/");
-            $sql = "update etudiant set cookie_val=? where (cne=? or code_apoge=?)";
+            setcookie("remember_me", $val_cookie,time()+ $expire, "/");
+            $sql = "update etudiant set val_cookie=? where (cne=? or code_apoge=?)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute([$cookie_val, $row["cne"], $row["code_apoge"]]);
-
+            $stmt->execute([$val_cookie, $row["cne"], $row["code_apoge"]]);
             $is_connected=true;
         }
     }
 }
+include_once "functions/get_cell_status.php";
+$statut = $_SESSION['statut'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,7 +58,7 @@ if (isset($_SESSION['cne'])) {
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-color: #F8F9FC;">
     <div id="wrapper">
         <!--will be visible for logged in users-->
         <?php
@@ -70,9 +70,7 @@ if (isset($_SESSION['cne'])) {
         } else {
             include '../includes/nav.php';
         }
-        ?>
-
-        <?php
+        
         if ($is_connected) echo '<div class="d-flex flex-column" id="content-wrapper">';
         else echo '<div class="d-flex flex-column" id="content-wrapper" style="margin-top: 100px;width: 900px;margin-right: auto;margin-left: auto;">'
         ?>
@@ -180,12 +178,13 @@ if (isset($_SESSION['cne'])) {
                     </div>
                 </div>
                 <!--this section will list the club members-->
+                <?php if (count($_SESSION['resposC'])>0){ ?>
                 <div class="row" >
                     <div class="col-xl-12" >
                         <div class="row">
                             <div class="col" data-aos="zoom-in-up">
                                 <div>
-                                    <h1>RESPONSABLES DES CELLULES</h1>
+                                    <h3>RESPONSABLES DES CELLULES</h3>
                                 </div>
                             </div>
                         </div>
@@ -194,6 +193,7 @@ if (isset($_SESSION['cne'])) {
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
 

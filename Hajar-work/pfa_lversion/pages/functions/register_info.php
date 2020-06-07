@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	require_once '../../../../../pfa_db_connection/connexion.php'; 
+	require_once '../../connect.php'; 
 	//$pdo->quote => empêcher les injections SQL
 	//REGISTER 
 	if (isset($_POST['register'])) {

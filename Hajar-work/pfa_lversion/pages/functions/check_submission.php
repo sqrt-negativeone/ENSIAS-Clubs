@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../../../../pfa_db_connection/connexion.php'; 
+require_once '../../connect.php'; 
 if (isset($_POST['check_task'])) {
 	$etat = 'V';
 	$check_submit = "update tache_assignee set etat = ?, remarque = ? where id_tache = ? and cne = ?";

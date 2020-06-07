@@ -1,5 +1,5 @@
 <?php 
-include '../../../../pfa_db_connection/connexion.php';
+include '../connect.php';
 
 //GET MEMBERSHIP REQUESTS FOR RESPO AND PRESIDENT
 //FIND OUT IF PRESIDENT

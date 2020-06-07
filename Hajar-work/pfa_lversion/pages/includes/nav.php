@@ -1,5 +1,5 @@
 <?php 
-include '../../../../pfa_db_connection/connexion.php';
+include '../connect.php';
 
 //GET AL CLUBS TO EMBED LIINKS TO THEIR PAGES
     $sql_all="select * from club";

@@ -1,6 +1,6 @@
 <?php 
  //TODO: get the data about events from db
-    require_once '../../../../pfa_db_connection/connexion.php';
+    require_once '../connect.php';
     $sql_events="select * from organisation join evenement using(id_event) join 
     club using (id_club)";
     $stmt_events=$pdo->prepare($sql_events);

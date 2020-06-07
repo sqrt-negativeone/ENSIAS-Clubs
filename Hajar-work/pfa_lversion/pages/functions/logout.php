@@ -1,10 +1,15 @@
 <?php 
 	session_start();
-	$_SESSION=array();
-	session_destroy();	
+	require_once '../../connect.php';
 	//DESTROY COOKIE IF SET
 	if (isset($_COOKIE["remember_me"])){
-		setcookie("remember_me","",time()-60);
+		unset($_COOKIE['remember_me']);
+		setcookie("remember_me","",time()-3600);
+		$sql = "update etudiant set val_cookie=NULL where (cne=? or code_apoge=?)";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute([$_SESSION['cne'],$_SESSION['code_apoge']]);
 	}
-	header("Location:../login.php");
+	$_SESSION=array();
+	session_destroy();
+	header("Location:../../index.php");
  ?>

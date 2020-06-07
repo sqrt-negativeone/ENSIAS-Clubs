@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once '../../../../../pfa_db_connection/connexion.php'; 
+require_once '../../connect.php'; 
 
 if (isset($_POST['submit_suggest'])) {
 	$nature = $_POST['nature'];

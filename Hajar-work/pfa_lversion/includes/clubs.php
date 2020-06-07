@@ -6,15 +6,17 @@
         </div>
         <?php
         foreach ($clubs as $club) {
-            if ($club['photo']===null) continue;
+            if ($club['photo']===null && $club['texte_desc']===null) continue;
+            $cover="data:image/*;base64,".base64_encode($club['photo']);
             $club_name = $club['nom_club'];
-            $discreption =$club['discreption'];
+            $club_acro = $club['acro_club'];
+            $discreption =$club['texte_desc'];
             $id=$club['id_club'];
             $photo=$club['photo'];
-            $href = "/pages/clubs.php?target=".$club_name."&i=".$id;
+            $href = "/pages/clubs.php?target=".$club_acro."&i=".$id;
         ?>
-            <div class="row align-items-center" style="margin-bottom: 1rem;">
-                <div class="col-md-6"><img class="img-thumbnail" src=<?php echo htmlspecialchars($photo) ?>></div>
+            <div class="row align-items-center" style="margin: 3rem 0;">
+                <div class="col-md-6"><img class="img-thumbnail" src=<?php echo $cover ?>></div>
                 <div class="col-md-6">
                     <h3><?php echo htmlspecialchars(strtoupper($club_name)) ?></h3>
                     <div class="getting-started-info">

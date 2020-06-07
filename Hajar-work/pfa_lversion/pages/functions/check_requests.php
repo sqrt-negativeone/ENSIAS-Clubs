@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include '../../../../../pfa_db_connection/connexion.php';
+include '../../connect.php';
 
 if (isset($_POST['validate'])) {
 	$cne = $_POST['cne'];

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 //SET NEW CLUB PRESIDENT
-require_once '../../../../../pfa_db_connection/connexion.php'; 
+require_once '../../connect.php'; 
 if (isset($_POST['submit_pres']) and isset($_POST['new_president'])) {
 	if ($_SESSION['presidentC']['cne'] != $_POST['new_president']) {
 		//SET DATE_P_FIN FOR THE OLD PRESIDENT

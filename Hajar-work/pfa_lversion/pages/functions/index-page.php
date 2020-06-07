@@ -1,5 +1,5 @@
 <?php 
-    require_once '../../../../pfa_db_connection/connexion.php'; 
+    require_once '../connect.php'; 
 
     $_SESSION['statut'] = '';
     //GET ADEI PRESIDENT DATA
@@ -46,7 +46,7 @@
 
 <?php //session_start(); ?>
 <?php 
-   //  require_once '../../../../../pfa_db_connection/connexion.php'; 
+   //  require_once '../../connect.php'; 
    //  //GET ADEI PRESIDENT DATA
    //  $acro_club='adei';
    //  $sql_p_adei="select cne from president join club using(id_club) where acro_club=? and date_p_fin is null";

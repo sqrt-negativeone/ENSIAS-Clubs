@@ -1,6 +1,6 @@
 <?php
    	session_start();
-	require_once '../../../../../pfa_db_connection/connexion.php';
+	require_once '../../connect.php';
 
 	//DISPLAY THE CELLS OF THE CLUB FOR THE USER TO CHOOSE FROM
 	if (isset($_POST['id_club'])) {

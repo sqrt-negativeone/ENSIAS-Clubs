@@ -1,6 +1,6 @@
 <?php session_start() ?>
 <?php 
-    include '../../../../../pfa_db_connection/connexion.php';
+    include '../../connect.php';
     if (isset($_POST['submit']) && isset($_POST['email']) && isset($_POST['password'])) {
         $sql="select * from etudiant 
               where email=?";
@@ -23,15 +23,15 @@
                 if (isset($_POST['remember'])){
                     //CREATE COOKIE VALUE
                     $rand_val=md5(time().$row["mpass"]);
-                    $cookie_val=$row["cne"].':'.$rand_val;
+                    $val_cookie=$row["cne"].':'.$rand_val;
                     //REMEMBER FOR A MONTH
                     $expire=30*86400;
                     //SET THE COOKIE
-                    setcookie("remember_me",$cookie_val,$expire,"/");
+                    setcookie("remember_me",$val_cookie,time()+$expire,"/");
                     //UPDATE THE COOKIE IN THE DB
-                    $sql="update etudiant set cookie_val=? where (cne=? or code_apoge=?)";
+                    $sql="update etudiant set val_cookie=? where (cne=? or code_apoge=?)";
                     $stmt=$pdo->prepare($sql);
-                    $stmt->execute([$cookie_val,$row["cne"],$row["code_apoge"]]);
+                    $stmt->execute([$val_cookie,$row["cne"],$row["code_apoge"]]);
                 }
                 header("Location: ../index.php");
             }else{

@@ -1,5 +1,4 @@
 <?php
-//get club events from db
 $respos = $_SESSION['resposC'];
 for ($i = 0; $i < count($respos); $i++) {
     $username = strtoupper($_SESSION['resposC'][$i]['nom']) . " " . ucfirst($_SESSION['resposC'][$i]['prenom']);

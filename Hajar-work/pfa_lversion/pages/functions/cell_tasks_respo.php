@@ -13,7 +13,7 @@ if (!isset($_SESSION['cne'])) {
 		//MSG NOT A MEMBER OF THIS CELL
 		header("Location:../404.php");
 	}else{
-		require_once '../../../../pfa_db_connection/connexion.php'; 
+		require_once '../connect.php'; 
 	    $sql_ncon="select * from responsable join etudiant using(cne) where id_cellule=? and date_r_fin is null";
 
 	    $ncon_club=$pdo->prepare($sql_ncon);

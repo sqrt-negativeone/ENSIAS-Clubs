@@ -1,3 +1,4 @@
+<?php require_once 'connect.php'?>
 <!DOCTYPE html>
 <html>
 
@@ -33,9 +34,9 @@
                 <div class="col-sm-3">
                     <h5>Get started</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="index.html">Sign up</a></li>
-                        <li><a href="pages/login.html">Login</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="pages/register.php">Sign up</a></li>
+                        <li><a href="pages/login.php">Login</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-3">
@@ -56,9 +57,10 @@
     <script src="assets/js/script.min.js"></script>
     <script>
         $(document).ready(()=>{
-            $("#carousel-img").height(2*cover.width()/3);
+            var ev=$(".carousel-img");
+            ev.height(2*ev.width()/3);
             window.onresize=()=>{
-               $("#carousel-img").height(2*cover.width()/3);
+                ev.height(2*ev.width()/3);
             }
         })
         

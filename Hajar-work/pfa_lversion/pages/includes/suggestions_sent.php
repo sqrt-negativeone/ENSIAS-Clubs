@@ -1,5 +1,5 @@
 <?php 
-include '../../../../pfa_db_connection/connexion.php';
+include '../connect.php';
 
 $sql_ = "select * from avis_etudiant join club using (id_club)  where cne = ? ";
 $stmt_ = $pdo -> prepare($sql_);

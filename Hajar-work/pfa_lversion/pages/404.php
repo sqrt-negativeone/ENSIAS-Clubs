@@ -1,4 +1,41 @@
-<?php session_start() ?>
+<?php session_start();
+require_once '../connect.php';
+$is_connected = false;
+if (isset($_SESSION['cne'])) {
+    $is_connected = true;
+}elseif (isset($_COOKIE['remember_me'])) {
+    //GET THE COOKIE VALUE
+    list($user_cne, $hash) = explode(':', $_COOKIE["remember_me"]);
+    //LOAD USER DATA
+    $sql = "select * from etudiant where cne=?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$user_cne]);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() == 1) {
+        $row = $stmt->fetch();
+        //CHECK IF VALIDE COOKIE
+        if ($row["val_cookie"] == $_COOKIE["remember_me"]) {
+            //SET USER DATA
+            $_SESSION['nom'] = $row['nom'];
+            $_SESSION['prenom'] = $row['prenom'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['photo'] = $row['photo'];
+            $_SESSION['cne'] = $row['cne'];
+            $_SESSION['code_apoge'] = $row['code_apoge'];
+            include 'functions/index-page.php';
+            //CHANGE THE HASH VALUE
+            $rand_val = md5(time() . $row["mpass"]);
+            $val_cookie = $row["cne"] . ':' . $rand_val;
+            $expire = 30 * 86400;
+            setcookie("remember_me", $val_cookie,time()+ $expire, "/");
+            $sql = "update etudiant set val_cookie=? where (cne=? or code_apoge=?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$val_cookie, $row["cne"], $row["code_apoge"]]);
+            $is_connected=true;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -23,105 +60,23 @@
         if (isset($_SESSION['cne'])){
                 $select="none";
                 include 'includes/nav.php';
+        }else {
+            include '../includes/nav.php';
         }
+        if ($is_connected) echo '<div class="d-flex flex-column" id="content-wrapper">';
+        else echo '<div class="d-flex flex-column" id="content-wrapper" style="margin-top: 100px;width: 900px;margin-right: auto;margin-left: auto;">'
          ?>
-        <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
-                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
-                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <form
-                            class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
-                                    placeholder="Search for ...">
-                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i
-                                            class="fas fa-search"></i></button></div>
-                            </div>
-                        </form>
-                        <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
-                                    data-toggle="dropdown" aria-expanded="false" href="#"><i
-                                        class="fas fa-search"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu"
-                                    aria-labelledby="searchDropdown">
-                                    <form class="form-inline mr-auto navbar-search w-100">
-                                        <div class="input-group"><input class="bg-light form-control border-0 small"
-                                                type="text" placeholder="Search for ...">
-                                            <div class="input-group-append"><button class="btn btn-primary py-0"
-                                                    type="button"><i class="fas fa-search"></i></button></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
-                                        data-toggle="dropdown" aria-expanded="false" href="#"><span
-                                            class="badge badge-danger badge-counter">3+</span><i
-                                            class="fas fa-bell fa-fw"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
-                                        role="menu">
-                                        <h6 class="dropdown-header">NoTIFICATIONS</h6>
-                                        <a class="d-flex align-items-center dropdown-item" href="#">
-                                            <div class="mr-3">
-                                                <div class="bg-primary icon-circle"><i
-                                                        class="fas fa-file-alt text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 12, 2019</span>
-                                                <p>A new monthly report is ready to download!</p>
-                                            </div>
-                                        </a>
-                                        <a class="d-flex align-items-center dropdown-item" href="#">
-                                            <div class="mr-3">
-                                                <div class="bg-success icon-circle"><i
-                                                        class="fas fa-donate text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 7, 2019</span>
-                                                <p>$290.29 has been deposited into your account!</p>
-                                            </div>
-                                        </a>
-                                        <a class="d-flex align-items-center dropdown-item" href="#">
-                                            <div class="mr-3">
-                                                <div class="bg-warning icon-circle"><i
-                                                        class="fas fa-exclamation-triangle text-white"></i></div>
-                                            </div>
-                                            <div><span class="small text-gray-500">December 2, 2019</span>
-                                                <p>Spending Alert: We've noticed unusually high spending for your
-                                                    account.</p>
-                                            </div>
-                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All
-                                            Notifications</a>
-                                    </div>
-                                </div>
-                            </li>
-                            <div class="d-none d-sm-block topbar-divider"></div>
-                            <li class="nav-item dropdown no-arrow" role="presentation">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
-                                        data-toggle="dropdown" aria-expanded="false" href="#"><span
-                                            class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img
-                                            class="border rounded-circle img-profile"
-                                            src="assets/img/avatars/avatar1.jpeg"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
-                                        <a class="dropdown-item" role="presentation" href="#"><i
-                                                class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a
-                                            class="dropdown-item" role="presentation" href="#"><i
-                                                class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Settings</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation"
-                                            href="#"><i
-                                                class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <?php if ($is_connected) include 'includes/user_nav.php' ?>
                 <div class="container-fluid">
                     <div class="text-center mt-5">
                         <div class="error mx-auto" data-text="404">
                             <p class="m-0">404</p>
                         </div>
                         <p class="text-dark mb-5 lead">Page Not Found</p>
-                        <p class="text-black-50 mb-0">It looks like you found a glitch in the matrix...</p><a
-                            href="/">← Back to Dashboard</a>
+                        <p class="text-black-50 mb-0">It looks like you found a glitch in the matrix...</p>
+                        <?php if ($is_connected) echo '<a href="/pages">← Back to Dashboard</a>';
+                        else ?> <a href="/">← Back to Home Page</a>
                     </div>
                 </div>
             </div>

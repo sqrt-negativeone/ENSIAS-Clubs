@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once '../../../../../pfa_db_connection/connexion.php'; 
+require_once '../../connect.php'; 
 if (isset($_POST['submit_dif']) or isset($_POST['submit_sel'])) {
 
 	$_SESSION['context'] = 'Création de tâche';

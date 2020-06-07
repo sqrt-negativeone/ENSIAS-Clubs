@@ -1,6 +1,6 @@
 <?php session_start() ?>
 <?php 
-    include '../../../../../pfa_db_connection/connexion.php';
+    include '../../connect.php';
     if (isset($_POST['submit']) && isset($_POST['email']) && isset($_POST['password'])) {
         $sql="select * from etudiant 
               where email=?";

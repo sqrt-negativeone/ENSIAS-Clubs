@@ -8,41 +8,50 @@
                 <form method="post" action="functions/treat_suggest.php">
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-4" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Nature&nbsp;</label></div>
+                            <div class="col-4" style="width: auto;"><label class="col-form-label">Nature&nbsp;</label></div>
                             <div class="col-8"><select class="form-control" name="nature" required="">
                                     <optgroup label="Nature de l'intervention">
                                         <option class="form-control" value="PL">Plainte</option>
                                         <option class="form-control" value="SUG">Suggestion</option>
                                     </optgroup>
-                                </select></div>
+                                </select>
+                            </div>
                         </div>
+                    </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Sujet</label></div>
+                            <div class="col-4"><label class="col-form-label">Sujet</label></div>
                             <div class="col-8"><input class="form-control" type="text" name="sujet" required=""></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Destination</label></div>
+                            <div class="col-4"><label class="col-form-label">Destination</label></div>
                             <div class="col-8">
                                 <select class="form-control" name="dest" required="">
                                     <optgroup label="Club destinataire">
-                                <?php 
-                                    for ($i=0; $i < count($list_all_clubs) ; $i++) {
-                                 ?>
-                                 <option class="form-control" value="<?php echo $list_all_clubs[$i]['id_club'] ?>"><?php echo $list_all_clubs[$i]['acro_club']  ?></option>
-                                <?php } ?>
+                                        <?php
+                                        for ($i = 0; $i < count($list_all_clubs); $i++) {
+                                        ?>
+                                            <option class="form-control" value="<?php echo $list_all_clubs[$i]['id_club'] ?>"><?php echo $list_all_clubs[$i]['acro_club']  ?></option>
+                                        <?php } ?>
+                                    </optgroup>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-row">
-                            <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Description</label>
-                            </div>
+                            <div class="col-4"><label class="col-form-label">Description</label></div>
                             <div class="col-8"><textarea class="form-control" name="descr" required=""></textarea></div>
                         </div>
-                    </div><input class="btn btn-primary" type="submit" name="submit_suggest" value="Envoyer" style="margin-left: 40%;"></input>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <input class="btn btn-primary" type="submit" name="submit_suggest" value="Envoyer"></input>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>

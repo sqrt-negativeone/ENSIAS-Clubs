@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once '../../../../../pfa_db_connection/connexion.php';
+require_once '../../connect.php';
 	//CHANGE CLUB SETTINGS
 	if (isset($_POST['submit_set_club'])) {
 		//TRIM 

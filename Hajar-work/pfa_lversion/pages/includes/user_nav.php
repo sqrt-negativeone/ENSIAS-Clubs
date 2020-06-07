@@ -30,10 +30,15 @@
 
             <?php 
                 //TODO: connect to server and get the data about notifications
-                $members=$notifs['membership'];
-                $sug=$notifs['suggests'];
-                // $mes_sugs=$notifs['mes_suggests'];
-                $count = count($members)+count($sug);
+                $count=0;
+                if (isset($notifs['membership'])){
+                    $members=$notifs['membership'];
+                    $count+=count($members);
+                }
+                if (isset($notifs['membership'])) {
+                    $sug=$notifs['suggests'];
+                    $count+=count($sug);
+                }
             ?>
             <li class="nav-item dropdown no-arrow mx-1" role="presentation">
                 <div class="nav-item dropdown no-arrow">
@@ -44,7 +49,7 @@
                     <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in" role="menu">
                         <h6 class="dropdown-header">NOTIFICATIONS</h6>
                         <?php 
-                            for ($i=0;$i<count($members);$i++){
+                            for ($i=0;isset($members) && $i<count($members);$i++){
                                 $date=$members[$i]['date_i_deb'];
                                 $avatar="data:image/*;base64,".base64_encode($members[$i]['photo']);
                                 if ($members[$i]['photo'] == '') {
@@ -59,7 +64,7 @@
                         ?>
 
                         <?php 
-                            for ($i=0;$i<count($sug);$i++){
+                            for ($i=0;isset($sug) && $i<count($sug);$i++){
                                 $date=$sug[$i]['date_avis'];
                                 
                                 if ($sug[$i]['photo'] == '') {

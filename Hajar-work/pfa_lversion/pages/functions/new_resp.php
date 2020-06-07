@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-require_once '../../../../../pfa_db_connection/connexion.php'; 
+require_once '../../connect.php'; 
 
 if (isset($_POST['submit_resp']) and isset($_POST['new_resp'])) {
     //date_i_fin IS NO LONGER NULL -> SYSDATE
