@@ -1,4 +1,40 @@
-<?php session_start() ?>
+<?php require_once '../../../pfa_db_connection/connexion.php';
+session_start();
+if (!isset($_SESSION['cne'])) {
+    if (isset($_COOKIE["remember_me"])) {
+        //GET THE COOKIE VALUE
+        list($user_cne, $hash) = explode(':', $_COOKIE["remember_me"]);
+        //LOAD USER DATA
+        $sql = "select * from etudiant where cne=?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_cne]);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        if ($stmt->rowCount() == 1) {
+            $row = $stmt->fetch();
+            //CHECK IF VALIDE COOKIE
+            if ($row["val_cookie"] == $_COOKIE["remember_me"]) {
+                //SET USER DATA
+                $_SESSION['nom'] = $row['nom'];
+                $_SESSION['prenom'] = $row['prenom'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['photo'] = $row['photo'];
+                $_SESSION['cne'] = $row['cne'];
+                $_SESSION['code_apoge'] = $row['code_apoge'];
+                include 'pages/functions/index-page.php';
+                //CHANGE THE HASH VALUE
+                $rand_val = md5(time() . $row["mpass"]);
+                $val_cookie = $row["cne"] . ':' . $rand_val;
+                $expire = 30 * 86400;
+                setcookie("remember_me", $val_cookie, time() + $expire, "/");
+                $sql = "update etudiant set val_cookie=? where (cne=? or code_apoge=?)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$val_cookie, $row["cne"], $row["code_apoge"]]);
+                $is_connected = true;
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -17,11 +53,10 @@
 <body>
 
     <!--nav -->
-    <?php 
+    <?php
     include 'includes/clubs_events_index.php';
-    include 'includes/nav.php';
-     ?>
-    
+    include 'includes/nav.php' ?>
+
     <!--main-->
     <main class="page landing-page">
         <?php include 'includes/background-img.php' ?>
@@ -37,8 +72,8 @@
                 <div class="col-sm-3">
                     <h5>Get started</h5>
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="register.php">Sign up</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="pages/register.php">Sign up</a></li>
                         <li><a href="pages/login.php">Login</a></li>
                     </ul>
                 </div>
@@ -59,14 +94,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/script.min.js"></script>
     <script>
-        $(document).ready(()=>{
+        $(document).ready(() => {
             var ev = $(".carousel-img");
-            ev.height(2*ev.width()/3);
-            window.onresize=()=>{
-               ev.height(2*ev.width()/3);
+            ev.height(2 * ev.width() / 3);
+            window.onresize = () => {
+                ev.height(2 * ev.width() / 3);
             }
-        });
-
+        })
     </script>
 </body>
 

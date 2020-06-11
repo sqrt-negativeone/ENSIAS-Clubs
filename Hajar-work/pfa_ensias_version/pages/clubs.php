@@ -1,13 +1,45 @@
 <?php
 session_start();
 
-include_once "functions/get_cell_status.php";
-$statut = $_SESSION['statut'];
-
+require_once '../../../../pfa_db_connection/connexion.php';
 $is_connected = false;
 if (isset($_SESSION['cne'])) {
     $is_connected = true;
+} elseif (isset($_COOKIE['remember_me'])) {
+    //GET THE COOKIE VALUE
+    list($user_cne, $hash) = explode(':', $_COOKIE["remember_me"]);
+    //LOAD USER DATA
+    $sql = "select * from etudiant where cne=?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$user_cne]);
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    if ($stmt->rowCount() == 1) {
+        $row = $stmt->fetch();
+        //CHECK IF VALIDE COOKIE
+        if ($row["val_cookie"] == $_COOKIE["remember_me"]) {
+            //SET USER DATA
+            $_SESSION['nom'] = $row['nom'];
+            $_SESSION['prenom'] = $row['prenom'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['photo'] = $row['photo'];
+            $_SESSION['cne'] = $row['cne'];
+            $_SESSION['code_apoge'] = $row['code_apoge'];
+            include 'functions/index-page.php';
+            //CHANGE THE HASH VALUE
+            $rand_val = md5(time() . $row["mpass"]);
+            $val_cookie = $row["cne"] . ':' . $rand_val;
+            $expire = 30 * 86400;
+            setcookie("remember_me", $val_cookie, time() + $expire, "/");
+            $sql = "update etudiant set val_cookie=? where (cne=? or code_apoge=?)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$val_cookie, $row["cne"], $row["code_apoge"]]);
+            $is_connected = true;
+        }
+    }
 }
+include_once "functions/get_cell_status.php";
+if (!isset($_SESSION['statut'])) $statut = '';
+else $statut = $_SESSION['statut'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,22 +60,19 @@ if (isset($_SESSION['cne'])) {
 </head>
 
 <body id="page-top">
-    <?php include "includes/display_alerts.php";?>
+    <?php include "includes/display_alerts.php"; ?>
     <div id="wrapper">
         <!--will be visible for logged in users-->
         <?php
         //TO-DO:MAINTAIN A NAVBAR FOR NOT LOGGED IN USERS AND RESTRICT THEIR NAVIGATION
         // if ($is_connected) {
-            $select = "none";
-            if ($is_connected) {
-                include 'includes/nav.php';
-            }else{
-                include 'includes/nav_main.php';
-            }
-            
-        // } else {
-        //     include '../includes/nav.php';
-        // }
+        $select = "none";
+        if ($is_connected) {
+            include 'includes/nav.php';
+        } else {
+            include '../includes/nav.php';
+        }
+
         ?>
 
         <?php
@@ -91,7 +120,7 @@ if (isset($_SESSION['cne'])) {
                 <?php
                 if (count($_SESSION['my_cells']) != 0) {
                 ?>
-                    <div class="row"  style="margin-bottom: 20px;margin-top: 20px;">
+                    <div class="row" style="margin-bottom: 20px;margin-top: 20px;">
                         <div class="col" data-aos="zoom-in-up">
                             <div class="card">
                                 <div class="card-header py-3">
@@ -114,7 +143,7 @@ if (isset($_SESSION['cne'])) {
                 if (count($_SESSION['other_cells']) != 0) {
                 ?>
                     <div class="row" style="margin-bottom: 20px;">
-                        <div class="col"  data-aos="zoom-in-up">
+                        <div class="col" data-aos="zoom-in-up">
                             <div class="card">
                                 <div class="card-header py-3">
                                     <h6 class="text-primary font-weight-bold m-0" style="font-size: 150%;">AUTRES
@@ -132,7 +161,7 @@ if (isset($_SESSION['cne'])) {
                 <?php } ?>
 
                 <!--here the upcoming events section-->
-                <div class="row" >
+                <div class="row">
                     <div class="col" data-aos="zoom-in-up">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -154,20 +183,22 @@ if (isset($_SESSION['cne'])) {
                     </div>
                 </div>
                 <!--this section will list the club members-->
-                <div class="row" >
-                    <div class="col-xl-12" >
-                        <div class="row">
-                            <div class="col" data-aos="zoom-in-up">
-                                <div>
-                                    <h1>RESPONSABLES DES CELLULES</h1>
+                <?php if (count($_SESSION['resposC']) > 0) { ?>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="row">
+                                <div class="col" data-aos="zoom-in-up">
+                                    <div>
+                                        <h3>RESPONSABLES DES CELLULES</h3>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row justify-content-center">
-                            <?php include 'includes/club_members.php' ?>
+                            <div class="row justify-content-center">
+                                <?php include 'includes/club_members.php' ?>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
             </div>
         </div>
 
@@ -200,12 +231,12 @@ if (isset($_SESSION['cne'])) {
     <script src="assets/js/choose_pres.js"></script>
     <script src="assets/js/Swiper-Slider-Card.js"></script>
     <script type="text/javascript">
-        $(document).ready(()=>{
+        $(document).ready(() => {
             //adjacing the cover height
             var cover = $("#cover");
-            cover.height(2*cover.width()/3);
-            window.onresize=()=>{
-                cover.height(2*cover.width()/3);
+            cover.height(2 * cover.width() / 3);
+            window.onresize = () => {
+                cover.height(2 * cover.width() / 3);
             }
         });
         $(window).on('load', function() {

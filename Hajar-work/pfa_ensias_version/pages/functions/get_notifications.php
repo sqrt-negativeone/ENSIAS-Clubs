@@ -39,8 +39,3 @@ $stmt = $pdo -> prepare($sql);
 $stmt -> execute([$_SESSION['cne'], $etat]);
 $stmt->setFetchMode(PDO::FETCH_ASSOC);
 $notifs['suggests'] = $stmt -> fetchAll();
-
-
-
-
-?>

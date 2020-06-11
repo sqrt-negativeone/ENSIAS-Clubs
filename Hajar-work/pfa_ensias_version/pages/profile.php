@@ -1,10 +1,13 @@
-<?php 
+<?php
 session_start();
 
 if (!isset($_SESSION['cne'])) {
-   header("Location:login.php");
+    if (!isset($_COOKIE["remember_me"])) header("Location:login.php");
+    else {
+        include 'functions/sign_in_cookie.php';
+    }
 }
- ?>
+?>
 <!DOCTYPE html>
 <html>
 
@@ -37,14 +40,14 @@ if (!isset($_SESSION['cne'])) {
                         <div class="col-lg-4">
                             <div class="card mb-3">
                                 <div class="card-body text-center shadow">
-                                    <?php 
+                                    <?php
                                     //GET PICTURE OR REPLACE IT
                                     if ($_SESSION['photo'] != '') {
-                                        $photo = "data:image/*;base64,".base64_encode($_SESSION['photo']);
-                                    }else{
+                                        $photo = "data:image/*;base64," . base64_encode($_SESSION['photo']);
+                                    } else {
                                         $photo = "../img/profile.png";
                                     }
-                                      ?>                                   
+                                    ?>
                                     <div class="border rounded-circle" style="height: 160px;background-image: url(<?php echo htmlspecialchars($photo); ?>);background-position: 50% 50%;background-size: cover;background-repeat: no-repeat;width: 160px;margin: 1rem auto;">
                                     </div>
                                     <form action="functions/edit_profile.php" method="POST" enctype="multipart/form-data">
@@ -69,14 +72,14 @@ if (!isset($_SESSION['cne'])) {
                                             <form method="POST" action="functions/edit_profile.php">
                                                 <div class="form-row">
                                                     <div class="col">
-                                                       <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="cne"><strong>CNE</strong></label>
-                                                            <input id="cne" disabled="" class="form-control" value="<?php echo htmlspecialchars($_SESSION['cne']); ?>" >
+                                                            <input id="cne" disabled="" class="form-control" value="<?php echo htmlspecialchars($_SESSION['cne']); ?>">
                                                         </div>
-                                                        <div class="form-group">    
+                                                        <div class="form-group">
                                                             <label for="code"><strong>Code apogé</strong></label>
                                                             <input id="code" disabled="" class="form-control" placeholder="<?php echo htmlspecialchars($_SESSION['code_apoge']); ?>">
-                                                        </div> 
+                                                        </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-group">
@@ -97,7 +100,7 @@ if (!isset($_SESSION['cne'])) {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-row">
+                                                <div class="form-row justify-content-center">
                                                     <div class="col-auto">
                                                         <div class="form-group">
                                                             <input class="btn btn-primary btn-sm" type="submit" name="submit_pro" value="Sauvegarder paramètres">
@@ -128,9 +131,9 @@ if (!isset($_SESSION['cne'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="assets/js/theme.js"></script>
     <script type="text/javascript">
-        $(window).on('load',function() {
-            var msg = <?php echo isset($_SESSION['msg'])?json_encode($_SESSION['msg']):''?>;
-            var context = <?php echo isset($_SESSION['context'])?json_encode($_SESSION['context']):''?>;
+        $(window).on('load', function() {
+            var msg = <?php echo isset($_SESSION['msg']) ? json_encode($_SESSION['msg']) : '' ?>;
+            var context = <?php echo isset($_SESSION['context']) ? json_encode($_SESSION['context']) : '' ?>;
             if (msg != '' && context != '') {
                 $('#alertModal').modal('show');
             }
@@ -139,9 +142,9 @@ if (!isset($_SESSION['cne'])) {
     </script>
 </body>
 
-<?php 
+<?php
 unset($_SESSION['msg']);
 unset($_SESSION['context']);
- ?>
+?>
+
 </html>
- 

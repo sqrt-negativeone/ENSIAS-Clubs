@@ -12,17 +12,17 @@ $n = count($events);
         if ($n > 0) {
         ?>
             <div class="carousel slide" data-ride="carousel" id="carousel-1">
-                   <?php
-                    $event_title = $events[0]['titre'];
-                    $discr = $events[0]['descr_event'];
-                    $date = $events[0]['date_fin'];
+                <?php
+                $event_title = $events[0]['titre'];
+                $discr = $events[0]['descr_event'];
+                $date = $events[0]['date_fin'];
 
-                    if ($events[0]['photo'] != '') {
-                        $pic = "data:image/*;base64,".base64_encode($events[0]['photo']);
-                    }else{
-                        $pic = "img/profile.png";
-                    }
-                    ?>
+                if ($events[0]['photo'] != '') {
+                    $pic = "data:image/*;base64," . base64_encode($events[0]['photo']);
+                } else {
+                    $pic = "img/profile.png";
+                }
+                ?>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
                         <img class="d-block w-100 carousel-img" src=<?php echo htmlspecialchars($pic) ?> alt="Event Image">
@@ -33,17 +33,17 @@ $n = count($events);
                         </div>
                     </div>
                     <?php
-                    for($i=1; $i<$n; $i++) {
+                    for ($i = 1; $i < $n; $i++) {
                         $event_title = $events[$i]['titre'];
                         $discr = $events[$i]['descr_event'];
                         $date = $events[$i]['date_fin'];
 
                         if ($events[$i]['photo'] != '') {
-                            $pic = "data:image/*;base64,".base64_encode($events[$i]['photo']);
-                        }else{
+                            $pic = "data:image/*;base64," . base64_encode($events[$i]['photo']);
+                        } else {
                             $pic = "img/profile.png";
                         }
-                       
+
                     ?>
                         <div class="carousel-item">
                             <img class="d-block w-100 carousel-img" src=<?php echo htmlspecialchars($pic) ?> alt="Event Image">

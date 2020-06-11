@@ -18,7 +18,7 @@
                                 </select>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div class="form-group">
                         <div class="form-row">
                             <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Sujet</label></div>
@@ -31,13 +31,13 @@
                             <div class="col-8">
                                 <select class="form-control" name="dest" required="">
                                     <optgroup label="Club destinataire">
-                                <?php 
-                                    for ($i=0; $i < count($list_all_clubs) ; $i++) {
-                                 ?>
-                                 <option class="form-control" value="<?php echo $list_all_clubs[$i]['id_club'] ?>"><?php echo $list_all_clubs[$i]['acro_club']  ?></option>
-                                <?php } ?>
-                            </optgroup>
-                        </select>
+                                        <?php
+                                        for ($i = 0; $i < count($list_all_clubs); $i++) {
+                                        ?>
+                                            <option class="form-control" value="<?php echo $list_all_clubs[$i]['id_club'] ?>"><?php echo $list_all_clubs[$i]['acro_club']  ?></option>
+                                        <?php } ?>
+                                    </optgroup>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                             <div class="col-8"><textarea class="form-control" name="descr" required=""></textarea></div>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-auto mx-auto">
                             <input class="btn btn-primary" type="submit" name="submit_suggest" value="Envoyer" style="margin-left: 40%;"></input>

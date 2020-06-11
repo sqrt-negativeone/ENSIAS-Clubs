@@ -1,7 +1,7 @@
-<?php 
-     include "functions/get_notifications.php";
-    //get the data about club requests from db
-    $notifs=$notifs['membership'];
+<?php
+include "functions/get_notifications.php";
+//get the data about club requests from db
+$notifs = $notifs['membership'];
 
 ?>
 
@@ -12,23 +12,23 @@
             <a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-4" href="#collapse-4" role="button">DEMANDES D'INSCRIPTION</a>
             <div class="collapse show" id="collapse-4" style="padding-top: 20px;padding-left: 10px;">
                 <div class="row">
-                    <?php 
-                    if ( count($notifs) == 0) {
-                     ?>
-                    <div class="card-body">
-                        Aucune demande d'inscription pour le moment.
-                    </div>
+                    <?php
+                    if (count($notifs) == 0) {
+                    ?>
+                        <div class="card-body">
+                            Aucune demande d'inscription pour le moment.
+                        </div>
                     <?php } ?>
                     <!--requests-->
-                    <?php for ($i =0;$i<count($notifs);$i++){ 
-                            $username=strtoupper($notifs[$i]['nom'])." ".ucfirst($notifs[$i]['prenom']);
-                            $cellule="Cellule : ".$notifs[$i]['intitule'];
-                             $avatar="data:image/*;base64,".base64_encode($notifs[$i]['photo']);
-                                if ($notifs[$i]['photo'] == '') {
-                                   $avatar = "../img/profile.png";
-                                }
+                    <?php for ($i = 0; $i < count($notifs); $i++) {
+                        $username = strtoupper($notifs[$i]['nom']) . " " . ucfirst($notifs[$i]['prenom']);
+                        $cellule = "Cellule : " . $notifs[$i]['intitule'];
+                        $avatar = "data:image/*;base64," . base64_encode($notifs[$i]['photo']);
+                        if ($notifs[$i]['photo'] == '') {
+                            $avatar = "../img/profile.png";
+                        }
                     ?>
-                        
+
                         <div class="col-md-6 col-xl-4 mb-4" data-aos="zoom-in-up">
                             <div class="card shadow border-left-primary py-2" style="width: 250px;margin-left: 10px;">
                                 <div class="card-body">
@@ -57,7 +57,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-auto"><a href="#"><img class="border rounded-circle img-profile" style="max-height: 50px; max-width: 50px;" src=<?php echo htmlspecialchars($avatar) ?>></a></div>
@@ -65,8 +65,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                    <?php }?>
+
+                    <?php } ?>
                 </div>
             </div>
         </div>

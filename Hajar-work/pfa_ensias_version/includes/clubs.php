@@ -6,26 +6,26 @@
         </div>
         <?php
         foreach ($clubs as $club) {
-            if ($club['photo']===null) continue;
+            if ($club['photo'] === null) continue;
             $acro_club = $club['acro_club'];
             $club_name = $club['nom_club'];
-            $description =$club['texte_desc'];
-            $id=$club['id_club'];
-            $photo="data:image/*;base64,".base64_encode($club['photo']);
-            $href = "pages/clubs.php?target=".$acro_club."&i=".$id;
+            $description = $club['texte_desc'];
+            $id = $club['id_club'];
+            $photo = "data:image/*;base64," . base64_encode($club['photo']);
+            $href = "pages/clubs.php?target=" . $acro_club . "&i=" . $id;
         ?>
             <div class="row align-items-center" style="margin-bottom: 1rem;">
                 <div class="col-md-6"><img class="img-thumbnail" src=<?php echo htmlspecialchars($photo) ?>></div>
                 <div class="col-md-6">
                     <h3><?php echo htmlspecialchars(strtoupper($club_name)) ?></h3>
-                   <?php 
-                   if ($description != '') {
-                   ?>
-                    <div class="getting-started-info">
-                        <p><?php echo htmlspecialchars($discreption) ?></p>
-                    </div>
-                   <?php                   
-                   }
+                    <?php
+                    if ($description != '') {
+                    ?>
+                        <div class="getting-started-info">
+                            <p><?php echo htmlspecialchars($discreption) ?></p>
+                        </div>
+                    <?php
+                    }
                     ?>
                     <a class="btn btn-outline-primary btn-lg" role="button" href=<?php echo htmlspecialchars($href) ?>>Savoir plus!</a>
                 </div>

@@ -7,7 +7,6 @@
                     <div class="col">
                         <div class="card" style="margin-bottom: 30px;">
                             <div class="card-body" style="padding-bottom: 0;">
-                                <!--TODO: implement the search feature-->
                                 <form>
                                     <div class="form-group">
                                         <div class="form-row">

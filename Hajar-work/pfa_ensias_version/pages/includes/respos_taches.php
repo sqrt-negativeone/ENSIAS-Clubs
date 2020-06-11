@@ -1,5 +1,4 @@
 <?php
-//TODO: get the tache informations from db
 $submissions = $_SESSION['submissions_task'];
 for ($i = 0; $i < count($submissions); $i++) {
     $tache_title=$submissions[$i]['titre_tache'];
@@ -14,7 +13,6 @@ for ($i = 0; $i < count($submissions); $i++) {
         <div class="col-12">
           <a href="" data-toggle="modal" data-target="#pdp-container" id="usr_rslt_out">
                 <img src="<?php echo htmlspecialchars($justif) ?>"alt="justif de le soumission" style="width: 100%;">
-                <!-- <object data="data:application/pdf;base64,<?php //echo base64_encode($justif) ?>" type="application/pdf" style="height:200px;width:60%"></object> -->
             </a>
            
         </div>   
@@ -47,9 +45,6 @@ for ($i = 0; $i < count($submissions); $i++) {
                     <div class="form-row">
                         <div class="col">
                             <input type="submit" class="btn btn-success" style="width: 100px;margin-left: 30%;" name="check_task" value="Valider">
-                               <!--  <span class="text-white-50 icon"><i class="fas fa-check"></i>
-                                </span>
-                                <span class="text-white text">Done</span> -->
                             </input>
                         </div>
                         
@@ -60,6 +55,3 @@ for ($i = 0; $i < count($submissions); $i++) {
     </div>
 </li>
 <?php } ?>
-
-      <!--   <div class="col-xl-12 offset-xl-0"><a class="btn btn-success btn-icon-split" role="button" style="width: 100px;margin-left: 40%;"><span class="text-white-50 icon"><i class="fas fa-check"></i></span><span class="text-white text">Done</span></a>
-                    </div> -->

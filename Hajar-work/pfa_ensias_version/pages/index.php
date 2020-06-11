@@ -1,12 +1,15 @@
-<?php 
-session_start(); 
-include "functions/index-page.php";
+<?php
+session_start();
+
 //PREVENT RETURN BUTTON AFTER LOGOUT
 if (!isset($_SESSION['cne'])) {
-   header("Location:login.php");
+    if (!isset($_COOKIE["remember_me"])) header("Location:login.php");
+    else {
+        include 'functions/sign_in_cookie.php';
+    }
 }
-
-$statut=$_SESSION['statut'];
+include "functions/index-page.php";
+$statut = $_SESSION['statut'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,11 +19,9 @@ $statut=$_SESSION['statut'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Dashboard</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
@@ -29,9 +30,9 @@ $statut=$_SESSION['statut'];
     <div id="wrapper">
         <?php include "includes/display_alerts.php"; ?>
         <!--The sidebar nav-->
-        <?php 
-            $select="dashboard";
-            include 'includes/nav.php';
+        <?php
+        $select = "dashboard";
+        include 'includes/nav.php';
         ?>
 
         <div class="d-flex flex-column" id="content-wrapper">
@@ -44,19 +45,19 @@ $statut=$_SESSION['statut'];
                     <div>
                         <h3 class="text-dark mb-1" style="font-size: 250%;">Dashboard</h3>
                     </div>
-                    <?php if ($_SESSION['statut']==='PA'){
+                    <?php if ($_SESSION['statut'] === 'PA') {
                     ?>
-                    <div class="row">
-                        <div class="col">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary m-0 font-weight-bold">CREER UN CLUB</h6>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="text-primary m-0 font-weight-bold">CREER UN CLUB</h6>
+                                    </div>
+                                    <?php include 'includes/create_club.php' ?>
                                 </div>
-                                <?php include 'includes/create_club.php'?>
                             </div>
                         </div>
-                    </div>
-                    <?php }?>
+                    <?php } ?>
                     <div class="row" style="margin-bottom: 30px;">
                         <div class="col">
                             <div class="card" data-aos="zoom-in-up">
@@ -65,7 +66,7 @@ $statut=$_SESSION['statut'];
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <?php include 'includes/my_clubs.php';?>
+                                        <?php include 'includes/my_clubs.php'; ?>
                                     </div>
                                 </div>
                             </div>
@@ -81,9 +82,9 @@ $statut=$_SESSION['statut'];
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                     <?php 
-                                     include 'includes/other_clubs.php'; 
-                                     ?>
+                                        <?php
+                                        include 'includes/other_clubs.php';
+                                        ?>
                                     </div>
                                 </div>
                             </div>
@@ -112,17 +113,18 @@ $statut=$_SESSION['statut'];
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/join.js"></script>
     <script type="text/javascript">
-        $(window).on('load', function(){
+        $(window).on('load', function() {
             var context = <?php echo json_encode($_SESSION['context']) ?>;
             var msg = <?php echo json_encode($_SESSION['msg']) ?>;
             if (msg != '' && context != '') {
-              $('#alertModal').modal('show');           
-            }  
+                $('#alertModal').modal('show');
+            }
         });
     </script>
 </body>
-<?php 
+<?php
 unset($_SESSION['msg']);
 unset($_SESSION['context']);
- ?>
+?>
+
 </html>

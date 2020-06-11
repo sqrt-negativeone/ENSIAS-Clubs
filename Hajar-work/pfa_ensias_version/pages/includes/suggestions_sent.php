@@ -1,13 +1,13 @@
-<?php 
+<?php
 include '../../../../pfa_db_connection/connexion.php';
 
 $sql_ = "select * from avis_etudiant join club using (id_club)  where cne = ? ";
-$stmt_ = $pdo -> prepare($sql_);
-$stmt_ -> execute([$_SESSION['cne']]);
+$stmt_ = $pdo->prepare($sql_);
+$stmt_->execute([$_SESSION['cne']]);
 $stmt_->setFetchMode(PDO::FETCH_ASSOC);
-$notifs['mes_suggests'] = $stmt_ -> fetchAll();
+$notifs['mes_suggests'] = $stmt_->fetchAll();
 
- ?>
+?>
 
 <div class="col">
     <div class="card shadow mb-4">
@@ -17,22 +17,21 @@ $notifs['mes_suggests'] = $stmt_ -> fetchAll();
         <div class="card-body" style="padding-right: 30px;">
             <!--the suggestion data-->
             <?php
-            //TODO: get data about suggestion from db
             $nb_sug = count($notifs['mes_suggests']);
             for ($i = 0; $i < $nb_sug; $i++) {
                 $acro = strtoupper($notifs['mes_suggests'][$i]['acro_club']);
                 $subject = $notifs['mes_suggests'][$i]['sujet'];
-                 if ($notifs['mes_suggests'][$i]['logo'] == '') {
+                if ($notifs['mes_suggests'][$i]['logo'] == '') {
                     $avatar = "../img/profile.png";
-                }else{
-                    $avatar = "data:image/*;base64,".base64_encode($notifs['mes_suggests'][$i]['logo']);
+                } else {
+                    $avatar = "data:image/*;base64," . base64_encode($notifs['mes_suggests'][$i]['logo']);
                 }
                 $suggestion = $notifs['mes_suggests'][$i]['descr'];
                 $remarque = $notifs['mes_suggests'][$i]['remarque'];
                 $date = $notifs['mes_suggests'][$i]['date_avis'];
                 if ($notifs['mes_suggests'][$i]['nature'] == 'PL') {
                     $nature = "Plainte";
-                }else{
+                } else {
                     $nature = "Suggestion";
                 }
 
@@ -48,26 +47,26 @@ $notifs['mes_suggests'] = $stmt_ -> fetchAll();
                     <div class="row justify-content-center">
                         <div class="col-auto m-auto" style="margin-top: 1rem;">
                             <p class="text-center" style="margin-bottom: -5px;margin-right: 1rem;"><?php echo htmlspecialchars($suggestion) ?><br><br></p>
-                            <span style="font-style: italic;">Nature : 
+                            <span style="font-style: italic;">Nature :
                                 <?php echo htmlspecialchars($nature) ?>
                             </span><br>
 
-                            État : 
-                            <?php 
-                                if ($notifs['mes_suggests'][$i]['etat'] == 'V') {
-                            ?>
-                            <span style="font-style: italic; color: green">Validée</span>
-                            <p> <?php echo $remarque; ?></p>
-                            <?php 
-                                }else{
-                            ?>
-                                    <span style="font-style: italic; color: red">En attente</span>
+                            État :
                             <?php
-                                }
+                            if ($notifs['mes_suggests'][$i]['etat'] == 'V') {
+                            ?>
+                                <span style="font-style: italic; color: green">Validée</span>
+                                <p> <?php echo $remarque; ?></p>
+                            <?php
+                            } else {
+                            ?>
+                                <span style="font-style: italic; color: red">En attente</span>
+                            <?php
+                            }
                             ?>
                             <br>
-                            Date d'envoi : 
-                           <span style="font-style: italic;"><?php echo htmlspecialchars($date) ?></span><br>
+                            Date d'envoi :
+                            <span style="font-style: italic;"><?php echo htmlspecialchars($date) ?></span><br>
                         </div>
                     </div>
                 </div>

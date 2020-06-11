@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include '../../../../../pfa_db_connection/connexion.php';
 
@@ -16,12 +16,12 @@ if (isset($_POST['validate'])) {
 
 	if ($s_validate_req->rowCount() == 0) {
 		$_SESSION['msg'] = "Erreur de validation du compte. Veuillez réessayer ultérieurement.";
-	}else{
+	} else {
 		$_SESSION['msg'] = "Membre ajouté avec succès.";
 	}
 
-	header("Location:".$_SERVER['HTTP_REFERER']);
-}elseif (isset($_POST['delete'])) {
+	header("Location:" . $_SERVER['HTTP_REFERER']);
+} elseif (isset($_POST['delete'])) {
 	$cne = $_POST['cne'];
 	$id_cellule = $_POST['id_cellule'];
 	$etat_insc = 'NV';
@@ -34,10 +34,9 @@ if (isset($_POST['validate'])) {
 
 	if ($s_delete_req->rowCount() == 0) {
 		$_SESSION['msg'] = "Erreur de suppression du compte. Veuillez réessayer ultérieurement.";
-	}else{
+	} else {
 		$_SESSION['msg'] = "Demande supprimée avec succès.";
 	}
 
-	header("Location:".$_SERVER['HTTP_REFERER']);
+	header("Location:" . $_SERVER['HTTP_REFERER']);
 }
- ?>

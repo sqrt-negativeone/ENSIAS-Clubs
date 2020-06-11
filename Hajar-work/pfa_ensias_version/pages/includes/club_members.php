@@ -1,5 +1,4 @@
 <?php
-//get club events from db
 $respos = $_SESSION['resposC'];
 for ($i = 0; $i < count($respos); $i++) {
     $username = strtoupper($_SESSION['resposC'][$i]['nom']) . " " . ucfirst($_SESSION['resposC'][$i]['prenom']);
@@ -20,7 +19,7 @@ for ($i = 0; $i < count($respos); $i++) {
                             <span style="font-size: 150%;"><?php echo htmlspecialchars($username)  ?></span></div>
                         <div class="text-dark font-weight-bold h5 mb-0"><span style="font-size: 100%;"><?php echo htmlspecialchars($cell)  ?></span></div>
                     </div>
-                    <div class="col-auto"><img class="border rounded-circle img-profile" style="max-height: 50px; max-width: 50px;" src=<?php echo $pic ?>></div>
+                    <div class="col-auto"><img class="border rounded-circle img-profile" height="50px" width="50px" src=<?php echo $pic ?>></div>
                 </div>
             </div>
         </div>

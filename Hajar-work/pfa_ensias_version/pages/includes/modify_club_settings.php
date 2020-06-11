@@ -1,7 +1,7 @@
-<?php 
-$clb_name=$n_club['nom_club'];
-$clb_descr=$n_club['texte_desc'];
-$clb_acro=$n_club['acro_club'];
+<?php
+$clb_name = $n_club['nom_club'];
+$clb_descr = $n_club['texte_desc'];
+$clb_acro = $n_club['acro_club'];
 ?>
 <div class="row">
     <div class="col" data-aos="zoom-in-up" style="margin-top: 10px;">
@@ -29,7 +29,7 @@ $clb_acro=$n_club['acro_club'];
                             <div class="col-8"><input type="file" accept="image/*" name="photo"></div>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <div class="form-row">
                             <div class="col-4"><label class="col-form-label" style="margin-left: 10%;">Logo du club</label></div>
                             <div class="col-8"><input type="file" accept="image/*" name="logo"></div>

@@ -1,7 +1,7 @@
-<?php 
-require_once '../../../../pfa_db_connection/connexion.php'; 
+<?php
+require_once '../../../../pfa_db_connection/connexion.php';
 
- ?>
+?>
 
 <div class="col">
     <div class="card shadow mb-4">
@@ -10,17 +10,16 @@ require_once '../../../../pfa_db_connection/connexion.php';
         </div>
         <div class="card-body" style="padding-right: 30px;">
             <?php
-            //TODO: get data about suggestion from db
             $nb_sug = count($notifs['suggests']);
             for ($i = 0; $i < $nb_sug; $i++) {
-                $username = strtoupper($notifs['suggests'][$i]['nom'])." ".ucfirst($notifs['suggests'][$i]['prenom']);
+                $username = strtoupper($notifs['suggests'][$i]['nom']) . " " . ucfirst($notifs['suggests'][$i]['prenom']);
                 $subject = $notifs['suggests'][$i]['sujet'];
                 if ($notifs['suggests'][$i]['photo'] == '') {
                     $avatar = "../img/profile.png";
-                }else{
-                    $avatar = "data:image/*;base64,".base64_encode($notifs['suggests'][$i]['photo']);
+                } else {
+                    $avatar = "data:image/*;base64," . base64_encode($notifs['suggests'][$i]['photo']);
                 }
-                
+
                 $suggestion = $notifs['suggests'][$i]['descr'];
                 $date = $notifs['suggests'][$i]['date_avis'];
             ?>
@@ -39,7 +38,7 @@ require_once '../../../../pfa_db_connection/connexion.php';
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-auto m-auto"><img class="border rounded-circle img-profile"  src=<?php echo htmlspecialchars($avatar) ?> /></div>
+                            <div class="col-auto m-auto"><img class="border rounded-circle img-profile" src=<?php echo htmlspecialchars($avatar) ?> /></div>
                         </div>
                         <div class="row">
                             <div class="col-xl-11 offset-xl-1" style="margin-top: 1rem;">
@@ -66,7 +65,7 @@ require_once '../../../../pfa_db_connection/connexion.php';
                         </div>
                     </div>
                 </div>
-                
+
             <?php } ?>
         </div>
     </div>

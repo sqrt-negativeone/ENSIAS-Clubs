@@ -1,15 +1,17 @@
 <?php
 session_start();
-//TODO: redirect to login if not logged in
-//TODO: redircte to dashboard if not member
-
-
- include 'functions/cell_tasks_respo.php';
- if ($_SESSION['statut'] != '') {
-      $cellule_status=$_SESSION['statut'];
- }else{
-     $cellule_status=$cell['statut'];
- }
+if (!isset($_SESSION['cne'])) {
+    if (!isset($_COOKIE["remember_me"])) header("Location:login.php");
+    else {
+        include 'functions/sign_in_cookie.php';
+    }
+}
+include 'functions/cell_tasks_respo.php';
+if ($_SESSION['statut'] != '') {
+    $cellule_status = $_SESSION['statut'];
+} else {
+    $cellule_status = $cell['statut'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,23 +43,23 @@ session_start();
 
                 <!--container-->
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1">Cellule : <?php echo htmlspecialchars($_GET['target']);?></h3>
+                    <h3 class="text-dark mb-1">Cellule : <?php echo htmlspecialchars($_GET['target']); ?></h3>
                     <!--this section will be visible for the club's president to change the cellule's responsable-->
 
-                        <div class="col-auto align-self-center">
-                            <div class="row">
-                                <div class="col">
-                                    <a class="btn btn-danger btn-icon-split" role="button" data-toggle="modal" data-target="#quitCell">
-                                        <span class="text-white-50 icon"><i class="fa fa-close"></i></span>
-                                        <span class="text-white text">Quitter</span>
-                                    </a>
-                                </div>
+                    <div class="col-auto align-self-center">
+                        <div class="row">
+                            <div class="col">
+                                <a class="btn btn-danger btn-icon-split" role="button" data-toggle="modal" data-target="#quitCell">
+                                    <span class="text-white-50 icon"><i class="fa fa-close"></i></span>
+                                    <span class="text-white text">Quitter</span>
+                                </a>
                             </div>
                         </div>
+                    </div>
                     </form>
-                    <?php 
-                        include 'includes/change_cell_resp.php';
-                     ?>
+                    <?php
+                    include 'includes/change_cell_resp.php';
+                    ?>
                     <!--visible for cellule members-->
                     <div class="row">
                         <div class="col-xl-6">
@@ -69,7 +71,7 @@ session_start();
                                         include 'includes/create_tache.php';
                                     }
                                     ?>
-                                    
+
                                 </div>
                             </div>
                             <!--the taches whith passed deadline are listed here-->
@@ -78,16 +80,6 @@ session_start();
                                     <div class="card shadow mb-4">
                                         <div class="card-header d-flex justify-content-between align-items-center">
                                             <h6 class="text-primary font-weight-bold m-0">HISTORIQUE DE MES TACHES</h6>
-                                            <!--TODO: implemetnt the filter -->
-                                           <!--  <div class="dropdown no-arrow">
-                                                <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
-                                                    <i class="fas fa-ellipsis-v text-gray-400"></i>
-                                                </button> -->
-                                                <!-- <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
-                                                    <p class="text-center dropdown-header">FILTER</p><button class="btn btn-light" type="button" style="width: 100%;">All</button><button class="btn btn-light" type="button" style="width: 100%;">Completed</button><button class="btn btn-light" type="button" style="width: 100%;">Missed</button><button class="btn btn-light" type="button" style="width: 100%;">Mes
-                                                        taches</button><button class="btn btn-light" type="button" style="width: 100%;">Par responsable</button>
-                                                </div> -->
-                                            <!-- </div> -->
                                         </div>
                                         <div class="card-body">
                                             <ul class="list-group list-group-flush">
@@ -108,18 +100,18 @@ session_start();
                                     <?php include 'includes/mes_taches.php' ?>
                                 </ul>
                             </div>
-                        <?php 
-                        if (strcmp($cellule_status, 'M') != 0) {
-                         ?>
-                            <div class="card shadow mb-4" data-aos="zoom-in-up">
-                                <div class="card-header py-3">
-                                    <h6 class="text-primary font-weight-bold m-0">SOUMISSIONS DES TACHES</h6>
+                            <?php
+                            if (strcmp($cellule_status, 'M') != 0) {
+                            ?>
+                                <div class="card shadow mb-4" data-aos="zoom-in-up">
+                                    <div class="card-header py-3">
+                                        <h6 class="text-primary font-weight-bold m-0">SOUMISSIONS DES TACHES</h6>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <?php include 'includes/respos_taches.php' ?>
+                                    </ul>
                                 </div>
-                                <ul class="list-group list-group-flush">
-                                    <?php include 'includes/respos_taches.php' ?>
-                                </ul>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
                             <!--visible for cellule responsabe, club president, and adei president, it shows member passed taches-->
                             <?php
                             if (strcmp($cellule_status, 'R') == 0 || strcmp($cellule_status, 'PC') == 0 || strcmp($cellule_status, 'PA') == 0) {
@@ -136,16 +128,16 @@ session_start();
                 include 'includes/user_tache_menu.php';
             }
             ?>
-            <?php 
+            <?php
             if (strcmp($cellule_status, 'PC') == 0 or strcmp($cellule_status, 'PA') == 0) {
                 include 'includes/choose_cell_resp_menu.php';
                 include 'includes/delete_cell_resp_menu.php';
             } ?>
             <!--this modal will popup when clicking on change the current responsable -->
-            
-            <?php 
+
+            <?php
             if (strcmp($cellule_status, 'PC') == 0 or strcmp($cellule_status, 'R') == 0) {
-                echo 
+                echo
                     '<div class="modal fade" role="dialog" tabindex="-1" id="pdp-container">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
@@ -156,14 +148,13 @@ session_start();
             } ?>
             <!-- pop-up modal submission image -->
 
-            <?php 
+            <?php
             if (strcmp($cellule_status, 'R') == 0 || strcmp($cellule_status, 'PC') == 0) {
                 include 'includes/select_mbr_task.php';
-                
             }
             include 'includes/user_tache_menu.php';
             include 'includes/make_sure_quit.php';
-             ?>
+            ?>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
@@ -185,7 +176,7 @@ session_start();
     <script src="assets/js/choose_resp.js"></script>
     <script src="assets/js/check_validity.js"></script>
     <script type="text/javascript">
-        $(window).on('load',function() {
+        $(window).on('load', function() {
             // body...
             var cfr = <?php echo json_encode($_SESSION['confirm']); ?>;
             if (cfr == 'yes') {
@@ -193,18 +184,18 @@ session_start();
             }
             var msg = <?php echo json_encode($_SESSION['msg']); ?>;
             var context = <?php echo json_encode($_SESSION['context']); ?>;
-            
+
             if (msg != '' && context != '') {
                 $('#alertModal').modal('show');
             }
-            
+
 
         });
     </script>
 </body>
-<?php 
+<?php
 unset($_SESSION['msg']);
 unset($_SESSION['context']);
- ?>
+?>
+
 </html>
- 

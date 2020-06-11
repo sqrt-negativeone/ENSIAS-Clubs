@@ -12,5 +12,3 @@
 	$stmt_events = $pdo -> prepare($sql_events);
 	$stmt_events ->execute([$nature]);
 	$events = $stmt_events -> fetchAll();
-	
- ?>

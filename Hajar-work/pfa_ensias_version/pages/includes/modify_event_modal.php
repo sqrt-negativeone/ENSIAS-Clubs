@@ -27,20 +27,16 @@
                             <div class="col-3" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Type&nbsp;</label></div>
                             <div class="col-8"><select class="form-control" name="type">
                                     <optgroup label="Type de l'évènement">
-                                        <option value="PR" 
-                                        <?php 
-                                        if ($nature == 'PR') {
-                                           echo "selected";
-                                        }
-                                         ?>
-                                       >Privé</option>
-                                        <option value="PU"
-                                        <?php 
-                                        if ($nature == 'PU') {
-                                           echo "selected";
-                                        }
-                                         ?>
-                                        >Public</option>
+                                        <option value="PR" <?php
+                                                            if ($nature == 'PR') {
+                                                                echo "selected";
+                                                            }
+                                                            ?>>Privé</option>
+                                        <option value="PU" <?php
+                                                            if ($nature == 'PU') {
+                                                                echo "selected";
+                                                            }
+                                                            ?>>Public</option>
                                     </optgroup>
                                 </select></div>
                         </div>
@@ -49,10 +45,10 @@
                         <div class="form-row">
                             <div class="col-3" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Date début</label></div>
                             <div class="col-8"><input class="form-control" type="datetime-local" name="date_deb" value="<?php echo
-                            $date_deb ?>"></div>
+                                                                                                                            $date_deb ?>"></div>
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <div class="form-row">
                             <div class="col-3" style="width: auto;"><label class="col-form-label" style="margin-left: 10%;">Date fin</label></div>
                             <div class="col-8"><input class="form-control" type="datetime-local" name="date_fin" value="<?php echo $date_fin ?>"></div>
@@ -69,13 +65,13 @@
                         </div>
                     </div>
 
-                <div class="modal-footer">
-                    <button class="btn btn-dark" type="button" data-dismiss="modal">Fermer</button>
-                    <button class="btn btn-primary" name="modify_event" type="submit">Valider</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button class="btn btn-dark" type="button" data-dismiss="modal">Fermer</button>
+                        <button class="btn btn-primary" name="modify_event" type="submit">Valider</button>
+                    </div>
+                </form>
             </div>
-            
+
         </div>
     </div>
 </div>
