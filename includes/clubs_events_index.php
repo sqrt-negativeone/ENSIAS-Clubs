@@ -1,5 +1,5 @@
 <?php 
-	include "../pfa_db_connection/connexion.php";
+	include "connexion.php";
 
 	// //GET CLUBS
 	// $sql_clubs = "select * from club";

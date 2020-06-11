@@ -1,5 +1,5 @@
 <?php session_start();
-require_once '../../../../pfa_db_connection/connexion.php';
+require_once '../../pfa_db_connection/connexion.php';
 $is_connected = false;
 if (isset($_SESSION['cne'])) {
     $is_connected = true;
@@ -74,7 +74,7 @@ if (isset($_SESSION['cne'])) {
                     <p class="text-dark mb-5 lead">Page Not Found</p>
                     <p class="text-black-50 mb-0">It looks like you found a glitch in the matrix...</p>
                     <?php if ($is_connected) echo '<a href="/pages">? Back to Dashboard</a>';
-                    else ?> <a href="/">? Back to Home Page</a>
+                    else echo' <a href="/">? Back to Home Page</a>'; ?>
                 </div>
             </div>
         </div>

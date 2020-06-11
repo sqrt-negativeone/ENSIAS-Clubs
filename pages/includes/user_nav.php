@@ -110,10 +110,6 @@
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             &nbsp;Profile
                         </a>
-                        <a class="dropdown-item" role="presentation" href="#">
-                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            &nbsp;Settings
-                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" role="presentation" href="functions/logout.php">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

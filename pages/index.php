@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once '../../pfa_db_connection/connexion.php';
 //PREVENT RETURN BUTTON AFTER LOGOUT
 if (!isset($_SESSION['cne'])) {
     if (!isset($_COOKIE["remember_me"])) header("Location:login.php");
@@ -8,7 +8,7 @@ if (!isset($_SESSION['cne'])) {
         include 'functions/sign_in_cookie.php';
     }
 }
-include "functions/index-page.php";
+include_once "functions/index-page.php";
 $statut = $_SESSION['statut'];
 ?>
 <!DOCTYPE html>

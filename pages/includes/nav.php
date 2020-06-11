@@ -38,7 +38,7 @@ $list_all_clubs = $all_clubs->fetchAll();
             }
             //LOOP THROUGH CLUBS
             for ($i = 0; $i < count($list_all_clubs); $i++) {
-                $url = 'clubs.php?target=' . urlencode($list_all_clubs[$i]['acro_club']) . '&i=' . $list_all_clubs[$i]['id_club'];
+                $url = 'clubs.php?target=' . urlencode($list_all_clubs[$i]['acro_club']) . '&id=' . $list_all_clubs[$i]['id_club'];
             ?>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" href="<?php echo $url ?>">

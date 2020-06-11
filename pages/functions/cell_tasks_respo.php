@@ -4,7 +4,7 @@ if (!isset($_SESSION['cne'])) {
 } else {
 	//GET USER INFO REGARDING THE CELL
 	for ($i = 0; $i < count($_SESSION['my_cells']); $i++) {
-		if ($_SESSION['my_cells'][$i]['id_cellule'] == $_GET['i'] and $_SESSION['my_cells'][$i]['intitule'] == $_GET['target']) {
+		if ($_SESSION['my_cells'][$i]['id_cellule'] == $_GET['id'] and $_SESSION['my_cells'][$i]['intitule'] == $_GET['target']) {
 			$cell = $_SESSION['my_cells'][$i];
 			break;
 		}
@@ -17,7 +17,7 @@ if (!isset($_SESSION['cne'])) {
 		$sql_ncon = "select * from responsable join etudiant using(cne) where id_cellule=? and date_r_fin is null";
 
 		$ncon_club = $pdo->prepare($sql_ncon);
-		$ncon_club->execute([$_GET['i']]);
+		$ncon_club->execute([$_GET['id']]);
 		$ncon_club->setFetchMode(PDO::FETCH_ASSOC);
 		$_SESSION['respo_cell'] = $ncon_club->fetchAll();
 
@@ -27,17 +27,17 @@ if (!isset($_SESSION['cne'])) {
 		$select_all_members = "select * from inscription join etudiant using(cne)
 	    		where id_cellule = ? and etat_insc=? and date_i_fin is null";
 		$stmt_all_members = $pdo->prepare($select_all_members);
-		$stmt_all_members->execute([$_GET['i'], $etat_insc]);
+		$stmt_all_members->execute([$_GET['id'], $etat_insc]);
 		$stmt_all_members->setFetchMode(PDO::FETCH_ASSOC);
 		$_SESSION['all_cell_members'] = $stmt_all_members->fetchAll();
 		//SAVE ID_CELLULE TO CHANGE RESPONSABLE CELLULE
-		$_SESSION['id_cellule_for_change_resp'] = $_GET['i'];
+		$_SESSION['id_cellule_for_change_resp'] = $_GET['id'];
 
 		//GET ASSIGNED TASKS
 		// $sysdate = date('Y-m-d H:i:s');//and ? between t.date_deb_tache and t.date_fin_tache 
 		$get_tasks = "select ta.id_tache, ta.justificatif, ta.etat, ta.remarque, t.desc_tache, t.date_deb_tache, t.date_fin_tache, t.titre_tache, e.cne, e.nom, e.prenom from tache_assignee ta join tache t using (id_tache) join etudiant e on(t.cne = e.cne) where ta.cne = ? and id_cellule = ? ";
 		$stmt_get_tasks = $pdo->prepare($get_tasks);
-		$stmt_get_tasks->execute([$_SESSION['cne'], $_GET['i']]);
+		$stmt_get_tasks->execute([$_SESSION['cne'], $_GET['id']]);
 		$stmt_get_tasks->setFetchMode(PDO::FETCH_ASSOC);
 		$mes_taches = $stmt_get_tasks->fetchAll();
 
@@ -68,7 +68,7 @@ if (!isset($_SESSION['cne'])) {
 			$etat = 'NV';
 			$get_tasks = "select ta.id_tache, ta.cne, ta.date_submit, ta.justificatif, ta.etat, ta.remarque, t.desc_tache, t.date_deb_tache, t.date_fin_tache, t.titre_tache, e.cne, e.nom, e.prenom, e.photo from tache t join tache_assignee ta using (id_tache) join etudiant e on(ta.cne = e.cne) where t.cne = ? and ta.etat = ? and id_cellule = ? and ta.justificatif is not null order by date_deb_tache desc limit 1";
 			$stmt_get_tasks = $pdo->prepare($get_tasks);
-			$stmt_get_tasks->execute([$_SESSION['cne'], $etat, $_GET['i']]);
+			$stmt_get_tasks->execute([$_SESSION['cne'], $etat, $_GET['id']]);
 			$stmt_get_tasks->setFetchMode(PDO::FETCH_ASSOC);
 			$_SESSION['submissions_task'] = $stmt_get_tasks->fetchAll();
 		}

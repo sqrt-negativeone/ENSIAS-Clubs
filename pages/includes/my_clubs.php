@@ -37,7 +37,7 @@ for ($i = 0; $i < count($my_clubs); $i++) {
             </div>
             <div class="row">
                 <div class="col-auto mx-auto">
-                    <?php $url = 'clubs.php?target=' . urlencode($my_clubs[$i]['acro_club']) . '&i=' . $my_clubs[$i]['id_club'] ?>
+                    <?php $url = 'clubs.php?target=' . urlencode($my_clubs[$i]['acro_club']) . '&id=' . $my_clubs[$i]['id_club'] ?>
                     <a class="btn btn-primary" role="button" href=<?php echo htmlspecialchars($url) ?>>Accéder</a>
                 </div>
             </div>

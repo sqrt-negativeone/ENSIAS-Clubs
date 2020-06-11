@@ -57,7 +57,7 @@ if (isset($_POST['submit_set_club'])) {
 			if (strpos($update_club_settings, 'acro_club') !== false) {
 				$target = trim($_POST['acro_club']);
 				$url_array = parse_url($_SERVER['HTTP_REFERER']);
-				$url_array['query'] = "target=" . urlencode($target) . "&i=" . $_SESSION['presidentC']['id_club'];
+				$url_array['query'] = "target=" . urlencode($target) . "&id=" . $_SESSION['presidentC']['id_club'];
 				$url = $url_array['scheme'] . '://' . $url_array['host'] . $url_array['path'] . '?' . $url_array['query'];
 				header("Location:" . $url);
 			} else {

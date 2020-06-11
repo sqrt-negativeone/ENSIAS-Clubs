@@ -13,7 +13,7 @@ for ($i = 0; $i < count($my_cells); $i++) {
             </div>
             <div class="row">
                 <div class="col-auto mx-auto">
-                    <?php $url = 'cellules.php?target=' . urlencode($my_cells[$i]['intitule']) . "&i=" . $my_cells[$i]['id_cellule'] ?>
+                    <?php $url = 'cellules.php?target=' . urlencode($my_cells[$i]['intitule']) . "&id=" . $my_cells[$i]['id_cellule'] ?>
                     <a class="btn btn-primary" role="button" href=<?php echo htmlspecialchars($url) ?>>enter</a>
                 </div>
             </div>

@@ -12,7 +12,7 @@
             $description = $club['texte_desc'];
             $id = $club['id_club'];
             $photo = "data:image/*;base64," . base64_encode($club['photo']);
-            $href = "pages/clubs.php?target=" . $acro_club . "&i=" . $id;
+            $href = "pages/clubs.php?target=" . $acro_club . "&id=" . $id;
         ?>
             <div class="row align-items-center" style="margin-bottom: 1rem;">
                 <div class="col-md-6"><img class="img-thumbnail" src=<?php echo htmlspecialchars($photo) ?>></div>

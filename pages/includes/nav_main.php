@@ -22,7 +22,7 @@
                             $acro = $club['acro_club'];
                             $name = $club['nom_club'];
                             $id = $club['id_club'];
-                            $href = "clubs.php?target=" . urlencode($acro) . '&i=' . urlencode($id);
+                            $href = "clubs.php?target=" . urlencode($acro) . '&id=' . urlencode($id);
                             echo '<a class="dropdown-item" role="presentation" href=' . $href . '>' . strtoupper($acro) . '</a>';
                         }
                         ?>

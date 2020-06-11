@@ -1,7 +1,7 @@
 <?php
 require_once '../../pfa_db_connection/connexion.php';
 
-$_SESSION['id_club_for_event'] = $_GET['i'];
+$_SESSION['id_club_for_event'] = $_GET['id'];
 if (isset($_SESSION['statut']) and $_SESSION['statut'] != 'PA') {
 	$_SESSION['statut'] = '';
 }
@@ -10,7 +10,7 @@ $_SESSION['other_cells'] = array();
 //CLUB PRESENTATION
 $sql_ncon = "select * from club where id_club=? and acro_club=?";
 $ncon_club = $pdo->prepare($sql_ncon);
-$ncon_club->execute([htmlspecialchars($_GET['i']), htmlspecialchars($_GET['target'])]);
+$ncon_club->execute([htmlspecialchars($_GET['id']), htmlspecialchars($_GET['target'])]);
 $ncon_club->setFetchMode(PDO::FETCH_ASSOC);
 if ($row = $ncon_club->fetch()) {
 	$n_club = $row;
@@ -23,7 +23,7 @@ if ($row = $ncon_club->fetch()) {
 $nature = 'PU';
 $sql_event = "select * from organisation join evenement using(id_event) where id_club=? and nature = ?";
 $event_club = $pdo->prepare($sql_event);
-$event_club->execute([$_GET['i'], $nature]);
+$event_club->execute([$_GET['id'], $nature]);
 $event_club->setFetchMode(PDO::FETCH_ASSOC);
 $events_pub = $event_club->fetchAll();
 
@@ -31,20 +31,20 @@ $events_pub = $event_club->fetchAll();
 //GET CLUB PRESIDENT
 $club_pres = "select * from president join club using(id_club) join etudiant using(cne) where id_club=? and date_p_fin is null";
 $s_club_pres = $pdo->prepare($club_pres);
-$s_club_pres->execute([$_GET['i']]);
+$s_club_pres->execute([$_GET['id']]);
 $s_club_pres->setFetchMode(PDO::FETCH_ASSOC);
 $_SESSION['presidentC'] = $s_club_pres->fetch();
 //GET CLUB RESPONSABLES
 $club_respos = "select * from responsable join(cellule) using(id_cellule) join etudiant using(cne) where id_club=? and date_r_fin is null";
 $s_club_respos = $pdo->prepare($club_respos);
-$s_club_respos->execute([$_GET['i']]);
+$s_club_respos->execute([$_GET['id']]);
 $s_club_respos->setFetchMode(PDO::FETCH_ASSOC);
 $_SESSION['resposC'] = $s_club_respos->fetchAll();
 
 //GET ALL CELLS
 //    $sql_cells="select * from cellule where id_club=?";
 //    $cells_club=$pdo->prepare($sql_cells);
-//    $cells_club->execute([htmlspecialchars($_GET['i'])]);
+//    $cells_club->execute([htmlspecialchars($_GET['id'])]);
 //    $cells_club->setFetchMode(PDO::FETCH_ASSOC);    
 // $_SESSION['cells_club'] = $cells_club ->fetchAll();
 
@@ -69,7 +69,7 @@ if (isset($_SESSION['cne'])) {
 		//GET ALL CELLS
 		$cells_pres = "select * from cellule where id_club=?";
 		$cells_pres = $pdo->prepare($cells_pres);
-		$cells_pres->execute([htmlspecialchars($_GET['i'])]);
+		$cells_pres->execute([htmlspecialchars($_GET['id'])]);
 		$cells_pres->setFetchMode(PDO::FETCH_ASSOC);
 		$_SESSION['my_cells'] = $cells_pres->fetchAll();
 
@@ -77,7 +77,7 @@ if (isset($_SESSION['cne'])) {
 		$nature = 'PR';
 		$sql_event = "select * from organisation join evenement using(id_event) where id_club=? and nature = ?";
 		$event_club = $pdo->prepare($sql_event);
-		$event_club->execute([$_GET['i'], $nature]);
+		$event_club->execute([$_GET['id'], $nature]);
 		$event_club->setFetchMode(PDO::FETCH_ASSOC);
 		$events_prv = $event_club->fetchAll();
 	} elseif ($is_club_member) {
@@ -90,7 +90,7 @@ if (isset($_SESSION['cne'])) {
 		    	from responsable r join cellule using(id_cellule) where r.cne=? and date_r_fin is null and id_club=? 
 		        ";
 		$stmt_joined = $pdo->prepare($sql_joined);
-		$stmt_joined->execute([$_SESSION['cne'], $etat_insc, $_GET['i'], $_SESSION['cne'], $_GET['i']]);
+		$stmt_joined->execute([$_SESSION['cne'], $etat_insc, $_GET['id'], $_SESSION['cne'], $_GET['id']]);
 		$stmt_joined->setFetchMode(PDO::FETCH_ASSOC);
 		$_SESSION['my_cells'] = $stmt_joined->fetchAll();
 
@@ -102,7 +102,7 @@ if (isset($_SESSION['cne'])) {
 		        select *
 		    	from responsable r where cu.id_cellule=r.id_cellule and r.cne=? and date_r_fin is null) and id_club=?";
 		$stmt_joined_cell = $pdo->prepare($sql_njoined_cell);
-		$stmt_joined_cell->execute([$_SESSION['cne'], $etat_insc, $_SESSION['cne'], $_GET['i']]);
+		$stmt_joined_cell->execute([$_SESSION['cne'], $etat_insc, $_SESSION['cne'], $_GET['id']]);
 		$stmt_joined_cell->setFetchMode(PDO::FETCH_ASSOC);
 		$_SESSION['other_cells'] = $stmt_joined_cell->fetchAll();
 
@@ -110,14 +110,14 @@ if (isset($_SESSION['cne'])) {
 		$nature = 'PR';
 		$sql_event = "select * from organisation join evenement using(id_event) where id_club=? and nature = ?";
 		$event_club = $pdo->prepare($sql_event);
-		$event_club->execute([$_GET['i'], $nature]);
+		$event_club->execute([$_GET['id'], $nature]);
 		$event_club->setFetchMode(PDO::FETCH_ASSOC);
 		$events_prv = $event_club->fetchAll();
 	} elseif ($_SESSION['statut'] == 'PA') {
 		//GET ALL CELLS
 		$cells_pres = "select * from cellule where id_club=?";
 		$cells_pres = $pdo->prepare($cells_pres);
-		$cells_pres->execute([htmlspecialchars($_GET['i'])]);
+		$cells_pres->execute([htmlspecialchars($_GET['id'])]);
 		$cells_pres->setFetchMode(PDO::FETCH_ASSOC);
 		$_SESSION['my_cells'] = $cells_pres->fetchAll();
 		$_SESSION['other_cells'] = $_SESSION['my_cells'];
@@ -126,7 +126,7 @@ if (isset($_SESSION['cne'])) {
 		$nature = 'PR';
 		$sql_event = "select * from organisation join evenement using(id_event) where id_club=? and nature = ?";
 		$event_club = $pdo->prepare($sql_event);
-		$event_club->execute([$_GET['i'], $nature]);
+		$event_club->execute([$_GET['id'], $nature]);
 		$event_club->setFetchMode(PDO::FETCH_ASSOC);
 		$events_prv = $event_club->fetchAll();
 	}
@@ -149,12 +149,12 @@ if (isset($_SESSION['cne'])) {
 
 
 <?php
-// if ($_SESSION['jclubs']['president'][0]['id_club']==htmlspecialchars($_GET['i'])) {
+// if ($_SESSION['jclubs']['president'][0]['id_club']==htmlspecialchars($_GET['id'])) {
 //         	$_SESSION['statut']='PC';
 //         	//DISPLAY ALL CELLS
 //         	$cells_pres="select * from cellule where id_club=?";
 // 	        $cells_pres=$pdo->prepare($cells_pres);
-// 	        $cells_pres->execute([htmlspecialchars($_GET['i'])]);
+// 	        $cells_pres->execute([htmlspecialchars($_GET['id'])]);
 // 	        $cells_pres->setFetchMode(PDO::FETCH_ASSOC);
 // 	        $my_cells=$cells_pres->fetchAll();
 // 	    }elseif ($_SESSION['cne']==$_SESSION['p_adei']['cne']) {
@@ -162,27 +162,27 @@ if (isset($_SESSION['cne'])) {
 // 	    	//DISPLAY ALL CELLS
 //         	$cells_pres="select * from cellule where id_club=?";
 // 	        $cells_pres=$pdo->prepare($cells_pres);
-// 	        $cells_pres->execute([htmlspecialchars($_GET['i'])]);
+// 	        $cells_pres->execute([htmlspecialchars($_GET['id'])]);
 // 	        $cells_pres->setFetchMode(PDO::FETCH_ASSOC);
 // 	        $my_cells=$cells_pres->fetchAll();
 // 	        //GET CLUB PRESIDENT
 // 	        $club_pres="select * from president join club using(id_club) join etudiant using(cne) where id_club=? and date_p_fin is null";
 // 	        $s_club_pres=$pdo->prepare($club_pres);
-// 	        $s_club_pres->execute([htmlspecialchars($_GET['i'])]);
+// 	        $s_club_pres->execute([htmlspecialchars($_GET['id'])]);
 // 	        $s_club_pres->setFetchMode(PDO::FETCH_ASSOC);
 // 	        $_SESSION['presidentC']=$s_club_pres->fetch();
 //    		}else{
 //    			//extract the cell data
 // 		    $sql_cjoined="select * from inscription i join cellule cel using(id_cellule) join club cl using(id_club) where i.cne=? and id_club=?";
 // 		    $stmt_cjoined=$pdo->prepare($sql_cjoined);
-// 		    $stmt_cjoined->execute([$_SESSION['cne'],htmlspecialchars($_GET['i'])]);
+// 		    $stmt_cjoined->execute([$_SESSION['cne'],htmlspecialchars($_GET['id'])]);
 // 		    $stmt_cjoined->setFetchMode(PDO::FETCH_ASSOC);
 // 		    $my_cells=$stmt_cjoined->fetchAll();
 //    			//A MEMBER OR CELL RESPONSIBLE OR CO-RESPONSIBLE
 //    			//DISPLAY SPECIFIC CELLS
 //    			// $j=0;
 // 	     //    for ($i=0; $i < count($_SESSION['jcells']); $i++) { 
-// 	     //       if ($_SESSION['jcells'][$i]['id_club']==htmlspecialchars($_GET['i'])) {
+// 	     //       if ($_SESSION['jcells'][$i]['id_club']==htmlspecialchars($_GET['id'])) {
 // 	     //            $my_cells[$j]=$_SESSION['jcells'][$i];
 // 	     //           // $statut=$club_info[0]['statut'];
 // 	     //            //WE'LL NEED THE STATUS WHEN THE USER CHOOSES A CELL
@@ -194,7 +194,7 @@ if (isset($_SESSION['cne'])) {
 // 	        $sql_njoined_cell="select * from cellule cu where not exists(
 // 	    	select * from inscription i join cellule c using(id_cellule) where cu.id_cellule=c.id_cellule) and id_club=?";
 // 	    	$cells_pres=$pdo->prepare($sql_njoined_cell);
-// 	        $cells_pres->execute([htmlspecialchars($_GET['i'])]);
+// 	        $cells_pres->execute([htmlspecialchars($_GET['id'])]);
 // 	        $cells_pres->setFetchMode(PDO::FETCH_ASSOC);
 // 	        $not_my_cells=$cells_pres->fetchAll();
 // 	        $_SESSION['not_my_cells']=$not_my_cells;

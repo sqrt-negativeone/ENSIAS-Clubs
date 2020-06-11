@@ -10,7 +10,7 @@
             <div class="modal-body" style="max-height: 50%;">
                 <p>Êtes-vous sûr de vouloir quitter la cellule ?</p>
                 <form method="post" action="functions/leave_cell.php">
-                    <input type="hidden" name="id_cellule" value="<?php echo $_GET['i']; ?>">
+                    <input type="hidden" name="id_cellule" value="<?php echo $_GET['id']; ?>">
                     <input type="hidden" name="statut" value="<?php echo $cellule_status; ?>">
                     <div class="modal-footer">
                         <button class="btn btn-dark" type="button" data-dismiss="modal">Non</button>

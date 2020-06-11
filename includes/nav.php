@@ -13,7 +13,7 @@ $clubs = $stmt_clubs->fetchAll();
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">Accueil</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/">Accueil</a></li>
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">Clubs</a>
                     <div class="dropdown-menu" style="left: unset;right:0;" role="menu">
@@ -22,7 +22,7 @@ $clubs = $stmt_clubs->fetchAll();
                             $acro = $club['acro_club'];
                             $name = $club['nom_club'];
                             $id = $club['id_club'];
-                            $href = "pages/clubs.php?target=" . urlencode($acro) . '&i=' . urlencode($id);
+                            $href = "/pages/clubs.php?target=" . urlencode($acro) . '&id=' . urlencode($id);
                             echo '<a class="dropdown-item" role="presentation" href=' . $href . '>' . strtoupper($name) . '</a>';
                         }
                         ?>
