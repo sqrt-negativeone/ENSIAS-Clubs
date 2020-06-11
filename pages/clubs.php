@@ -108,7 +108,7 @@ else $statut = $_SESSION['statut'];
 
                 <!--this section will be added only to the club's president so he can accept membership requests-->
                 <?php
-                if ($statut === "PC") {
+                if ($statut === "PC" || ($statut === "PA" && strtoupper($_GET['target']=='ADEI'))) {
                     include 'includes/club_requests.php';
                     include 'includes/modify_club_settings.php';
                     include 'includes/new_cellule.php';
@@ -140,7 +140,7 @@ else $statut = $_SESSION['statut'];
                 <?php } ?>
                 <!--other celluls will be listed in this section-->
                 <?php
-                if (count($_SESSION['other_cells']) != 0) {
+                if (count($_SESSION['other_cells']) != 0 && $statut != 'PA') {
                 ?>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col" data-aos="zoom-in-up">

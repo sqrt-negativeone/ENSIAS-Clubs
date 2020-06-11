@@ -30,7 +30,7 @@
                                         <div class="row align-items-center no-gutters">
                                             <div class="col-auto">
                                                 <!-- PHOTO -->
-                                                <img class="border rounded-circle img-profile" style="max-width: 50px; max-height: 50px;" src=<?php echo htmlspecialchars($avatar) ?>>
+                                                <img class="border rounded-circle img-profile" style="width: 50px; height: 50px;" src=<?php echo htmlspecialchars($avatar) ?>>
                                             </div>
                                             <div class="col mr-2" style="margin-left: 10px;">
                                                 <!-- USERNAME -->

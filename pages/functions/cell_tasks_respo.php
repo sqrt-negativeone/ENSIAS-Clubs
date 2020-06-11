@@ -64,7 +64,7 @@ if (!isset($_SESSION['cne'])) {
 		}
 
 		//GET SUBMISSIONS FOR TASK I CREATED
-		if ((isset($cell['statut']) and $cell['statut'] == 'R') or $_SESSION['statut'] == 'PC') {
+		if ((isset($cell['statut']) and $cell['statut'] == 'R') or $_SESSION['statut'] == 'PC' or $_SESSION['statut'] == 'PA'){
 			$etat = 'NV';
 			$get_tasks = "select ta.id_tache, ta.cne, ta.date_submit, ta.justificatif, ta.etat, ta.remarque, t.desc_tache, t.date_deb_tache, t.date_fin_tache, t.titre_tache, e.cne, e.nom, e.prenom, e.photo from tache t join tache_assignee ta using (id_tache) join etudiant e on(ta.cne = e.cne) where t.cne = ? and ta.etat = ? and id_cellule = ? and ta.justificatif is not null order by date_deb_tache desc limit 1";
 			$stmt_get_tasks = $pdo->prepare($get_tasks);

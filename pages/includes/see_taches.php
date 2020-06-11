@@ -33,7 +33,7 @@
                                     <div class="card-body" style="padding-top: 5px;padding-bottom: 5px;padding-right: 5px;padding-left: 5px;">
                                         <div class="row align-items-center no-gutters">
                                             <div class="col-auto">
-                                                <img style="max-height: 50px; max-width: 50px;" class="border rounded-circle img-profile" src=<?php echo htmlspecialchars($avatar) ?>></div>
+                                                <img style="height: 50px; width: 50px;" class="border rounded-circle img-profile" src=<?php echo htmlspecialchars($avatar) ?>></div>
                                             <div class="col-auto mr-2">
                                                 <div class="text-uppercase text-primary font-weight-bold text-xs mb-1" style="margin-left: 5px;">
                                                     <span style="font-size: 120%;margin-left: 5px;"><?php echo htmlspecialchars($username) ?></span>

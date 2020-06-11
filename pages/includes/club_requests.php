@@ -35,12 +35,17 @@ $notifs = $notifs['membership'];
                                     <div class="row align-items-center no-gutters" style="margin-top: -19px;margin-bottom: -18px;">
                                         <div class="col mr-2">
                                             <div class="text-uppercase text-primary font-weight-bold text-xs mb-1">
-                                                <div class="row">
+                                                <div class="row jsutify-content-center">
                                                     <div class="col" style="margin-bottom: 5px;">
-                                                        <span class="text-left" style="font-size: 150%;margin-left: 17%;"><?php echo htmlspecialchars($username) ?></span>
-                                                        <span class="text-left" style="font-size: 150%;margin-left: 17%;"><?php echo htmlspecialchars($cellule) ?></span>
+                                                        <span class="text-left" style="font-size: 120%;"><?php echo htmlspecialchars($username) ?></span>
                                                     </div>
                                                 </div>
+                                                <div class="row jsutify-content-center">
+                                                    <div class="col" style="margin-bottom: 5px;">
+                                                        <span class="text-left" style="font-size: 100%;"><?php echo htmlspecialchars($cellule) ?></span>
+                                                    </div>
+                                                </div>
+                                                
                                                 <form method="post" action="functions/check_requests.php">
                                                     <input type="hidden" value="<?php echo htmlspecialchars($notifs[$i]['cne']) ?>" name="cne">
                                                     <input type="hidden" value="<?php echo htmlspecialchars($notifs[$i]['id_cellule']) ?>" name="id_cellule">
@@ -60,7 +65,7 @@ $notifs = $notifs['membership'];
 
                                             </div>
                                         </div>
-                                        <div class="col-auto"><a href="#"><img class="border rounded-circle img-profile" style="max-height: 50px; max-width: 50px;" src=<?php echo htmlspecialchars($avatar) ?>></a></div>
+                                        <div class="col-auto"><a href="#"><img class="border rounded-circle img-profile" style="height: 50px; width: 50px;" src=<?php echo htmlspecialchars($avatar) ?>></a></div>
                                     </div>
                                 </div>
                             </div>

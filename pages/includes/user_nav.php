@@ -50,7 +50,7 @@
                             }
                             $desc = "Nouvelle demande d'inscription à la cellule " . $members[$i]['intitule'] . " de " . $members[$i]['acro_club'] . " par " . strtoupper($members[$i]['nom']) . " " . ucfirst($members[$i]['prenom']);
                             echo '<a class="d-flex align-items-center dropdown-item" href="#">';
-                            echo '<div class="mr-3"><img class="border rounded-circle" src="' . $avatar . '" style="width: 40px;"></div>';
+                            echo '<div class="mr-3"><img class="border rounded-circle" height="50px" width=50px" src="' . $avatar . '" style="width: 40px;"></div>';
                             echo '<div><span class="small text-gray-500">' . $date . '</span>';
                             echo '<p>' . $desc . '</p></div>';
                         }
@@ -73,7 +73,7 @@
                             $desc .= strtoupper($sug[$i]['nom']) . " " . ucfirst($sug[$i]['prenom']);
 
                             echo '<a class="d-flex align-items-center dropdown-item" href="#">';
-                            echo '<div class="mr-3"><img class="border rounded-circle" src="' . $avatar . '" style="width: 40px;"></div>';
+                            echo '<div class="mr-3"><img class="border rounded-circle" src="' . $avatar . '"></div>';
                             echo '<div><span class="small text-gray-500">' . $date . '</span>';
                             echo '<p>' . $desc . '</p></div>';
                         }

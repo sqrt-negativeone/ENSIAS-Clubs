@@ -17,7 +17,7 @@ $(document).ready(function(){
                              photo='../img/profile.png';
                         }
                         //s=s+'<h1>'+data[i].nom+' '+'<img src="data:image/jpeg;base64,'+data[i].photo+'"/>'+'</p>';
-                        s=s+'<li class="list-group-item"><div class="card"><div class="card-body"><div class="row align-items-center no-gutters"><div class="col-auto"><img style="max-width: 50px; max-height: 50px;" class="border rounded-circle img-profile" src='+photo+'></div><div class="col mr-2" style="margin-left: 10px;"><span style="font-size: 120%;">'+data[i].nom.toUpperCase()+" "+data[i].prenom.toLowerCase()+'</span></div><div class="col-auto align-self-center"><div class="custom-control custom-radio"><input class="custom-control-input" value="'+data[i].cne+'" type="radio" id="'+id+'" name="new_president"><label class="custom-control-label" for='+id+'></label></div></div></div></div></div></li>';
+                        s=s+'<li class="list-group-item"><div class="card"><div class="card-body"><div class="row align-items-center no-gutters"><div class="col-auto"><img style="width: 50px; height: 50px;" class="border rounded-circle img-profile" src='+photo+'></div><div class="col mr-2" style="margin-left: 10px;"><span style="font-size: 120%;">'+data[i].nom.toUpperCase()+" "+data[i].prenom.toLowerCase()+'</span></div><div class="col-auto align-self-center"><div class="custom-control custom-radio"><input class="custom-control-input" value="'+data[i].cne+'" type="radio" id="'+id+'" name="new_president"><label class="custom-control-label" for='+id+'></label></div></div></div></div></div></li>';
                     }
                     
                                 $("#result").html(s);

@@ -72,7 +72,7 @@ $statut = $_SESSION['statut'];
                             </div>
                         </div>
                     </div>
-
+                    <?php if ($statut!='PA'){ ?>
                     <div class="row" style="margin-bottom: 30px;">
                         <div class="col">
                             <div class="card" data-aos="zoom-in-up">
@@ -90,7 +90,7 @@ $statut = $_SESSION['statut'];
                             </div>
                         </div>
                     </div>
-
+                    <?php }?>
                 </div>
             </div>
 

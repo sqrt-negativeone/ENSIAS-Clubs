@@ -20,9 +20,9 @@
                                                 <div class="col-auto">
                                                     <?php
                                                     if ($respo_cell[$i]['photo'] == "") {
-                                                        echo '<img style="max-height: 50px; max-width: 50px;" src="../../images/profile.png" class="border rounded-circle img-profile" />';
+                                                        echo '<img style="height: 50px; width: 50px;" src="../../images/profile.png" class="border rounded-circle img-profile" />';
                                                     } else {
-                                                        echo '<img style="max-height: 50px; max-width: 50px;" src="' . $avatar . '" class="border rounded-circle img-profile">';
+                                                        echo '<img style="height: 50px; width: 50px;" src="' . $avatar . '" class="border rounded-circle img-profile">';
                                                     }
                                                     ?>
 
