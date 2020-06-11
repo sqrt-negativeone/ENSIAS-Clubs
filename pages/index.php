@@ -97,7 +97,7 @@ $statut = $_SESSION['statut'];
             <?php include 'includes/join_club_modal.php'; ?>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © ENSIASClub 2020</span></div>
+                    <div class="text-center my-auto copyright"><span>Copyright Â© ENSIASClub 2020</span></div>
                 </div>
             </footer>
         </div>
@@ -114,8 +114,8 @@ $statut = $_SESSION['statut'];
     <script src="assets/js/join.js"></script>
     <script type="text/javascript">
         $(window).on('load', function() {
-            var context = <?php echo json_encode($_SESSION['context']) ?>;
-            var msg = <?php echo json_encode($_SESSION['msg']) ?>;
+            var msg = <?php echo isset($_SESSION['msg']) ? json_encode($_SESSION['msg']) : '' ?>;
+            var context = <?php echo isset($_SESSION['context']) ? json_encode($_SESSION['context']) : '' ?>;
             if (msg != '' && context != '') {
                 $('#alertModal').modal('show');
             }
