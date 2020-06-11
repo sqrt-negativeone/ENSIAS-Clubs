@@ -26,8 +26,8 @@ $clubs = $stmt_clubs->fetchAll();
                             echo '<a class="dropdown-item" role="presentation" href=' . $href . '>' . strtoupper($name) . '</a>';
                         }
                         ?>
-                        <?php if (isset($_SESSION['cne'])) echo '<li class="nav-item" role="presentation"><a class="nav-link" href="pages/functions/logout.php" style="font-size: 15px;"><b>Logout</b></a>';
-                        else echo '<li class="nav-item" role="presentation"><a class="nav-link" href="pages/login.php" style="font-size: 15px;"><b>Login</b></a>';
+                        <?php if (isset($_SESSION['cne'])) echo '<li class="nav-item" role="presentation"><a class="nav-link" href="/pages/functions/logout.php" style="font-size: 15px;"><b>Logout</b></a>';
+                        else echo '<li class="nav-item" role="presentation"><a class="nav-link" href="/pages/login.php" style="font-size: 15px;"><b>Login</b></a>';
                         ?>
                     </div>
                 </li>
