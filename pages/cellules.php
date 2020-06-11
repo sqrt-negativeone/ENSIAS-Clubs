@@ -122,12 +122,7 @@ if ($_SESSION['statut'] != '') {
                     </div>
                 </div>
             </div>
-            <!--this modal will be poped up when clicking on a user, it shows his passed taches -->
-            <?php
-            if (strcmp($cellule_status, 'R') == 0 || strcmp($cellule_status, 'PC') == 0 || strcmp($cellule_status, 'PA') == 0) {
-                include 'includes/user_tache_menu.php';
-            }
-            ?>
+
             <?php
             if (strcmp($cellule_status, 'PC') == 0 or strcmp($cellule_status, 'PA') == 0) {
                 include 'includes/choose_cell_resp_menu.php';
@@ -152,7 +147,7 @@ if ($_SESSION['statut'] != '') {
             if (strcmp($cellule_status, 'R') == 0 || strcmp($cellule_status, 'PC') == 0) {
                 include 'includes/select_mbr_task.php';
             }
-            include 'includes/user_tache_menu.php';
+            
             include 'includes/make_sure_quit.php';
             ?>
             <footer class="bg-white sticky-footer">
