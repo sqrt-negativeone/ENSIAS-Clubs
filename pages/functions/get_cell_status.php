@@ -63,7 +63,7 @@ if (isset($_SESSION['my_clubs'])) {
 if (isset($_SESSION['cne'])) {
 
 	//FIND OUT IF LOGGED IN USER IS CLUB PRESIDENT
-	if ($_SESSION['cne'] == $_SESSION['presidentC']['cne']) {
+	if ($_SESSION['cne'] == $_SESSION['presidentC']['cne'] and $_SESSION['statut'] != 'PA') {
 		//CLUB PRESIDENT STATUS
 		$_SESSION['statut'] = 'PC';
 		//GET ALL CELLS
